@@ -1,13 +1,19 @@
 /* =========================================
-   1. VARIABLES & RESET
+   1. COLOR PALETTE & GLOBAL RESET
    ========================================= */
 :root {
-  --bg-main: #f8f9fa;
-  --bg-white: #ffffff;
-  --text-dark: #0f172a;       /* Refined deep slate black */
-  --text-muted: #475569;      /* Refined neutral slate */
-  --border-light: #e2e8f0;    /* Crisp subtle border */
-  --accent: #0f172a;
+  /* Modern Data Analyst Palette */
+  --bg-main: #f1f5f9;         /* Crisp cool slate light gray */
+  --bg-white: #ffffff;        /* Pure white for cards */
+  --text-dark: #0f172a;       /* Deep navy-black */
+  --text-muted: #475569;      /* Refined slate gray */
+  --border-light: #cbd5e1;    /* Defined boundary borders */
+  
+  /* Accent Colors */
+  --primary-blue: #2563eb;    /* Tech / Power BI cobalt blue */
+  --primary-hover: #1d4ed8;   /* Deep hover blue */
+  --accent-soft: #eff6ff;     /* Subtle ice-blue card fill */
+  
   --font-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
@@ -30,10 +36,10 @@ body {
 }
 
 /* =========================================
-   2. LAYOUT & TYPOGRAPHY
+   2. LAYOUT & CONTAINERS
    ========================================= */
 .container {
-  max-width: 1000px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 0 24px;
 }
@@ -46,17 +52,11 @@ body {
   background-color: var(--bg-white);
 }
 
-h1, h2, h3 {
-  font-weight: 600;
-  color: var(--text-dark);
-  line-height: 1.25;
-}
-
 .section-title {
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 40px;
   padding-bottom: 10px;
-  border-bottom: 2px solid var(--text-dark);
+  border-bottom: 3px solid var(--primary-blue); /* Distinct blue underline */
   display: inline-block;
   letter-spacing: -0.5px;
 }
@@ -70,7 +70,7 @@ p {
 
 a {
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 /* =========================================
@@ -84,11 +84,11 @@ a {
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border-light);
   z-index: 1000;
-  padding: 16px 0;
+  padding: 18px 0;
 }
 
 .nav-container {
-  max-width: 1000px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 0 24px;
   display: flex;
@@ -98,62 +98,62 @@ a {
 
 .logo {
   font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  letter-spacing: -1px;
+  font-weight: 800;
+  color: var(--primary-blue);
+  letter-spacing: -0.5px;
 }
 
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 24px;
+  gap: 28px;
 }
 
 .nav-links a {
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 600;
   font-size: 0.95rem;
 }
 
 .nav-links a:hover {
-  color: var(--text-dark);
+  color: var(--primary-blue);
 }
 
 /* =========================================
    4. HERO SECTION
    ========================================= */
 .hero {
-  padding-top: 150px;
-  padding-bottom: 80px;
-  animation: fadeInUp 0.8s ease-out forwards;
+  padding-top: 160px;
+  padding-bottom: 90px;
+  background: linear-gradient(180deg, #ffffff 0%, var(--bg-main) 100%);
 }
 
 .hero-greeting {
-  font-size: 1.05rem;
-  color: var(--text-muted);
+  font-size: 1.15rem;
+  color: var(--primary-blue);
+  font-weight: 600;
   margin-bottom: 8px;
 }
 
 .hero-name {
-  font-size: 3.25rem;
-  font-weight: 700;
-  letter-spacing: -1px;
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -1.5px;
   margin-bottom: 8px;
   color: var(--text-dark);
 }
 
 .hero-title {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
-  font-weight: 400;
-  margin-bottom: 20px;
+  font-weight: 500;
+  margin-bottom: 24px;
 }
 
 .hero-subtitle {
-  max-width: 620px;
-  font-size: 1.1rem;
+  max-width: 650px;
+  font-size: 1.15rem;
   margin-bottom: 36px;
-  line-height: 1.7;
 }
 
 /* =========================================
@@ -166,40 +166,42 @@ a {
 
 .btn {
   display: inline-block;
-  padding: 12px 24px;
-  font-size: 0.95rem;
-  font-weight: 500;
+  padding: 12px 26px;
+  font-size: 1rem;
+  font-weight: 600;
   border-radius: 6px;
   cursor: pointer;
   text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .btn-primary {
-  background-color: var(--accent);
+  background-color: var(--primary-blue);
   color: #ffffff;
-  border: 1px solid var(--accent);
+  border: 1px solid var(--primary-blue);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
 }
 
 .btn-primary:hover {
-  background-color: #1e293b;
-  border-color: #1e293b;
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
   transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
 }
 
 .btn-secondary {
-  background-color: transparent;
-  color: var(--text-dark);
-  border: 1px solid var(--border-light);
-  background-color: var(--bg-white);
+  background-color: #ffffff;
+  color: var(--primary-blue);
+  border: 1px solid var(--primary-blue);
 }
 
 .btn-secondary:hover {
-  border-color: var(--text-dark);
+  background-color: var(--accent-soft);
   transform: translateY(-2px);
 }
 
 /* =========================================
-   6. SKILLS SECTION
+   6. SKILLS TAGS
    ========================================= */
 .skills-grid {
   display: flex;
@@ -211,16 +213,18 @@ a {
   background-color: var(--bg-white);
   border: 1px solid var(--border-light);
   color: var(--text-dark);
-  padding: 8px 16px;
+  padding: 9px 18px;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   border-radius: 6px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .skill-tag:hover {
-  border-color: var(--text-dark);
-  transform: translateY(-2px); 
+  border-color: var(--primary-blue);
+  color: var(--primary-blue);
+  background-color: var(--accent-soft);
+  transform: translateY(-2px);
 }
 
 /* =========================================
@@ -234,7 +238,7 @@ a {
 
 .timeline-item {
   position: relative;
-  margin-bottom: 40px;
+  margin-bottom: 44px;
 }
 
 .timeline-item:last-child {
@@ -246,15 +250,12 @@ a {
   position: absolute;
   left: -38px;
   top: 6px;
-  width: 10px;
-  height: 10px;
-  background-color: var(--bg-white);
-  border: 2px solid var(--text-dark);
+  width: 12px;
+  height: 12px;
+  background-color: var(--primary-blue);
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 2px var(--primary-blue);
   border-radius: 50%;
-}
-
-.timeline-header {
-  margin-bottom: 12px;
 }
 
 .timeline-header h3 {
@@ -263,20 +264,22 @@ a {
 }
 
 .company {
-  font-weight: 600;
-  color: var(--text-dark);
+  font-weight: 700;
+  color: var(--primary-blue);
   display: block;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .date {
   color: var(--text-muted);
   font-size: 0.9rem;
+  font-weight: 500;
 }
 
 .timeline-details {
   list-style-type: disc;
-  padding-left: 18px;
+  padding-left: 20px;
+  margin-top: 10px;
   color: var(--text-muted);
 }
 
@@ -285,34 +288,34 @@ a {
 }
 
 /* =========================================
-   8. PROJECTS SECTION (WITH IMAGES)
+   8. PROJECTS SECTION & IMAGE CARDS
    ========================================= */
 .project-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+  gap: 30px;
 }
 
 .project-card {
   background-color: var(--bg-white);
   border: 1px solid var(--border-light);
   border-radius: 8px;
-  padding: 0;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+  transform: translateY(-6px);
+  border-color: var(--primary-blue);
+  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.08);
 }
 
 .project-img-wrapper {
   width: 100%;
-  height: 190px;
-  background-color: #f1f5f9;
+  height: 200px;
+  background-color: #e2e8f0;
   overflow: hidden;
   border-bottom: 1px solid var(--border-light);
 }
@@ -325,19 +328,7 @@ a {
 }
 
 .project-card:hover .project-img {
-  transform: scale(1.04);
-}
-
-.placeholder-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.placeholder-img-text {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 500;
+  transform: scale(1.05);
 }
 
 .project-card-body {
@@ -347,29 +338,28 @@ a {
   flex-grow: 1;
 }
 
-.project-card h3 {
+.project-card-body h3 {
   font-size: 1.25rem;
   margin-bottom: 8px;
 }
 
 .project-tools {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: var(--text-dark);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--primary-blue);
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .project-desc {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
   flex-grow: 1;
 }
 
 .project-link {
-  color: var(--text-dark);
-  font-weight: 600;
-  font-size: 0.95rem;
+  color: var(--primary-blue);
+  font-weight: 700;
   margin-top: auto;
 }
 
@@ -378,58 +368,77 @@ a {
 }
 
 .coming-soon {
-  background-color: var(--bg-main);
-  border: 1px dashed var(--border-light);
+  background-color: #f8fafc;
+  border-style: dashed;
+}
+
+.placeholder-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f5f9;
+}
+
+.placeholder-img-text {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.85rem;
 }
 
 .status-badge {
   display: inline-block;
   background-color: #e2e8f0;
   color: var(--text-muted);
-  padding: 4px 12px;
+  padding: 5px 12px;
   border-radius: 4px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  margin-top: auto;
+  font-size: 0.8rem;
+  font-weight: 700;
   align-self: flex-start;
+  margin-top: auto;
 }
 
 /* =========================================
-   9. EDUCATION SECTION (UNIFORM WIDTH)
+   9. EDUCATION GRID
    ========================================= */
-.education-list {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
+.education-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
 }
 
 .education-item {
   background-color: var(--bg-white);
   border: 1px solid var(--border-light);
-  padding: 24px;
   border-radius: 8px;
-  width: 100%;
+  padding: 26px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, border-color 0.25s ease;
 }
 
-.education-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 6px;
-  flex-wrap: wrap;
-  gap: 8px;
+.education-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--primary-blue);
+}
+
+.edu-badge {
+  display: inline-block;
+  align-self: flex-start;
+  background-color: var(--accent-soft);
+  color: var(--primary-blue);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 12px;
 }
 
 .institution {
-  font-weight: 500;
-  color: var(--text-muted);
-}
-
-.education-desc {
-  margin-top: 8px;
-  margin-bottom: 0;
-  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 6px;
 }
 
 /* =========================================
@@ -452,16 +461,16 @@ a {
 .social-links {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 28px;
 }
 
 .social-links a {
-  color: var(--text-muted);
-  font-weight: 500;
+  color: var(--primary-blue);
+  font-weight: 600;
 }
 
 .social-links a:hover {
-  color: var(--text-dark);
+  text-decoration: underline;
 }
 
 .footer {
@@ -474,36 +483,11 @@ a {
 }
 
 /* =========================================
-   11. ANIMATIONS
-   ========================================= */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.fade-in-on-scroll {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-.fade-in-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* =========================================
-   12. MOBILE RESPONSIVENESS
+   11. MOBILE RESPONSIVENESS
    ========================================= */
 @media (max-width: 768px) {
   .section {
-    padding: 60px 0;
+    padding: 70px 0;
   }
   
   .nav-container {
@@ -518,14 +502,22 @@ a {
   }
 
   .hero {
-    padding-top: 150px;
+    padding-top: 160px;
     text-align: center;
   }
   
   .hero-name {
-    font-size: 2.35rem;
+    font-size: 2.6rem;
   }
   
+  .hero-title {
+    font-size: 1.25rem;
+  }
+  
+  .hero-subtitle {
+    margin: 0 auto 32px auto;
+  }
+
   .hero-buttons, .contact-links {
     flex-direction: column;
     width: 100%;
@@ -541,6 +533,29 @@ a {
   }
   
   .timeline-item::before {
-    left: -25px; 
+    left: -26px; 
   }
+}
+
+/* =========================================
+   12. SMOOTH ENTRY ANIMATIONS (CSS-ONLY)
+   ========================================= */
+@keyframes softFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered load animation */
+.hero {
+  animation: softFadeUp 0.8s ease-out forwards;
+}
+
+.project-card, .education-item, .skill-tag {
+  animation: softFadeUp 0.9s ease-out forwards;
 }
