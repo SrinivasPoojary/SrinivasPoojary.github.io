@@ -540,10 +540,14 @@ a {
 /* =========================================
    12. SMOOTH ENTRY ANIMATIONS (CSS-ONLY)
    ========================================= */
-@keyframes softFadeUp {
+/* =========================================
+   12. SCROLL REVEAL ANIMATIONS
+   ========================================= */
+/* Hero entry on page load */
+@keyframes heroEntrance {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -551,11 +555,20 @@ a {
   }
 }
 
-/* Staggered load animation */
 .hero {
-  animation: softFadeUp 0.8s ease-out forwards;
+  animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-.project-card, .education-item, .skill-tag {
-  animation: softFadeUp 0.9s ease-out forwards;
+/* Hidden by default until scrolled into view */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+/* Added by JavaScript when card/section enters the screen */
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
