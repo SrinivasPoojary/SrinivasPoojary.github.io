@@ -1,29 +1,27 @@
-// 1. Select all the elements we want to animate when scrolling
-const elementsToAnimate = document.querySelectorAll('.section-title, .about-content, .skill-tag, .timeline-item, .project-card, .education-item');
+document.addEventListener('DOMContentLoaded', () => {
+  // Elements that will animate when scrolled into view
+  const targets = document.querySelectorAll(
+    '.section-title, .about-content, .skills-grid, .timeline-item, .project-card, .education-item, .contact-desc, .contact-links'
+  );
 
-// 2. Add the base CSS class to hide them initially
-elementsToAnimate.forEach((element) => {
-  element.classList.add('fade-in-on-scroll');
-});
-
-// 3. Create an Intersection Observer to watch when elements enter the screen
-const scrollObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    // If the element is visible on the screen
-    if (entry.isIntersecting) {
-      // Add the class that fades it in and moves it up
-      entry.target.classList.add('is-visible');
-      
-      // Stop observing this element so the animation only happens once
-      observer.unobserve(entry.target);
+  // Set up the IntersectionObserver
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          obs.unobserve(entry.target); // Runs smoothly once per element
+        }
+      });
+    },
+    {
+      threshold: 0.15, // Triggers when 15% of the element is visible
+      rootMargin: '0px 0px -40px 0px'
     }
-  });
-}, {
-  threshold: 0.1, 
-  rootMargin: "0px 0px -50px 0px" 
-});
+  );
 
-// 4. Tell the observer to watch all the elements we selected
-elementsToAnimate.forEach((element) => {
-  scrollObserver.observe(element);
+  targets.forEach((target) => {
+    target.classList.add('reveal-on-scroll');
+    observer.observe(target);
+  });
 });
