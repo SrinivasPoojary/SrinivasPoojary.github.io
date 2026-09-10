@@ -1,0 +1,498 @@
+/* =========================================
+   1. VARIABLES & RESET
+   ========================================= */
+:root {
+  --bg-main: #f8f9fa;
+  --bg-white: #ffffff;
+  --text-dark: #111827;
+  --text-muted: #4b5563;
+  --border-light: #e5e7eb;
+  --accent: #000000;
+  /* Premium Inter font applied */
+  --font-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-base);
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* =========================================
+   2. LAYOUT & TYPOGRAPHY
+   ========================================= */
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 100px 0; /* Updated for premium breathing room */
+}
+
+.bg-light {
+  background-color: var(--bg-white);
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  margin-bottom: 48px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--text-dark);
+  display: inline-block;
+  letter-spacing: -0.75px;
+}
+
+p {
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  letter-spacing: 0.2px;
+}
+
+a {
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+/* =========================================
+   3. NAVIGATION BAR
+   ========================================= */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: var(--bg-white);
+  border-bottom: 1px solid var(--border-light);
+  z-index: 1000;
+  padding: 16px 0;
+}
+
+.nav-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  letter-spacing: -1px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: var(--text-muted);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: var(--text-dark);
+}
+
+/* =========================================
+   4. HERO SECTION
+   ========================================= */
+.hero {
+  padding-top: 140px;
+  padding-bottom: 80px;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.hero-greeting {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.hero-name {
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: -1.5px;
+  margin-bottom: 8px;
+  color: var(--text-dark);
+}
+
+.hero-title {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.hero-subtitle {
+  max-width: 600px;
+  font-size: 1.15rem;
+  margin-bottom: 40px;
+  line-height: 1.8;
+}
+
+/* =========================================
+   5. BUTTONS
+   ========================================= */
+.hero-buttons, .contact-links {
+  display: flex;
+  gap: 16px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--bg-white);
+  border: 1px solid var(--accent);
+}
+
+.btn-primary:hover {
+  background-color: #333333;
+  border-color: #333333;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-dark);
+  border: 1px solid var(--text-dark);
+}
+
+.btn-secondary:hover {
+  background-color: var(--text-dark);
+  color: var(--bg-white);
+}
+
+/* =========================================
+   6. SKILLS SECTION
+   ========================================= */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill-tag {
+  background-color: var(--bg-main);
+  border: 1px solid var(--border-light);
+  color: var(--text-dark);
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 4px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.skill-tag:hover {
+  border-color: var(--text-dark);
+  transform: translateY(-2px); 
+}
+
+/* =========================================
+   7. EXPERIENCE TIMELINE
+   ========================================= */
+.timeline {
+  border-left: 2px solid var(--border-light);
+  padding-left: 32px;
+  margin-left: 8px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -37px;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--bg-white);
+  border: 2px solid var(--text-dark);
+  border-radius: 50%;
+}
+
+.timeline-header {
+  margin-bottom: 12px;
+}
+
+.timeline-header h3 {
+  font-size: 1.25rem;
+  margin-bottom: 4px;
+}
+
+.company {
+  font-weight: 600;
+  color: var(--text-dark);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.date {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.timeline-details {
+  list-style-type: disc;
+  padding-left: 18px;
+  color: var(--text-muted);
+}
+
+.timeline-details li {
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+/* =========================================
+   8. PROJECTS SECTION
+   ========================================= */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px; /* Updated gap */
+}
+
+.project-card {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: 6px;
+  padding: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.project-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 8px;
+}
+
+.project-tools {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.project-desc {
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+.project-link {
+  color: var(--text-dark);
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: auto;
+}
+
+.project-link:hover {
+  text-decoration: underline;
+}
+
+.coming-soon {
+  background-color: var(--bg-main);
+  border: 1px dashed var(--border-light);
+}
+
+.coming-soon:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.status-badge {
+  display: inline-block;
+  background-color: #e5e7eb;
+  color: var(--text-muted);
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+/* =========================================
+   9. EDUCATION & CONTACT SECTION
+   ========================================= */
+.education-item {
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-light);
+  padding: 24px;
+  border-radius: 6px;
+}
+
+.institution {
+  font-weight: 500;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.contact-desc {
+  max-width: 600px;
+  margin: 0 auto 32px auto;
+}
+
+.contact-links {
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+}
+
+.social-links a {
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.social-links a:hover {
+  color: var(--text-dark);
+}
+
+/* =========================================
+   10. FOOTER
+   ========================================= */
+.footer {
+  text-align: center;
+  padding: 32px 0;
+  border-top: 1px solid var(--border-light);
+  background-color: var(--bg-white);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   11. MOBILE RESPONSIVENESS
+   ========================================= */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 0;
+  }
+  
+  .nav-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .nav-links {
+    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hero {
+    padding-top: 160px;
+    text-align: center;
+  }
+  
+  .hero-name {
+    font-size: 2.5rem;
+  }
+  
+  .hero-title {
+    font-size: 1.25rem;
+  }
+  
+  .hero-subtitle {
+    margin: 0 auto 32px auto;
+  }
+
+  .hero-buttons, .contact-links {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn {
+    width: 100%;
+  }
+
+  .timeline {
+    padding-left: 20px;
+    margin-left: 4px;
+  }
+  
+  .timeline-item::before {
+    left: -25px; 
+  }
+}
+
+/* =========================================
+   12. ANIMATIONS
+   ========================================= */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-on-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
