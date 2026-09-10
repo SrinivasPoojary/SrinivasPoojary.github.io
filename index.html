@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Srinivas Poojary | Data Analyst</title>
-
+  <title>Srinivas Poojary | Data Analyst Portfolio</title>
+  
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <!-- Link to our CSS file -->
-  <link rel="stylesheet" href="style.css">
+  
+  <!-- Cache-busting query added to ensure CSS loads instantly -->
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
 
@@ -79,7 +79,6 @@
       <h2 class="section-title">Experience</h2>
       <div class="timeline">
         
-        <!-- Job 1 -->
         <div class="timeline-item">
           <div class="timeline-header">
             <h3>Data Analyst</h3>
@@ -94,7 +93,6 @@
           </ul>
         </div>
 
-        <!-- Job 2 -->
         <div class="timeline-item">
           <div class="timeline-header">
             <h3>Internal Auditor</h3>
@@ -108,7 +106,6 @@
           </ul>
         </div>
 
-        <!-- Job 3 -->
         <div class="timeline-item">
           <div class="timeline-header">
             <h3>Data Analyst Intern</h3>
@@ -121,7 +118,6 @@
           </ul>
         </div>
 
-        <!-- Job 4 -->
         <div class="timeline-item">
           <div class="timeline-header">
             <h3>Trainee</h3>
@@ -191,21 +187,27 @@
   <section id="education" class="section">
     <div class="container">
       <h2 class="section-title">Education & Certifications</h2>
-      
-      <!-- Graduation (1st) -->
-      <div class="education-item" style="margin-bottom: 24px;">
-        <h3>Bachelor of Commerce (B.Com)</h3>
-        <p class="institution">University of Mumbai | V.K. Krishnan Menon College</p>
-        <p class="date">2020 – 2023</p>
-      </div>
+      <div class="education-list">
+        
+        <!-- 1st: Degree -->
+        <div class="education-item">
+          <div class="education-header">
+            <h3>Bachelor of Commerce (B.Com)</h3>
+            <span class="date">2020 – 2023</span>
+          </div>
+          <p class="institution">University of Mumbai | V.K. Krishnan Menon College</p>
+        </div>
 
-      <!-- Course (2nd) -->
-      <div class="education-item">
-        <h3>Data Analyst Certification</h3>
-        <p class="institution">ExcelR</p>
-        <p class="project-desc" style="margin-bottom: 0;">Comprehensive training in Data Analytics covering SQL, Power BI, Tableau, Advanced Excel, and Python for data analysis and visualization.</p>
-      </div>
+        <!-- 2nd: Course -->
+        <div class="education-item">
+          <div class="education-header">
+            <h3>Data Analyst Certification</h3>
+            <span class="company">ExcelR</span>
+          </div>
+          <p class="education-desc">Comprehensive training in Data Analytics covering SQL, Power BI, Tableau, Advanced Excel, and Python for data analysis and visualization.</p>
+        </div>
 
+      </div>
     </div>
   </section>
 
@@ -232,7 +234,6 @@
     </div>
   </footer>
 
-  <!-- Link to JavaScript file -->
-  <script src="script.js"></script>
+  <script src="script.js?v=2"></script>
 </body>
 </html>
