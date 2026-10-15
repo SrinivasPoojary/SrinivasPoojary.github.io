@@ -3,457 +3,247 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NEXUS IQ | Executive Intelligence Companion</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <title>Srinivas Poojary | Data Analyst Portfolio</title>
+  
+  <!-- Social Media & LinkedIn Sharing Meta Tags -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Srinivas Poojary | Data Analyst Portfolio">
+  <meta property="og:description" content="Explore my end-to-end analytics projects in Power BI, SQL, Python, and MIS reporting.">
+  <meta property="og:url" content="https://srinivaspoojary.github.io/">
+  <meta property="og:image" content="https://srinivaspoojary.github.io/ecommerce-project.png">
+  
+  <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Inter', sans-serif; }
-    /* Smooth custom scrollbars for mobile tables */
-    .table-scroll::-webkit-scrollbar { height: 6px; }
-    .table-scroll::-webkit-scrollbar-track { background: #f1f5f9; }
-    .table-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-  </style>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Cache-busting query added to ensure CSS loads instantly -->
+  <link rel="stylesheet" href="style.css?v=4">
 </head>
-<body class="bg-slate-50 text-slate-800 antialiased min-h-screen flex flex-col justify-between">
+<body>
 
-  <!-- Navigation Bar (Mobile-Responsive) -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-xs">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="w-8 h-8 sm:w-9 sm:h-9 bg-[#0F3866] rounded-lg flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-sm">N</div>
-        <div>
-          <span class="font-bold text-slate-900 tracking-tight text-base sm:text-lg">NEXUS IQ</span>
-          <span class="hidden sm:inline-block text-[10px] bg-blue-50 text-[#0F3866] font-semibold ml-2 px-2 py-0.5 rounded-full border border-blue-200">Power BI Live Sync</span>
-        </div>
-      </div>
-      <div class="flex items-center space-x-3 sm:space-x-6 text-xs sm:text-sm font-medium text-slate-600">
-        <a href="#overview" class="hover:text-blue-600 transition">Metrics</a>
-        <a href="#matrix" class="hover:text-blue-600 transition">Matrix</a>
-        <a href="#scenario" class="hover:text-blue-600 transition">Simulator</a>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="logo">Srinu.</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="hero" class="section hero">
+    <div class="container">
+      <p class="hero-greeting">Hello, I'm</p>
+      <h1 class="hero-name">Srinivas Poojary</h1>
+      <h2 class="hero-title">Data Analyst & MIS Specialist</h2>
+      <p class="hero-subtitle">Transforming raw data into strategic business insights using Power BI, SQL, and Advanced Excel.</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-secondary">Contact Me</a>
       </div>
     </div>
   </header>
 
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 flex-1 w-full">
+  <!-- About Section -->
+  <section id="about" class="section">
+    <div class="container">
+      <h2 class="section-title">About Me</h2>
+      <div class="about-content">
+        <p>I am a detail-oriented Data Analyst with a strong foundation in data visualization, MIS reporting, and financial auditing. I specialize in building interactive dashboards, conducting exploratory data analysis, and tracking key performance indicators to drive data-informed decision-making.</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Title & Interactive Year Slicer -->
-    <section id="overview" class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-4">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <div class="flex items-center gap-2">
-            <h1 class="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">ADVENTUREWORKS</h1>
-            <span class="text-[11px] bg-slate-100 text-slate-700 font-semibold px-2 py-0.5 rounded-md border border-slate-200">FY 2005–2008</span>
+  <!-- Skills Section -->
+  <section id="skills" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">Core Competencies</h2>
+      <div class="skills-grid">
+        <span class="skill-tag">Advanced Excel</span>
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Tableau</span>
+        <span class="skill-tag">MySQL / SQL</span>
+        <span class="skill-tag">Python (EDA)</span>
+        <span class="skill-tag">Data Cleaning</span>
+        <span class="skill-tag">Data Visualization</span>
+        <span class="skill-tag">Dashboard Development</span>
+        <span class="skill-tag">MIS Reporting</span>
+        <span class="skill-tag">Data Analysis</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section">
+    <div class="container">
+      <h2 class="section-title">Experience</h2>
+      <div class="timeline">
+        
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>Data Analyst</h3>
+            <span class="company">Responsive Industries Ltd.</span>
+            <span class="date">April 2025 – Present</span>
           </div>
-          <p class="text-xs sm:text-sm text-slate-500 mt-0.5">Executive Performance Command Center</p>
+          <ul class="timeline-details">
+            <li>Analyze sales, export, and operational data using Advanced Excel.</li>
+            <li>Develop Power BI dashboards to track KPIs, revenue trends, and performance metrics.</li>
+            <li>Utilize Volza for global trade data extraction, competitor analysis, and lead generation.</li>
+            <li>Manage CRM data and prepare MIS management presentations using PowerPoint.</li>
+          </ul>
         </div>
 
-        <!-- Interactive Year Filter Buttons (Matches Power BI Slicer) -->
-        <div class="flex items-center gap-2">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Year:</span>
-          <div class="inline-flex bg-slate-100 p-1 rounded-xl border border-slate-200" id="yearSelector">
-            <button onclick="setYear('All')" id="btn-All" class="year-btn px-3 py-1.5 text-xs font-bold rounded-lg transition-all bg-[#0F3866] text-white shadow-xs">All</button>
-            <button onclick="setYear('2005')" id="btn-2005" class="year-btn px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all">2005</button>
-            <button onclick="setYear('2006')" id="btn-2006" class="year-btn px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all">2006</button>
-            <button onclick="setYear('2007')" id="btn-2007" class="year-btn px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all">2007</button>
-            <button onclick="setYear('2008')" id="btn-2008" class="year-btn px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all">2008</button>
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>Internal Auditor</h3>
+            <span class="company">CNK</span>
+            <span class="date">August 2024 – January 2025</span>
+          </div>
+          <ul class="timeline-details">
+            <li>Conducted financial audits and checked compliance with internal regulations.</li>
+            <li>Analyzed financial records to identify discrepancies and mitigate risks.</li>
+            <li>Assisted with comprehensive audit reports and strategic recommendations.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>Data Analyst Intern</h3>
+            <span class="company">AI Variant</span>
+            <span class="date">February 2024 – August 2024</span>
+          </div>
+          <ul class="timeline-details">
+            <li>Leveraged MySQL, Power BI, Tableau, and Advanced Excel for complex dataset analysis.</li>
+            <li>Developed interactive visualizations and internal reporting dashboards.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <h3>Trainee</h3>
+            <span class="company">Datamatics Global Services Ltd.</span>
+            <span class="date">December 2023 – February 2024</span>
+          </div>
+          <ul class="timeline-details">
+            <li>Supported outsourced billing processes and maintained workflow support.</li>
+            <li>Used Excel for structured data entry and quality control.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section bg-light">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <div class="project-grid">
+        
+        <!-- Project 1: Solar Power Generation Prediction -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <img src="solar-project.png" alt="Solar Power Generation Prediction" class="project-img">
+          </div>
+          <div class="project-card-body">
+            <h3>Solar Power Generation Prediction</h3>
+            <p class="project-tools">Python | Pandas | Scikit-learn | Streamlit</p>
+            <p class="project-desc">Applied Machine Learning (Linear & Random Forest Regression) to predict solar power generation. Included thorough exploratory data analysis and deployment via Streamlit.</p>
+            <a href="https://github.com/SrinivasPoojary/Solar-Power-Generation" target="_blank" class="project-link">View on GitHub →</a>
           </div>
         </div>
-      </div>
 
-      <!-- Top 5 KPI Cards (Dynamically Updates) -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-2">
-        <div class="bg-slate-50/70 p-3.5 sm:p-4 rounded-xl border border-slate-200/70">
-          <p class="text-[11px] sm:text-xs font-medium text-slate-500">Total Revenue</p>
-          <p class="text-lg sm:text-2xl font-bold text-slate-900 mt-0.5" id="kpi-rev">₹ 29.36M</p>
-          <span class="text-[10px] text-slate-400 block truncate" id="kpi-rev-sub">₹ 2,93,58,677 exact</span>
+        <!-- Project 2: E-Commerce Analytics Dashboard -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <img src="ecommerce-project.png" alt="E-Commerce Analytics Dashboard" class="project-img">
+          </div>
+          <div class="project-card-body">
+            <h3>E-Commerce Analytics</h3>
+            <p class="project-tools">SQL | Excel | Tableau | Power BI</p>
+            <p class="project-desc">Executed end-to-end data extraction, transformation, and analysis. Built interactive dashboards to visualize competitive analysis and sales trends.</p>
+            <a href="https://www.linkedin.com/in/srinivaspoojary/details/projects/" target="_blank" class="project-link">View on LinkedIn →</a>
+          </div>
         </div>
-        <div class="bg-slate-50/70 p-3.5 sm:p-4 rounded-xl border border-slate-200/70">
-          <p class="text-[11px] sm:text-xs font-medium text-slate-500">YoY Growth %</p>
-          <p class="text-lg sm:text-2xl font-bold text-emerald-600 mt-0.5" id="kpi-yoy">49.9%</p>
-          <span class="text-[10px] text-slate-400 block truncate" id="kpi-yoy-sub">Peak Surge (2007)</span>
-        </div>
-        <div class="bg-slate-50/70 p-3.5 sm:p-4 rounded-xl border border-slate-200/70">
-          <p class="text-[11px] sm:text-xs font-medium text-slate-500">Gross Profit</p>
-          <p class="text-lg sm:text-2xl font-bold text-slate-900 mt-0.5" id="kpi-gp">₹ 12.08M</p>
-          <span class="text-[10px] text-slate-400 block truncate" id="kpi-gp-sub">₹ 1,20,80,884 exact</span>
-        </div>
-        <div class="bg-slate-50/70 p-3.5 sm:p-4 rounded-xl border border-slate-200/70">
-          <p class="text-[11px] sm:text-xs font-medium text-slate-500">Profit Margin %</p>
-          <p class="text-lg sm:text-2xl font-bold text-[#0F3866] mt-0.5" id="kpi-margin">41.1%</p>
-          <span class="text-[10px] text-slate-400 block truncate" id="kpi-margin-sub">Portfolio Margin</span>
-        </div>
-        <div class="bg-slate-50/70 p-3.5 sm:p-4 rounded-xl border border-slate-200/70 col-span-2 sm:col-span-1">
-          <p class="text-[11px] sm:text-xs font-medium text-slate-500">Total Orders</p>
-          <p class="text-lg sm:text-2xl font-bold text-slate-900 mt-0.5" id="kpi-orders">27.66K</p>
-          <span class="text-[10px] text-slate-400 block truncate" id="kpi-orders-sub">60,398 Total Units</span>
-        </div>
-      </div>
-    </section>
 
-    <!-- Visual Charts Row -->
-    <section class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-      <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-3">
-        <div class="flex items-center justify-between">
-          <h2 class="text-sm sm:text-base font-bold text-slate-900">Revenue by Product Category</h2>
-          <span class="text-xs text-slate-400 font-medium">₹ Millions</span>
-        </div>
-        <div class="h-56 sm:h-64 relative">
-          <canvas id="categoryChart"></canvas>
-        </div>
-      </div>
-
-      <div class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-3">
-        <div class="flex items-center justify-between">
-          <h2 class="text-sm sm:text-base font-bold text-slate-900">Revenue by Country</h2>
-          <span class="text-xs text-slate-400 font-medium">₹ Millions</span>
-        </div>
-        <div class="h-56 sm:h-64 relative">
-          <canvas id="countryChart"></canvas>
-        </div>
-      </div>
-    </section>
-
-    <!-- Category Profitability Table (Mobile Horizontal-Scroll Wrapper) -->
-    <section id="matrix" class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
-      <div class="p-4 sm:px-6 sm:py-4 border-b border-slate-100 flex items-center justify-between">
-        <div>
-          <h2 class="text-sm sm:text-base font-bold text-slate-900">Category Profitability Breakdown</h2>
-          <p class="text-xs text-slate-500">Matches Power BI Matrix Visual calculations</p>
-        </div>
-        <span class="text-[11px] font-semibold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md">Verified Matrix</span>
-      </div>
-
-      <div class="overflow-x-auto table-scroll">
-        <table class="w-full text-left text-xs sm:text-sm min-w-[550px]">
-          <thead class="bg-slate-50/80 text-[11px] font-semibold uppercase text-slate-500 border-b border-slate-200">
-            <tr>
-              <th class="px-4 sm:px-6 py-3">Category</th>
-              <th class="px-4 sm:px-6 py-3 text-right">Total Revenue</th>
-              <th class="px-4 sm:px-6 py-3 text-right">Gross Profit</th>
-              <th class="px-4 sm:px-6 py-3 text-center">Profit Margin %</th>
-              <th class="px-4 sm:px-6 py-3 text-right">Total Units</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-slate-100 text-slate-700" id="matrix-body">
-            <!-- Populated Dynamically by JavaScript -->
-          </tbody>
-          <tfoot class="bg-slate-50 font-bold text-slate-900 border-t-2 border-slate-300" id="matrix-footer">
-            <!-- Populated Dynamically by JavaScript -->
-          </tfoot>
-        </table>
-      </div>
-    </section>
-
-    <!-- Scenario Modeler -->
-    <section id="scenario" class="bg-white p-4 sm:p-6 rounded-2xl border border-slate-200/80 shadow-sm space-y-5">
-      <div>
-        <h2 class="text-base sm:text-lg font-bold text-slate-900">NEXUS IQ Scenario Modeler</h2>
-        <p class="text-xs sm:text-sm text-slate-500">Simulate cross-selling expansion and bicycle manufacturing cost shifts</p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 bg-slate-50 p-4 sm:p-6 rounded-xl border border-slate-200/60">
-        <div class="space-y-4">
-          <div>
-            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
-              <span>Accessory Attachment Surge (Margin: 63%)</span>
-              <span id="accGrowthVal" class="text-blue-600 font-bold">+0%</span>
+        <!-- Project 3: AdventureWorks Sales Intelligence -->
+        <div class="project-card">
+          <div class="project-img-wrapper">
+            <img src="dashboard_overview.png" alt="AdventureWorks Sales Intelligence Dashboard" class="project-img">
+          </div>
+          <div class="project-card-body">
+            <h3>AdventureWorks Sales Intelligence</h3>
+            <p class="project-tools">Power BI | DAX | Star Schema | NEXUS IQ</p>
+            <p class="project-desc">Architected an executive B2C sales analytics dashboard analyzing ₹29.36M in revenue across 27.66K orders[cite: 14]. Identified key catalog margin asymmetries and built the NEXUS IQ companion app for real-time scenario simulation.</p>
+            <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: auto;">
+              <a href="https://srinivaspoojary.github.io/adventureworks-sales-intelligence/" target="_blank" class="project-link">Live Demo →</a>
+              <a href="https://github.com/SrinivasPoojary/adventureworks-sales-intelligence" target="_blank" class="project-link" style="opacity: 0.85;">View on GitHub →</a>
             </div>
-            <input type="range" id="accGrowth" min="0" max="150" value="0" step="10" class="w-full accent-[#0F3866] cursor-pointer">
-            <span class="text-[11px] text-slate-400">Increase high-margin accessory checkout attachment</span>
-          </div>
-
-          <div>
-            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
-              <span>Bike Manufacturing Cost Variance</span>
-              <span id="bikeCostVal" class="text-rose-600 font-bold">0%</span>
-            </div>
-            <input type="range" id="bikeCost" min="-15" max="15" value="0" step="1" class="w-full accent-rose-600 cursor-pointer">
-            <span class="text-[11px] text-slate-400">Raw materials (carbon, aluminum) & freight fluctuation</span>
           </div>
         </div>
 
-        <div class="bg-white p-4 sm:p-5 rounded-xl border border-slate-200/80 shadow-xs space-y-3">
-          <p class="text-[11px] font-bold uppercase tracking-wider text-slate-400">Projected Financial Impact</p>
-          <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
-            <span class="text-xs sm:text-sm text-slate-600">Simulated Gross Profit</span>
-            <span id="simProfit" class="text-xl sm:text-2xl font-bold text-slate-900">₹ 12.08M</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="section">
+    <div class="container">
+      <h2 class="section-title">Education & Certifications</h2>
+      <div class="education-list">
+        
+        <!-- 1st: Degree -->
+        <div class="education-item">
+          <div class="education-header">
+            <h3>Bachelor of Commerce (B.Com)</h3>
+            <span class="date">2020 – 2023</span>
           </div>
-          <div class="flex justify-between items-baseline border-b border-slate-100 pb-2">
-            <span class="text-xs sm:text-sm text-slate-600">Net Profit Shift</span>
-            <span id="simDelta" class="text-xs sm:text-sm font-semibold text-slate-500">₹ 0.00M (Baseline)</span>
-          </div>
-          <div class="flex justify-between items-baseline">
-            <span class="text-xs sm:text-sm text-slate-600">Adjusted Margin %</span>
-            <span id="simMargin" class="text-xs sm:text-sm font-bold text-[#0F3866]">41.1%</span>
-          </div>
+          <p class="institution">University of Mumbai | V.K. Krishnan Menon College</p>
         </div>
-      </div>
-    </section>
 
-    <!-- Key Strategic Findings -->
-    <section id="insights" class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-      <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-1">
-        <h3 class="font-bold text-slate-900">1. Category Margin Asymmetry</h3>
-        <p class="text-xs text-slate-500 leading-relaxed">
-          Bikes drive over 96% of top-line revenue at 41% margin, while Accessories achieve a 63% margin across 36K units[cite: 14]. Prioritizing checkout cross-sells offers immediate gross profit expansion.
-        </p>
-      </div>
-      <div class="bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/80 shadow-sm space-y-1">
-        <h3 class="font-bold text-slate-900">2. Apparel Operational Drag</h3>
-        <p class="text-xs text-slate-500 leading-relaxed">
-          Clothing generated only ₹ 1.36 Lakh total profit on 9,101 units sold[cite: 14]. Consolidating low-margin apparel into bundled starter kits eliminates packaging overhead.
-        </p>
-      </div>
-    </section>
+        <!-- 2nd: Course -->
+        <div class="education-item">
+          <div class="education-header">
+            <h3>Data Analyst Certification</h3>
+            <span class="company">ExcelR</span>
+          </div>
+          <p class="education-desc">Comprehensive training in Data Analytics covering SQL, Power BI, Tableau, Advanced Excel, and Python for data analysis and visualization.</p>
+        </div>
 
-  </main>
+      </div>
+    </div>
+  </section>
 
-  <footer class="border-t border-slate-200 bg-white py-6 text-center text-xs text-slate-400 mt-8">
-    AdventureWorks Analytics Portfolio &copy; 2026 | Power BI & NEXUS IQ Engine
+  <!-- Contact Section -->
+  <section id="contact" class="section bg-light">
+    <div class="container text-center">
+      <h2 class="section-title">Get In Touch</h2>
+      <p class="contact-desc">I am currently open to new opportunities as a Data Analyst or MIS Specialist. Feel free to reach out.</p>
+      <div class="contact-links">
+        <a href="mailto:Srinivaspoojary188@gmail.com" class="btn btn-primary">Email Me</a>
+        <a href="resume.pdf" target="_blank" class="btn btn-secondary" id="resume-btn">Download Resume (PDF)</a>
+      </div>
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/srinivaspoojary/" target="_blank">LinkedIn</a>
+        <a href="https://github.com/SrinivasPoojary" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Srinivas Poojary. All rights reserved.</p>
+    </div>
   </footer>
 
-  <!-- Synchronized JavaScript Engine -->
-  <script>
-    // Exact Power BI Dataset by Year
-    const dataByYear = {
-      All: {
-        rev: "₹ 29.36M", revSub: "₹ 2,93,58,677 exact",
-        yoy: "49.9%", yoySub: "Peak Surge (2007)",
-        gp: "₹ 12.08M", gpSub: "₹ 1,20,80,884 exact",
-        margin: "41.1%", marginSub: "Portfolio Margin",
-        orders: "27.66K", ordersSub: "60,398 Total Units",
-        categories: [
-          { name: "Accessories", rev: "₹ 7,00,760", gp: "₹ 4,38,675", margin: "63%", units: "36,092", badge: "bg-[#0F3866] text-white" },
-          { name: "Bikes", rev: "₹ 2,83,18,145", gp: "₹ 1,15,05,797", margin: "41%", units: "15,205", badge: "bg-blue-300 text-blue-900" },
-          { name: "Clothing", rev: "₹ 3,39,773", gp: "₹ 1,36,413", margin: "40%", units: "9,101", badge: "bg-blue-200 text-blue-900" }
-        ],
-        total: { rev: "₹ 2,93,58,677", gp: "₹ 1,20,80,884", margin: "41.1%", units: "60,398" },
-        chartCat: { labels: ['Bikes', 'Accessories', 'Clothing'], data: [28.32, 0.70, 0.34] },
-        chartCountry: { labels: ['United States', 'Australia', 'United Kingdom', 'Germany', 'France', 'Canada'], data: [9.39, 9.06, 3.39, 2.89, 2.64, 1.98] },
-        baseRev: 29358677, baseProfit: 12080884, baseAccProfit: 438675, baseBikeCost: 16812348
-      },
-      "2005": {
-        rev: "₹ 3.27M", revSub: "₹ 32,66,374 exact",
-        yoy: "--", yoySub: "Inaugural Launch",
-        gp: "₹ 1.31M", gpSub: "₹ 13,11,606 exact",
-        margin: "40.2%", marginSub: "Portfolio Margin",
-        orders: "1.01K", ordersSub: "1,013 Total Units",
-        categories: [
-          { name: "Bikes", rev: "₹ 32,66,374", gp: "₹ 13,11,606", margin: "40%", units: "1,013", badge: "bg-blue-300 text-blue-900" }
-        ],
-        total: { rev: "₹ 32,66,374", gp: "₹ 13,11,606", margin: "40.2%", units: "1,013" },
-        chartCat: { labels: ['Bikes'], data: [3.27] },
-        chartCountry: { labels: ['Australia', 'United States', 'United Kingdom', 'Germany', 'France', 'Canada'], data: [1.31, 1.10, 0.29, 0.24, 0.18, 0.15] },
-        baseRev: 3266374, baseProfit: 1311606, baseAccProfit: 0, baseBikeCost: 1954768
-      },
-      "2006": {
-        rev: "₹ 6.53M", revSub: "₹ 65,30,344 exact",
-        yoy: "99.9%", yoySub: "+₹ 3.26M vs 2005",
-        gp: "₹ 2.65M", gpSub: "₹ 26,46,850 exact",
-        margin: "40.5%", marginSub: "Portfolio Margin",
-        orders: "2.68K", ordersSub: "2,677 Total Units",
-        categories: [
-          { name: "Bikes", rev: "₹ 65,30,344", gp: "₹ 26,46,850", margin: "41%", units: "2,677", badge: "bg-blue-300 text-blue-900" }
-        ],
-        total: { rev: "₹ 65,30,344", gp: "₹ 26,46,850", margin: "40.5%", units: "2,677" },
-        chartCat: { labels: ['Bikes'], data: [6.53] },
-        chartCountry: { labels: ['Australia', 'United States', 'Canada', 'United Kingdom', 'Germany', 'France'], data: [2.15, 2.13, 0.62, 0.59, 0.52, 0.51] },
-        baseRev: 6530344, baseProfit: 2646850, baseAccProfit: 0, baseBikeCost: 3883494
-      },
-      "2007": {
-        rev: "₹ 9.79M", revSub: "₹ 97,91,060 exact",
-        yoy: "49.9%", yoySub: "+₹ 3.26M vs 2006",
-        gp: "₹ 4.07M", gpSub: "₹ 40,72,733 exact",
-        margin: "41.6%", marginSub: "Portfolio Margin",
-        orders: "10.92K", ordersSub: "24,443 Total Units",
-        categories: [
-          { name: "Accessories", rev: "₹ 2,93,710", gp: "₹ 1,83,862", margin: "63%", units: "15,025", badge: "bg-[#0F3866] text-white" },
-          { name: "Bikes", rev: "₹ 93,59,103", gp: "₹ 38,33,345", margin: "41%", units: "5,710", badge: "bg-blue-300 text-blue-900" },
-          { name: "Clothing", rev: "₹ 1,38,248", gp: "₹ 55,526", margin: "40%", units: "3,708", badge: "bg-blue-200 text-blue-900" }
-        ],
-        total: { rev: "₹ 97,91,060", gp: "₹ 40,72,733", margin: "41.6%", units: "24,443" },
-        chartCat: { labels: ['Bikes', 'Accessories', 'Clothing'], data: [9.36, 0.29, 0.14] },
-        chartCountry: { labels: ['Australia', 'United States', 'United Kingdom', 'Germany', 'France', 'Canada'], data: [3.03, 2.84, 1.30, 1.06, 1.03, 0.54] },
-        baseRev: 9791060, baseProfit: 4072733, baseAccProfit: 183862, baseBikeCost: 5525758
-      },
-      "2008": {
-        rev: "₹ 9.77M", revSub: "₹ 97,70,900 exact",
-        yoy: "-0.2%", yoySub: "Data Ends July 2008",
-        gp: "₹ 4.05M", gpSub: "₹ 40,49,695 exact",
-        margin: "41.4%", marginSub: "Portfolio Margin",
-        orders: "13.05K", ordersSub: "32,265 Total Units",
-        categories: [
-          { name: "Accessories", rev: "₹ 4,07,050", gp: "₹ 2,54,813", margin: "63%", units: "21,067", badge: "bg-[#0F3866] text-white" },
-          { name: "Bikes", rev: "₹ 91,62,325", gp: "₹ 37,13,995", margin: "41%", units: "5,805", badge: "bg-blue-300 text-blue-900" },
-          { name: "Clothing", rev: "₹ 2,01,525", gp: "₹ 80,887", margin: "40%", units: "5,393", badge: "bg-blue-200 text-blue-900" }
-        ],
-        total: { rev: "₹ 97,70,900", gp: "₹ 40,49,695", margin: "41.4%", units: "32,265" },
-        chartCat: { labels: ['Bikes', 'Accessories', 'Clothing'], data: [9.16, 0.41, 0.20] },
-        chartCountry: { labels: ['United States', 'Australia', 'United Kingdom', 'Germany', 'France', 'Canada'], data: [3.32, 2.56, 1.21, 1.08, 0.92, 0.67] },
-        baseRev: 9770900, baseProfit: 4049695, baseAccProfit: 254813, baseBikeCost: 5448330
-      }
-    };
-
-    let currentYear = 'All';
-    let chartCatInstance, chartCountryInstance;
-
-    function initCharts() {
-      const ctxCat = document.getElementById('categoryChart').getContext('2d');
-      chartCatInstance = new Chart(ctxCat, {
-        type: 'bar',
-        data: {
-          labels: dataByYear['All'].chartCat.labels,
-          datasets: [{
-            data: dataByYear['All'].chartCat.data,
-            backgroundColor: '#0F3866',
-            borderRadius: 6
-          }]
-        },
-        options: {
-          indexAxis: 'y',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { grid: { color: '#F1F5F9' }, ticks: { callback: v => '₹ ' + v + 'M', font: { size: 10 } } },
-            y: { grid: { display: false }, ticks: { font: { size: 11, weight: '600' } } }
-          }
-        }
-      });
-
-      const ctxCountry = document.getElementById('countryChart').getContext('2d');
-      chartCountryInstance = new Chart(ctxCountry, {
-        type: 'bar',
-        data: {
-          labels: dataByYear['All'].chartCountry.labels,
-          datasets: [{
-            data: dataByYear['All'].chartCountry.data,
-            backgroundColor: '#0F3866',
-            borderRadius: 6
-          }]
-        },
-        options: {
-          indexAxis: 'y',
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false } },
-          scales: {
-            x: { grid: { color: '#F1F5F9' }, ticks: { callback: v => '₹ ' + v + 'M', font: { size: 10 } } },
-            y: { grid: { display: false }, ticks: { font: { size: 11, weight: '500' } } }
-          }
-        }
-      });
-    }
-
-    function setYear(year) {
-      currentYear = year;
-      const d = dataByYear[year];
-
-      // Update Button Styling
-      document.querySelectorAll('.year-btn').forEach(btn => {
-        btn.className = "year-btn px-3 py-1.5 text-xs font-semibold rounded-lg text-slate-600 hover:text-slate-900 transition-all";
-      });
-      document.getElementById('btn-' + year).className = "year-btn px-3 py-1.5 text-xs font-bold rounded-lg bg-[#0F3866] text-white shadow-xs transition-all";
-
-      // Update KPI Cards
-      document.getElementById('kpi-rev').innerText = d.rev;
-      document.getElementById('kpi-rev-sub').innerText = d.revSub;
-      document.getElementById('kpi-yoy').innerText = d.yoy;
-      document.getElementById('kpi-yoy-sub').innerText = d.yoySub;
-      document.getElementById('kpi-gp').innerText = d.gp;
-      document.getElementById('kpi-gp-sub').innerText = d.gpSub;
-      document.getElementById('kpi-margin').innerText = d.margin;
-      document.getElementById('kpi-margin-sub').innerText = d.marginSub;
-      document.getElementById('kpi-orders').innerText = d.orders;
-      document.getElementById('kpi-orders-sub').innerText = d.ordersSub;
-
-      // Update Charts
-      chartCatInstance.data.labels = d.chartCat.labels;
-      chartCatInstance.data.datasets[0].data = d.chartCat.data;
-      chartCatInstance.update();
-
-      chartCountryInstance.data.labels = d.chartCountry.labels;
-      chartCountryInstance.data.datasets[0].data = d.chartCountry.data;
-      chartCountryInstance.update();
-
-      // Update Matrix Table Rows
-      const tbody = document.getElementById('matrix-body');
-      tbody.innerHTML = '';
-      d.categories.forEach(c => {
-        tbody.innerHTML += `
-          <tr class="hover:bg-slate-50/60 transition">
-            <td class="px-4 sm:px-6 py-3 font-semibold text-slate-900">⊞ ${c.name}</td>
-            <td class="px-4 sm:px-6 py-3 text-right">${c.rev}</td>
-            <td class="px-4 sm:px-6 py-3 text-right font-semibold">${c.gp}</td>
-            <td class="px-4 sm:px-6 py-3 text-center">
-              <span class="px-2.5 py-0.5 rounded-sm font-bold text-xs ${c.badge}">${c.margin}</span>
-            </td>
-            <td class="px-4 sm:px-6 py-3 text-right font-medium">${c.units}</td>
-          </tr>
-        `;
-      });
-
-      // Update Table Footer
-      document.getElementById('matrix-footer').innerHTML = `
-        <tr>
-          <td class="px-4 sm:px-6 py-3">Total</td>
-          <td class="px-4 sm:px-6 py-3 text-right">${d.total.rev}</td>
-          <td class="px-4 sm:px-6 py-3 text-right">${d.total.gp}</td>
-          <td class="px-4 sm:px-6 py-3 text-center text-[#0F3866]">${d.total.margin}</td>
-          <td class="px-4 sm:px-6 py-3 text-right">${d.total.units}</td>
-        </tr>
-      `;
-
-      recalculate();
-    }
-
-    // Scenario Modeler Logic
-    const accSlider = document.getElementById('accGrowth');
-    const bikeSlider = document.getElementById('bikeCost');
-    const accVal = document.getElementById('accGrowthVal');
-    const bikeVal = document.getElementById('bikeCostVal');
-    const simProfit = document.getElementById('simProfit');
-    const simDelta = document.getElementById('simDelta');
-    const simMargin = document.getElementById('simMargin');
-
-    function recalculate() {
-      const d = dataByYear[currentYear];
-      const accPct = parseFloat(accSlider.value);
-      const bikePct = parseFloat(bikeSlider.value);
-
-      accVal.innerText = '+' + accPct + '%';
-      bikeVal.innerText = (bikePct > 0 ? '+' : '') + bikePct + '%';
-
-      const extraAccProfit = d.baseAccProfit * (accPct / 100);
-      const extraBikeCost = d.baseBikeCost * (bikePct / 100);
-      const newProfit = d.baseProfit + extraAccProfit - extraBikeCost;
-      const profitDelta = newProfit - d.baseProfit;
-
-      const newRev = d.baseRev + (extraAccProfit / 0.626);
-      const newMargin = newRev > 0 ? (newProfit / newRev) * 100 : 0;
-
-      simProfit.innerText = '₹ ' + (newProfit / 1000000).toFixed(2) + 'M';
-      simMargin.innerText = newMargin.toFixed(1) + '%';
-
-      if (profitDelta >= 0) {
-        simDelta.innerText = '+₹ ' + (profitDelta / 1000000).toFixed(2) + 'M';
-        simDelta.className = 'text-xs sm:text-sm font-semibold text-emerald-600';
-      } else {
-        simDelta.innerText = '-₹ ' + (Math.abs(profitDelta) / 1000000).toFixed(2) + 'M';
-        simDelta.className = 'text-xs sm:text-sm font-semibold text-rose-600';
-      }
-    }
-
-    accSlider.addEventListener('input', recalculate);
-    bikeSlider.addEventListener('input', recalculate);
-
-    // Initialize on Page Load
-    window.onload = function() {
-      initCharts();
-      setYear('All');
-    };
-  </script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
