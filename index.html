@@ -17,8 +17,48 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
-  <!-- Cache-busting query added to ensure CSS loads instantly -->
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
+
+  <style>
+    /* Mobile-first horizontal scroll navbar fix */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 0.5rem 0 !important;
+      }
+      .nav-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 0.4rem 1rem !important;
+        gap: 0.35rem !important;
+        width: 100% !important;
+        overflow: hidden !important;
+      }
+      .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        width: 100% !important;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        gap: 1.25rem !important;
+        padding: 0.25rem 0 !important;
+        margin: 0 !important;
+        list-style: none !important;
+        scrollbar-width: none !important;
+      }
+      .nav-links::-webkit-scrollbar {
+        display: none !important;
+      }
+      .nav-links li {
+        flex: 0 0 auto !important;
+      }
+      .nav-links a {
+        white-space: nowrap !important;
+        font-size: 0.88rem !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -43,7 +83,7 @@
       <p class="hero-greeting">Hello, I'm</p>
       <h1 class="hero-name">Srinivas Poojary</h1>
       <h2 class="hero-title">Data Analyst | Business Analyst | MIS Reporting</h2>
-      <p class="hero-subtitle">Designing scalable data models, automated MIS reports, and high-impact Power BI dashboards that simplify complex business metrics.</p>
+      <p class="hero-subtitle">Transforming sales, export, and operational data into actionable management dashboards using Power BI, SQL, and Advanced Excel.</p>
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">View Projects</a>
         <a href="#contact" class="btn btn-secondary">Contact Me</a>
@@ -51,7 +91,7 @@
     </div>
   </header>
 
-  <!-- About Section (Synced with Resume Summary) -->
+  <!-- About Section -->
   <section id="about" class="section">
     <div class="container">
       <h2 class="section-title">About Me</h2>
@@ -63,7 +103,7 @@
     </div>
   </section>
 
-  <!-- Skills Section-->
+  <!-- Skills Section -->
   <section id="skills" class="section bg-light">
     <div class="container">
       <h2 class="section-title">Core Competencies</h2>
@@ -74,18 +114,18 @@
         <span class="skill-tag">Tableau</span>
         <span class="skill-tag">Dashboard Development</span>
         <span class="skill-tag">MIS Reporting</span>
-        <span class="skill-tag">Data Cleaning & Transformation</span>
-        <span class="skill-tag">KPI Tracking & Sales Analysis</span>
+        <span class="skill-tag">Data Cleaning &amp; Transformation</span>
+        <span class="skill-tag">KPI Tracking &amp; Sales Analysis</span>
         <span class="skill-tag">Exploratory Data Analysis (EDA)</span>
         <span class="skill-tag">Python (Basic, EDA)</span>
         <span class="skill-tag">Volza (Global Trade Data)</span>
-        <span class="skill-tag">Company CRM </span>
+        <span class="skill-tag">Company CRM</span>
         <span class="skill-tag">PowerPoint Presentation</span>
       </div>
     </div>
   </section>
 
-  <!-- Experience Section (Synced with Resume Work Experience) -->
+  <!-- Experience Section -->
   <section id="experience" class="section">
     <div class="container">
       <h2 class="section-title">Work Experience</h2>
@@ -128,9 +168,8 @@
             <span class="date">February 2024 – August 2024</span>
           </div>
           <ul class="timeline-details">
-            <li>Successfully completed 2 comprehensive analytics projects evaluating business performance metrics, customer behavior, and operational trends.</li>
-            <li>Wrote efficient MySQL queries to clean, transform, and aggregate raw datasets, ensuring data integrity across reporting layers.</li>
-            <li>Designed 4 production-ready dashboards in Power BI and Tableau alongside 2 automated Excel dashboards, enabling cross-functional teams to monitor KPIs seamlessly.</li>
+            <li>Used MySQL, Power BI, Tableau, and Advanced Excel to extract, analyze, and visualize datasets for business decision-making.</li>
+            <li>Developed dashboards and visualizations for cross-functional teams, improving data accessibility across departments.</li>
           </ul>
         </div>
 
@@ -165,7 +204,7 @@
           <div class="project-card-body">
             <h3>Solar Power Generation Prediction</h3>
             <p class="project-tools">Python | Pandas | Scikit-learn | Streamlit</p>
-            <p class="project-desc">Applied Machine Learning (Linear & Random Forest Regression) to predict solar power generation. Included thorough exploratory data analysis and deployment via Streamlit.</p>
+            <p class="project-desc">Applied Machine Learning (Linear &amp; Random Forest Regression) to predict solar power generation. Included thorough exploratory data analysis and deployment via Streamlit.</p>
             <a href="https://github.com/SrinivasPoojary/Solar-Power-Generation" target="_blank" class="project-link">View on GitHub →</a>
           </div>
         </div>
@@ -185,7 +224,7 @@
 
         <!-- Project 3: AdventureWorks Sales Intelligence -->
         <div class="project-card">
-          <div class="project-img-wrapper" style="background: #0f172a; display: flex; align-items: center; justify-content: center; height: 190px; overflow: hidden;">
+          <div class="project-img-wrapper" style="background: #0f172a; display: flex; align-items: center; justify-content: center; height: 200px; overflow: hidden;">
             <video autoplay loop muted playsinline poster="dashboard_overview.png" class="project-img" style="width: 100%; height: 100%; object-fit: contain;">
               <source src="dashboard-animation.mp4" type="video/mp4">
               <img src="dashboard_overview.png" alt="AdventureWorks Sales Intelligence Dashboard" class="project-img" style="object-fit: contain; padding: 4px;">
@@ -202,48 +241,44 @@
           </div>
         </div>
 
+      </div><!-- /.project-grid -->
+    </div><!-- /.container -->
+  </section><!-- /#projects -->
+
+  <!-- Education Section -->
+  <section id="education" class="section">
+    <div class="container">
+      <h2 class="section-title">Education &amp; Certifications</h2>
+      <div class="education-list">
+        
+        <!-- Degree -->
+        <div class="education-item edu-card">
+          <div class="education-header edu-header">
+            <h3 class="edu-title">Bachelor of Commerce (B.Com)</h3>
+            <span class="date edu-year">2020 – 2023</span>
+          </div>
+          <p class="institution edu-institution">University of Mumbai | V.K. Krishna Menon College of Arts, Commerce &amp; Science</p>
+        </div>
+
+        <!-- Certification -->
+        <div class="education-item edu-card">
+          <div class="education-header edu-header">
+            <h3 class="edu-title">Data Analyst Certification</h3>
+            <span class="date edu-year">2023 – 2024</span>
+          </div>
+          <p class="institution edu-institution">ExcelR, Andheri</p>
+          <p class="education-desc edu-desc">Comprehensive industry training covering SQL (MySQL), Power BI (DAX, Data Modeling), Tableau, Advanced Excel, and Python for data analysis.</p>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Education Section (Synced with Resume Education) -->
- <section id="education" class="section">
-  <div class="container">
-    <h2 class="section-title">Education &amp; Certifications</h2>
-
-    <div class="education-list">
-      
-      <!-- Card 1: Degree -->
-      <div class="edu-card">
-        <div class="edu-header">
-          <h3 class="edu-title">Bachelor of Commerce (B.Com)</h3>
-          <span class="edu-year">2020 – 2023</span>
-        </div>
-        <p class="edu-institution">
-          University of Mumbai | V.K. Krishna Menon College of Arts, Commerce &amp; Science
-        </p>
-      </div>
-
-      <!-- Card 2: Certification -->
-      <div class="edu-card">
-        <div class="edu-header">
-          <h3 class="edu-title">Data Analyst Certification</h3>
-          <span class="edu-year">2023 – 2024</span>
-        </div>
-        <p class="edu-institution">ExcelR, Andheri</p>
-        <p class="edu-desc">
-          Comprehensive industry training covering SQL (MySQL), Power BI (DAX, Data Modeling), Tableau, Advanced Excel, and Python for data analysis.
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section>
   <!-- Contact Section -->
   <section id="contact" class="section bg-light">
     <div class="container text-center">
       <h2 class="section-title">Get In Touch</h2>
-      <p class="contact-desc">Available for new opportunities in data analytics and business intelligence.</p>
+      <p class="contact-desc">I am actively seeking Data Analyst, BI Analyst, and Reporting Analyst roles. Feel free to connect or reach out directly.</p>
       <div class="contact-links">
         <a href="mailto:srinivaspoojary188@gmail.com" class="btn btn-primary">Email Me</a>
         <a href="resume.pdf" target="_blank" class="btn btn-secondary" id="resume-btn">Download Resume (PDF)</a>
@@ -262,6 +297,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=3"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>
