@@ -56,7 +56,7 @@ body {
   font-size: 2.2rem;
   margin-bottom: 40px;
   padding-bottom: 10px;
-  border-bottom: 3px solid var(--primary-blue); /* Distinct blue underline */
+  border-bottom: 3px solid var(--primary-blue);
   display: inline-block;
   letter-spacing: -0.5px;
 }
@@ -126,6 +126,7 @@ a {
   padding-top: 160px;
   padding-bottom: 90px;
   background: linear-gradient(180deg, #ffffff 0%, var(--bg-main) 100%);
+  animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-greeting {
@@ -303,13 +304,17 @@ a {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.35s ease;
+  will-change: transform, box-shadow;
 }
 
 .project-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--primary-blue);
-  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.08);
+  transform: translateY(-8px);
+  border-color: #cbd5e1;
+  box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.12),
+              0 10px 15px -5px rgba(15, 23, 42, 0.06);
 }
 
 .project-img-wrapper {
@@ -317,18 +322,20 @@ a {
   height: 200px;
   background-color: #e2e8f0;
   overflow: hidden;
+  position: relative;
   border-bottom: 1px solid var(--border-light);
 }
 
-.project-img {
+.project-img, .project-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.project-card:hover .project-img {
-  transform: scale(1.05);
+.project-card:hover .project-img,
+.project-card:hover .project-img-wrapper img {
+  transform: scale(1.06);
 }
 
 .project-card-body {
@@ -358,12 +365,17 @@ a {
 }
 
 .project-link {
+  display: inline-flex;
+  align-items: center;
   color: var(--primary-blue);
   font-weight: 700;
   margin-top: auto;
+  gap: 4px;
+  transition: color 0.2s ease, gap 0.2s ease;
 }
 
 .project-link:hover {
+  gap: 8px;
   text-decoration: underline;
 }
 
@@ -397,48 +409,78 @@ a {
   margin-top: auto;
 }
 
+.project-grid .project-card:nth-child(1) {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+}
+
+.project-grid .project-card:nth-child(2) {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s backwards;
+}
+
+.project-grid .project-card:nth-child(3) {
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
+}
+
 /* =========================================
-   9. EDUCATION GRID
+   9. EDUCATION & CERTIFICATIONS
    ========================================= */
 .education-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .education-item {
   background-color: var(--bg-white);
   border: 1px solid var(--border-light);
   border-radius: 8px;
-  padding: 26px;
+  padding: 24px 28px;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  gap: 10px;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .education-item:hover {
   transform: translateY(-3px);
   border-color: var(--primary-blue);
+  box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.05);
 }
 
-.edu-badge {
-  display: inline-block;
-  align-self: flex-start;
-  background-color: var(--accent-soft);
-  color: var(--primary-blue);
-  font-size: 0.75rem;
+.education-title {
+  font-size: 1.25rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  padding: 4px 10px;
-  border-radius: 4px;
-  margin-bottom: 12px;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+/* Row with Institution on the Left & Year at the far Right */
+.education-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
 }
 
 .institution {
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-dark);
-  margin-bottom: 6px;
+  margin: 0;
+}
+
+.education-year {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.education-desc {
+  margin: 4px 0 0 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--text-muted);
 }
 
 /* =========================================
@@ -483,67 +525,8 @@ a {
 }
 
 /* =========================================
-   11. MOBILE RESPONSIVENESS
+   11. ANIMATIONS & SCROLL REVEAL
    ========================================= */
-@media (max-width: 768px) {
-  .section {
-    padding: 70px 0;
-  }
-  
-  .nav-container {
-    flex-direction: column;
-    gap: 12px;
-  }
-  
-  .nav-links {
-    gap: 16px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .hero {
-    padding-top: 160px;
-    text-align: center;
-  }
-  
-  .hero-name {
-    font-size: 2.6rem;
-  }
-  
-  .hero-title {
-    font-size: 1.25rem;
-  }
-  
-  .hero-subtitle {
-    margin: 0 auto 32px auto;
-  }
-
-  .hero-buttons, .contact-links {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .btn {
-    width: 100%;
-  }
-
-  .timeline {
-    padding-left: 20px;
-    margin-left: 4px;
-  }
-  
-  .timeline-item::before {
-    left: -26px; 
-  }
-}
-
-/* =========================================
-   12. SMOOTH ENTRY ANIMATIONS (CSS-ONLY)
-   ========================================= */
-/* =========================================
-   12. SCROLL REVEAL ANIMATIONS
-   ========================================= */
-/* Hero entry on page load */
 @keyframes heroEntrance {
   from {
     opacity: 0;
@@ -555,67 +538,6 @@ a {
   }
 }
 
-.hero {
-  animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-/* Hidden by default until scrolled into view */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-
-/* Added by JavaScript when card/section enters the screen */
-.reveal-on-scroll.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-/* --- Project Card Micro-Interactions --- */
-
-/* Smooth Card Elevation */
-.project-card {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s ease;
-  will-change: transform, box-shadow;
-}
-
-.project-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.12),
-              0 10px 15px -5px rgba(15, 23, 42, 0.06);
-  border-color: #cbd5e1;
-}
-
-/* Image Zoom on Hover */
-.project-img-wrapper {
-  overflow: hidden;
-  position: relative;
-}
-
-.project-img-wrapper img {
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.project-card:hover .project-img-wrapper img {
-  transform: scale(1.06);
-}
-
-/* Link Arrow Slide */
-.project-link {
-  display: inline-flex;
-  align-items: center;
-  transition: color 0.2s ease, gap 0.2s ease;
-  gap: 4px;
-}
-
-.project-link:hover {
-  gap: 8px;
-}
-
-/* Entrance Fade-In Animation */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -627,14 +549,17 @@ a {
   }
 }
 
-.project-grid .project-card:nth-child(1) {
-  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.1s backwards;
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.project-grid .project-card:nth-child(2) {
-  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.25s backwards;
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.project-grid .project-card:nth-child(3) {
-  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) 0.4s backwards;
-}
+/* =========================================
+   12. MOBILE RESPONSIVEN
