@@ -238,8 +238,16 @@ a:focus-visible,
    ========================================= */
 .skill-groups {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 32px 40px;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* all four groups in one row */
+  gap: 32px 24px;
+  align-items: start;
+}
+
+/* Tablet: two per row so tags never get cramped */
+@media (max-width: 900px) {
+  .skill-groups {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .skill-group-title {
@@ -253,16 +261,18 @@ a:focus-visible,
 
 .skills-grid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  flex-direction: column; /* stack tags inside each column */
+  align-items: flex-start;
+  gap: 10px;
 }
 
 .skill-tag {
   background-color: var(--bg-white);
   border: 1px solid var(--border-light);
   color: var(--text-dark);
-  padding: 9px 18px;
-  font-size: 0.95rem;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  line-height: 1.4;
   font-weight: 600;
   border-radius: 6px;
   transition: all 0.2s ease;
