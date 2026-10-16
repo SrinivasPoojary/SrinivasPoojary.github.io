@@ -422,65 +422,80 @@ a {
 }
 
 /* =========================================
-   9. EDUCATION & CERTIFICATIONS
+   EDUCATION CARDS (CLEAN & RESTORED)
    ========================================= */
-.education-grid {
+.education-list {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  max-width: 900px;
 }
 
-.education-item {
-  background-color: var(--bg-white);
-  border: 1px solid var(--border-light);
+.edu-card {
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
   border-radius: 8px;
   padding: 24px 28px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  gap: 8px;
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.education-item:hover {
-  transform: translateY(-3px);
-  border-color: var(--primary-blue);
-  box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.05);
+.edu-card:hover {
+  transform: translateY(-2px);
+  border-color: #2563eb;
+  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
 }
 
-.education-title {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-dark);
-  margin: 0;
-}
-
-/* Row with Institution on the Left & Year at the far Right */
-.education-details {
+/* Header line: Title on Left, Year on Far Right */
+.edu-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 16px;
 }
 
-.institution {
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--text-dark);
+.edu-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #0f172a;
   margin: 0;
 }
 
-.education-year {
-  font-size: 0.95rem;
+/* Subtle badge for year so it looks intentional and clean */
+.edu-year {
+  font-size: 0.9rem;
   font-weight: 600;
-  color: var(--text-muted);
+  color: #475569;
+  background-color: #f1f5f9;
+  padding: 4px 10px;
+  border-radius: 4px;
   white-space: nowrap;
 }
 
-.education-desc {
-  margin: 4px 0 0 0;
-  font-size: 0.95rem;
+.edu-institution {
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+}
+
+.edu-desc {
+  font-size: 0.92rem;
   line-height: 1.6;
-  color: var(--text-muted);
+  color: #475569;
+  margin: 4px 0 0 0;
+}
+
+/* Mobile responsive view */
+@media (max-width: 640px) {
+  .edu-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
 }
 
 /* =========================================
