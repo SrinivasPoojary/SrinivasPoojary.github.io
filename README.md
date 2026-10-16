@@ -8,7 +8,7 @@ Welcome to the repository hosting my personal analytics portfolio website.
 
 ---
 
-## 👨‍💻 About Me
+## About Me
 
 Data Analyst with hands-on experience across manufacturing, e-commerce, and audit domains. Specialized in architecting Power BI dashboards (DAX, dimensional modeling), automating MIS reporting workflows, and executing complex SQL queries to drive executive decision-making.
 
@@ -18,7 +18,7 @@ Data Analyst with hands-on experience across manufacturing, e-commerce, and audi
 
 ---
 
-## 🛠️ Technical Stack
+## Technical Stack
 
 | Area | Tools & Technologies |
 | :--- | :--- |
@@ -30,7 +30,7 @@ Data Analyst with hands-on experience across manufacturing, e-commerce, and audi
 
 ---
 
-## 🚀 Featured Projects
+## Featured Projects
 
 ### 1. [AdventureWorks Executive Sales Intelligence & NEXUS IQ](https://srinivaspoojary.github.io/adventureworks-sales-intelligence/)
 * **Stack:** Power BI, DAX, Star Schema, HTML5/Tailwind CSS
@@ -51,7 +51,7 @@ Data Analyst with hands-on experience across manufacturing, e-commerce, and audi
 
 ---
 
-## 💼 Professional Experience
+## Professional Experience
 
 * **Data Analyst** | Responsive Industries Ltd. *(Apr 2025 – Present)*
 * **Internal Auditor** | CNK & Associates LLP *(Aug 2024 – Jan 2025)*
@@ -60,14 +60,14 @@ Data Analyst with hands-on experience across manufacturing, e-commerce, and audi
 
 ---
 
-## 🎓 Education & Certifications
+## Education & Certifications
 
 * **Bachelor of Commerce (B.Com)** | University of Mumbai (2020 – 2023)
 * **Data Analyst Certification** | ExcelR, Mumbai (2023 – 2024)
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```text
 SrinivasPoojary.github.io/
