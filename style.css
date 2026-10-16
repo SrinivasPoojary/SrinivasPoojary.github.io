@@ -573,6 +573,47 @@ a {
 
 .reveal-on-scroll.is-revealed {
   opacity: 1;
+   /* --- Mobile Responsive Navbar Fix --- */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0.5rem 0 !important;
+  }
+
+  .nav-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 0.5rem 1rem !important;
+    gap: 0.5rem !important;
+    width: 100% !important;
+  }
+
+  .nav-links {
+    display: flex !important;
+    width: 100% !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    gap: 1.25rem !important;
+    padding: 0.35rem 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+    -webkit-overflow-scrolling: touch; /* Smooth iOS / Android swipe */
+    scrollbar-width: none;             /* Firefox */
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;                     /* Chrome / Safari */
+  }
+
+  .nav-links li {
+    flex-shrink: 0 !important;         /* Prevents words from squishing */
+  }
+
+  .nav-links a {
+    font-size: 0.9rem !important;
+    display: inline-block;
+  }
+}
   transform: translateY(0);
 }
 
