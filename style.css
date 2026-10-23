@@ -1,26 +1,28 @@
 /* =========================================
    1. COLOR PALETTE & GLOBAL RESET
-   Theme: Jet Black / Cerulean Blue / Neon Rose
+   Strict 3-color theme: Jet Black / Cerulean Blue / Neon Rose
+   (only these three colors and their transparencies are used)
    ========================================= */
 :root {
-  /* Core brand colors */
   --jet-black: #0A0A0A;
   --cerulean: #007BA7;
   --neon-rose: #FF2D95;
 
-  /* Surfaces */
-  --bg-main: var(--jet-black);
-  --bg-white: #121214;          /* card surface (slightly lifted black) */
-  --bg-raised: #18181B;         /* hover / tags */
-  --text-dark: #F4F6F8;         /* primary text on black */
-  --text-muted: #A3A9B3;        /* secondary text */
-  --border-light: #26272C;      /* subtle borders */
+  /* Transparencies of the same three colors */
+  --cer-05: rgba(0, 123, 167, 0.05);
+  --cer-10: rgba(0, 123, 167, 0.10);
+  --cer-18: rgba(0, 123, 167, 0.18);
+  --cer-35: rgba(0, 123, 167, 0.35);
+  --rose-10: rgba(255, 45, 149, 0.10);
+  --rose-18: rgba(255, 45, 149, 0.18);
+  --rose-40: rgba(255, 45, 149, 0.40);
 
-  /* Accents */
+  /* Roles */
+  --bg-main: var(--jet-black);
+  --text-heading: var(--neon-rose);
+  --text-body: var(--cerulean);
+  --border-light: var(--cer-35);
   --primary-blue: var(--cerulean);
-  --primary-hover: var(--neon-rose);
-  --accent-soft: rgba(0, 123, 167, 0.14);
-  --rose-soft: rgba(255, 45, 149, 0.12);
 
   --font-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -35,17 +37,22 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Page background: jet black with a fine cerulean blueprint grid */
 body {
   font-family: var(--font-base);
-  background-color: var(--bg-main);
-  color: var(--text-dark);
+  background-color: var(--jet-black);
+  background-image:
+    linear-gradient(var(--cer-05) 1px, transparent 1px),
+    linear-gradient(90deg, var(--cer-05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  color: var(--text-body);
   line-height: 1.6;
   font-size: 16px;
 }
 
 ::selection {
   background: var(--neon-rose);
-  color: #ffffff;
+  color: var(--jet-black);
 }
 
 /* =========================================
@@ -60,24 +67,47 @@ body {
 .section {
   padding: 90px 0;
   scroll-margin-top: 70px;
+  position: relative;
 }
 
+/* Alternate sections: dotted texture + soft cerulean/rose wash */
 .bg-light {
-  background-color: var(--bg-white);
+  background-color: var(--jet-black);
+  background-image:
+    radial-gradient(700px 260px at 0% 0%, var(--cer-18), transparent 70%),
+    radial-gradient(600px 260px at 100% 100%, var(--rose-10), transparent 70%),
+    radial-gradient(var(--cer-18) 1px, transparent 1px);
+  background-size: auto, auto, 22px 22px;
+}
+
+/* Thin cerulean-to-rose divider line at the top of every section */
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cerulean) 30%, var(--neon-rose) 70%, transparent);
+  opacity: 0.55;
+}
+
+.hero::before {
+  display: none;
 }
 
 .section-title {
   font-size: 2.2rem;
   margin-bottom: 40px;
   padding-bottom: 10px;
-  border-bottom: 3px solid var(--neon-rose);
+  border-bottom: 3px solid var(--cerulean);
   display: inline-block;
   letter-spacing: -0.5px;
-  color: var(--text-dark);
+  color: var(--text-heading);
 }
 
 p {
-  color: var(--text-muted);
+  color: var(--text-body);
   margin-bottom: 16px;
   font-size: 1.05rem;
   line-height: 1.7;
@@ -88,7 +118,6 @@ a {
   transition: all 0.25s ease;
 }
 
-/* Accessibility: visible keyboard focus + skip link */
 a:focus-visible,
 .btn:focus-visible {
   outline: 3px solid var(--neon-rose);
@@ -101,7 +130,7 @@ a:focus-visible,
   left: 16px;
   top: -60px;
   background: var(--neon-rose);
-  color: #ffffff;
+  color: var(--jet-black);
   padding: 10px 16px;
   border-radius: 6px;
   font-weight: 600;
@@ -127,6 +156,17 @@ a:focus-visible,
   padding: 18px 0;
 }
 
+.navbar::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  background: linear-gradient(90deg, var(--cerulean), var(--neon-rose));
+  opacity: 0.8;
+}
+
 .nav-container {
   max-width: 1040px;
   margin: 0 auto;
@@ -139,12 +179,12 @@ a:focus-visible,
 .logo {
   font-size: 1.4rem;
   font-weight: 800;
-  color: var(--text-dark);
+  color: var(--neon-rose);
   letter-spacing: -0.5px;
 }
 
 .logo:hover {
-  color: var(--neon-rose);
+  color: var(--cerulean);
 }
 
 .nav-links {
@@ -154,7 +194,7 @@ a:focus-visible,
 }
 
 .nav-links a {
-  color: var(--text-muted);
+  color: var(--cerulean);
   font-weight: 600;
   font-size: 0.95rem;
 }
@@ -169,16 +209,15 @@ a:focus-visible,
 .hero {
   padding-top: 160px;
   padding-bottom: 90px;
-  background:
-    radial-gradient(600px 300px at 12% 0%, rgba(0, 123, 167, 0.28), transparent 70%),
-    radial-gradient(500px 280px at 92% 100%, rgba(255, 45, 149, 0.16), transparent 70%),
-    var(--jet-black);
+  background-image:
+    radial-gradient(640px 320px at 10% 0%, var(--cer-35), transparent 70%),
+    radial-gradient(520px 300px at 95% 100%, var(--rose-18), transparent 70%);
   animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-greeting {
   font-size: 1.15rem;
-  color: var(--neon-rose);
+  color: var(--cerulean);
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -188,7 +227,8 @@ a:focus-visible,
   font-weight: 800;
   letter-spacing: -1.5px;
   margin-bottom: 8px;
-  color: var(--text-dark);
+  color: var(--neon-rose);
+  text-shadow: 0 0 28px var(--rose-40);
 }
 
 .hero-title {
@@ -223,7 +263,7 @@ a:focus-visible,
   display: inline-block;
   padding: 12px 26px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 700;
   border-radius: 6px;
   cursor: pointer;
   text-align: center;
@@ -231,17 +271,18 @@ a:focus-visible,
 }
 
 .btn-primary {
-  background-color: var(--cerulean);
-  color: #ffffff;
-  border: 1px solid var(--cerulean);
-  box-shadow: 0 4px 16px rgba(0, 123, 167, 0.35);
+  background-color: var(--neon-rose);
+  color: var(--jet-black);
+  border: 1px solid var(--neon-rose);
+  box-shadow: 0 4px 18px var(--rose-40);
 }
 
 .btn-primary:hover {
-  background-color: var(--neon-rose);
-  border-color: var(--neon-rose);
+  background-color: var(--cerulean);
+  border-color: var(--cerulean);
+  color: var(--jet-black);
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(255, 45, 149, 0.45);
+  box-shadow: 0 6px 22px var(--cer-35);
 }
 
 .btn-secondary {
@@ -251,13 +292,12 @@ a:focus-visible,
 }
 
 .btn-secondary:hover {
-  background-color: var(--rose-soft);
+  background-color: var(--rose-10);
   color: var(--neon-rose);
   border-color: var(--neon-rose);
   transform: translateY(-2px);
 }
 
-/* WhatsApp Action Button (themed to neon rose) */
 .btn-whatsapp {
   background-color: transparent;
   color: var(--neon-rose) !important;
@@ -266,15 +306,14 @@ a:focus-visible,
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-weight: 600;
 }
 
 .btn-whatsapp:hover {
   background-color: var(--neon-rose);
   border-color: var(--neon-rose);
-  color: #ffffff !important;
+  color: var(--jet-black) !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(255, 45, 149, 0.45);
+  box-shadow: 0 6px 22px var(--rose-40);
 }
 
 .btn-whatsapp svg {
@@ -294,21 +333,21 @@ a:focus-visible,
 }
 
 .info-card {
-  background-color: var(--bg-white);
+  background-color: var(--jet-black);
+  background-image: linear-gradient(135deg, var(--cer-18), var(--cer-05));
   border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 16px 20px;
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .info-card:hover {
   transform: translateY(-2px);
-  border-color: var(--cerulean);
-  box-shadow: 0 8px 24px rgba(0, 123, 167, 0.22);
+  border-color: var(--neon-rose);
+  box-shadow: 0 8px 24px var(--rose-18);
 }
 
 .info-card-wide {
@@ -338,7 +377,7 @@ a:focus-visible,
 .info-val {
   font-size: 0.95rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--cerulean);
   margin-bottom: 0;
 }
 
@@ -349,8 +388,8 @@ a:focus-visible,
 }
 
 .mini-tag {
-  background-color: var(--bg-raised);
-  color: var(--text-dark);
+  background-color: var(--cer-10);
+  color: var(--cerulean);
   font-size: 0.82rem;
   font-weight: 600;
   padding: 4px 10px;
@@ -359,9 +398,10 @@ a:focus-visible,
 }
 
 .mini-tag small {
-  color: var(--text-muted);
+  color: var(--cerulean);
   font-size: 0.75rem;
   font-weight: 500;
+  opacity: 0.8;
 }
 
 /* =========================================
@@ -397,10 +437,11 @@ a:focus-visible,
 }
 
 .skill-tag {
-  background-color: var(--bg-main);
+  background-color: var(--jet-black);
+  background-image: linear-gradient(90deg, var(--cer-18), transparent);
   border: 1px solid var(--border-light);
-  border-left: 3px solid var(--cerulean);
-  color: var(--text-dark);
+  border-left: 3px solid var(--neon-rose);
+  color: var(--cerulean);
   padding: 8px 14px;
   font-size: 0.9rem;
   line-height: 1.4;
@@ -411,9 +452,8 @@ a:focus-visible,
 
 .skill-tag:hover {
   border-color: var(--neon-rose);
-  border-left-color: var(--neon-rose);
   color: var(--neon-rose);
-  background-color: var(--rose-soft);
+  background-image: linear-gradient(90deg, var(--rose-18), transparent);
   transform: translateY(-2px);
 }
 
@@ -444,14 +484,14 @@ a:focus-visible,
   height: 12px;
   background-color: var(--neon-rose);
   border: 3px solid var(--jet-black);
-  box-shadow: 0 0 0 2px var(--neon-rose), 0 0 12px rgba(255, 45, 149, 0.6);
+  box-shadow: 0 0 0 2px var(--neon-rose), 0 0 14px var(--rose-40);
   border-radius: 50%;
 }
 
 .timeline-header h3 {
   font-size: 1.25rem;
   margin-bottom: 4px;
-  color: var(--text-dark);
+  color: var(--neon-rose);
 }
 
 .company {
@@ -462,16 +502,17 @@ a:focus-visible,
 }
 
 .date {
-  color: var(--text-muted);
+  color: var(--cerulean);
   font-size: 0.9rem;
   font-weight: 500;
+  opacity: 0.85;
 }
 
 .timeline-details {
   list-style-type: disc;
   padding-left: 20px;
   margin-top: 10px;
-  color: var(--text-muted);
+  color: var(--cerulean);
 }
 
 .timeline-details li {
@@ -492,7 +533,8 @@ a:focus-visible,
 }
 
 .project-card {
-  background-color: var(--bg-main);
+  background-color: var(--jet-black);
+  background-image: linear-gradient(160deg, var(--cer-18), var(--cer-05) 55%, transparent);
   border: 1px solid var(--border-light);
   border-radius: 8px;
   overflow: hidden;
@@ -507,14 +549,14 @@ a:focus-visible,
 .project-card:hover {
   transform: translateY(-8px);
   border-color: var(--neon-rose);
-  box-shadow: 0 20px 40px -10px rgba(255, 45, 149, 0.28),
-              0 10px 20px -5px rgba(0, 123, 167, 0.25);
+  box-shadow: 0 20px 40px -10px var(--rose-40),
+              0 10px 20px -5px var(--cer-35);
 }
 
 .project-img-wrapper {
   width: 100%;
   height: 200px;
-  background-color: #000000;
+  background-color: var(--jet-black);
   overflow: hidden;
   position: relative;
   border-bottom: 1px solid var(--border-light);
@@ -528,7 +570,7 @@ a:focus-visible,
 }
 
 .project-img-wrapper--video {
-  background: #000000;
+  background: var(--jet-black);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -554,7 +596,7 @@ a:focus-visible,
 .project-card-body h3 {
   font-size: 1.25rem;
   margin-bottom: 8px;
-  color: var(--text-dark);
+  color: var(--neon-rose);
 }
 
 .project-tools {
@@ -620,21 +662,21 @@ a:focus-visible,
 }
 
 .edu-card {
-  background-color: var(--bg-white);
+  background-color: var(--jet-black);
+  background-image: linear-gradient(135deg, var(--cer-18), var(--cer-05));
   border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 24px 28px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .edu-card:hover {
   transform: translateY(-2px);
-  border-color: var(--cerulean);
-  box-shadow: 0 8px 24px rgba(0, 123, 167, 0.22);
+  border-color: var(--neon-rose);
+  box-shadow: 0 8px 24px var(--rose-18);
 }
 
 .edu-header {
@@ -647,7 +689,7 @@ a:focus-visible,
 .edu-title {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--text-dark);
+  color: var(--neon-rose);
   margin: 0;
 }
 
@@ -655,23 +697,25 @@ a:focus-visible,
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--neon-rose);
-  background-color: var(--rose-soft);
+  background-color: var(--rose-10);
+  border: 1px solid var(--rose-40);
   padding: 4px 10px;
   border-radius: 4px;
   white-space: nowrap;
+  opacity: 1;
 }
 
 .edu-institution {
   font-size: 0.98rem;
   font-weight: 600;
-  color: var(--text-dark);
+  color: var(--cerulean);
   margin: 0;
 }
 
 .edu-desc {
   font-size: 0.92rem;
   line-height: 1.6;
-  color: var(--text-muted);
+  color: var(--cerulean);
   margin: 4px 0 0 0;
 }
 
@@ -713,7 +757,7 @@ a:focus-visible,
   padding: 32px 0;
   border-top: 1px solid var(--border-light);
   background-color: var(--jet-black);
-  color: var(--text-muted);
+  color: var(--cerulean);
   font-size: 0.9rem;
 }
 
