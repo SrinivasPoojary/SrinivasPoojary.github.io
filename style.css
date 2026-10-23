@@ -1,18 +1,26 @@
 /* =========================================
    1. COLOR PALETTE & GLOBAL RESET
+   Theme: Jet Black / Cerulean Blue / Neon Rose
    ========================================= */
 :root {
-  /* Modern Data Analyst Palette */
-  --bg-main: #f1f5f9;         /* Crisp cool slate light gray */
-  --bg-white: #ffffff;        /* Pure white for cards */
-  --text-dark: #0f172a;       /* Deep navy-black */
-  --text-muted: #475569;      /* Refined slate gray */
-  --border-light: #cbd5e1;    /* Defined boundary borders */
+  /* Core brand colors */
+  --jet-black: #0A0A0A;
+  --cerulean: #007BA7;
+  --neon-rose: #FF2D95;
 
-  /* Accent Colors */
-  --primary-blue: #2563eb;    /* Tech / Power BI cobalt blue */
-  --primary-hover: #1d4ed8;   /* Deep hover blue */
-  --accent-soft: #eff6ff;     /* Subtle ice-blue card fill */
+  /* Surfaces */
+  --bg-main: var(--jet-black);
+  --bg-white: #121214;          /* card surface (slightly lifted black) */
+  --bg-raised: #18181B;         /* hover / tags */
+  --text-dark: #F4F6F8;         /* primary text on black */
+  --text-muted: #A3A9B3;        /* secondary text */
+  --border-light: #26272C;      /* subtle borders */
+
+  /* Accents */
+  --primary-blue: var(--cerulean);
+  --primary-hover: var(--neon-rose);
+  --accent-soft: rgba(0, 123, 167, 0.14);
+  --rose-soft: rgba(255, 45, 149, 0.12);
 
   --font-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
@@ -35,6 +43,11 @@ body {
   font-size: 16px;
 }
 
+::selection {
+  background: var(--neon-rose);
+  color: #ffffff;
+}
+
 /* =========================================
    2. LAYOUT & CONTAINERS
    ========================================= */
@@ -46,7 +59,7 @@ body {
 
 .section {
   padding: 90px 0;
-  scroll-margin-top: 70px; /* keeps headings clear of the fixed navbar */
+  scroll-margin-top: 70px;
 }
 
 .bg-light {
@@ -57,9 +70,10 @@ body {
   font-size: 2.2rem;
   margin-bottom: 40px;
   padding-bottom: 10px;
-  border-bottom: 3px solid var(--primary-blue);
+  border-bottom: 3px solid var(--neon-rose);
   display: inline-block;
   letter-spacing: -0.5px;
+  color: var(--text-dark);
 }
 
 p {
@@ -77,7 +91,7 @@ a {
 /* Accessibility: visible keyboard focus + skip link */
 a:focus-visible,
 .btn:focus-visible {
-  outline: 3px solid var(--primary-blue);
+  outline: 3px solid var(--neon-rose);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -86,7 +100,7 @@ a:focus-visible,
   position: absolute;
   left: 16px;
   top: -60px;
-  background: var(--primary-blue);
+  background: var(--neon-rose);
   color: #ffffff;
   padding: 10px 16px;
   border-radius: 6px;
@@ -105,8 +119,9 @@ a:focus-visible,
   position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
+  background-color: rgba(10, 10, 10, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border-light);
   z-index: 1000;
   padding: 18px 0;
@@ -124,8 +139,12 @@ a:focus-visible,
 .logo {
   font-size: 1.4rem;
   font-weight: 800;
-  color: var(--primary-blue);
+  color: var(--text-dark);
   letter-spacing: -0.5px;
+}
+
+.logo:hover {
+  color: var(--neon-rose);
 }
 
 .nav-links {
@@ -141,7 +160,7 @@ a:focus-visible,
 }
 
 .nav-links a:hover {
-  color: var(--primary-blue);
+  color: var(--neon-rose);
 }
 
 /* =========================================
@@ -150,13 +169,16 @@ a:focus-visible,
 .hero {
   padding-top: 160px;
   padding-bottom: 90px;
-  background: linear-gradient(180deg, #ffffff 0%, var(--bg-main) 100%);
+  background:
+    radial-gradient(600px 300px at 12% 0%, rgba(0, 123, 167, 0.28), transparent 70%),
+    radial-gradient(500px 280px at 92% 100%, rgba(255, 45, 149, 0.16), transparent 70%),
+    var(--jet-black);
   animation: heroEntrance 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .hero-greeting {
   font-size: 1.15rem;
-  color: var(--primary-blue);
+  color: var(--neon-rose);
   font-weight: 600;
   margin-bottom: 8px;
 }
@@ -171,8 +193,8 @@ a:focus-visible,
 
 .hero-title {
   font-size: 1.5rem;
-  color: var(--text-muted);
-  font-weight: 500;
+  color: var(--cerulean);
+  font-weight: 600;
   margin-bottom: 24px;
 }
 
@@ -205,53 +227,54 @@ a:focus-visible,
   border-radius: 6px;
   cursor: pointer;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-primary {
-  background-color: var(--primary-blue);
+  background-color: var(--cerulean);
   color: #ffffff;
-  border: 1px solid var(--primary-blue);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+  border: 1px solid var(--cerulean);
+  box-shadow: 0 4px 16px rgba(0, 123, 167, 0.35);
 }
 
 .btn-primary:hover {
-  background-color: var(--primary-hover);
-  border-color: var(--primary-hover);
+  background-color: var(--neon-rose);
+  border-color: var(--neon-rose);
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 6px 22px rgba(255, 45, 149, 0.45);
 }
 
 .btn-secondary {
-  background-color: #ffffff;
-  color: var(--primary-blue);
-  border: 1px solid var(--primary-blue);
+  background-color: transparent;
+  color: var(--cerulean);
+  border: 1px solid var(--cerulean);
 }
 
 .btn-secondary:hover {
-  background-color: var(--accent-soft);
+  background-color: var(--rose-soft);
+  color: var(--neon-rose);
+  border-color: var(--neon-rose);
   transform: translateY(-2px);
 }
 
-/* WhatsApp Action Button */
+/* WhatsApp Action Button (themed to neon rose) */
 .btn-whatsapp {
-  background-color: #25d366;
-  color: #ffffff !important;
-  border: 1px solid #20ba5a;
+  background-color: transparent;
+  color: var(--neon-rose) !important;
+  border: 1px solid var(--neon-rose);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
 }
 
 .btn-whatsapp:hover {
-  background-color: #1ebc57;
-  border-color: #1ebc57;
+  background-color: var(--neon-rose);
+  border-color: var(--neon-rose);
   color: #ffffff !important;
   transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+  box-shadow: 0 6px 22px rgba(255, 45, 149, 0.45);
 }
 
 .btn-whatsapp svg {
@@ -278,14 +301,14 @@ a:focus-visible,
   display: flex;
   align-items: flex-start;
   gap: 14px;
-  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .info-card:hover {
   transform: translateY(-2px);
-  border-color: var(--primary-blue);
-  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+  border-color: var(--cerulean);
+  box-shadow: 0 8px 24px rgba(0, 123, 167, 0.22);
 }
 
 .info-card-wide {
@@ -309,7 +332,7 @@ a:focus-visible,
   font-weight: 700;
   letter-spacing: 0.6px;
   text-transform: uppercase;
-  color: var(--primary-blue);
+  color: var(--neon-rose);
 }
 
 .info-val {
@@ -326,7 +349,7 @@ a:focus-visible,
 }
 
 .mini-tag {
-  background-color: var(--bg-main);
+  background-color: var(--bg-raised);
   color: var(--text-dark);
   font-size: 0.82rem;
   font-weight: 600;
@@ -346,12 +369,11 @@ a:focus-visible,
    ========================================= */
 .skill-groups {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr)); /* all four groups in one row */
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 32px 24px;
   align-items: start;
 }
 
-/* Tablet: two per row so tags never get cramped */
 @media (max-width: 900px) {
   .skill-groups {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -361,7 +383,7 @@ a:focus-visible,
 .skill-group-title {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--primary-blue);
+  color: var(--neon-rose);
   text-transform: uppercase;
   letter-spacing: 0.6px;
   margin-bottom: 14px;
@@ -369,14 +391,15 @@ a:focus-visible,
 
 .skills-grid {
   display: flex;
-  flex-direction: column; /* stack tags inside each column */
+  flex-direction: column;
   align-items: flex-start;
   gap: 10px;
 }
 
 .skill-tag {
-  background-color: var(--bg-white);
+  background-color: var(--bg-main);
   border: 1px solid var(--border-light);
+  border-left: 3px solid var(--cerulean);
   color: var(--text-dark);
   padding: 8px 14px;
   font-size: 0.9rem;
@@ -387,9 +410,10 @@ a:focus-visible,
 }
 
 .skill-tag:hover {
-  border-color: var(--primary-blue);
-  color: var(--primary-blue);
-  background-color: var(--accent-soft);
+  border-color: var(--neon-rose);
+  border-left-color: var(--neon-rose);
+  color: var(--neon-rose);
+  background-color: var(--rose-soft);
   transform: translateY(-2px);
 }
 
@@ -418,20 +442,21 @@ a:focus-visible,
   top: 6px;
   width: 12px;
   height: 12px;
-  background-color: var(--primary-blue);
-  border: 3px solid #ffffff;
-  box-shadow: 0 0 0 2px var(--primary-blue);
+  background-color: var(--neon-rose);
+  border: 3px solid var(--jet-black);
+  box-shadow: 0 0 0 2px var(--neon-rose), 0 0 12px rgba(255, 45, 149, 0.6);
   border-radius: 50%;
 }
 
 .timeline-header h3 {
   font-size: 1.25rem;
   margin-bottom: 4px;
+  color: var(--text-dark);
 }
 
 .company {
   font-weight: 700;
-  color: var(--primary-blue);
+  color: var(--cerulean);
   display: block;
   margin-bottom: 4px;
 }
@@ -453,6 +478,10 @@ a:focus-visible,
   margin-bottom: 8px;
 }
 
+.timeline-details li::marker {
+  color: var(--neon-rose);
+}
+
 /* =========================================
    9. PROJECTS SECTION & IMAGE CARDS
    ========================================= */
@@ -463,7 +492,7 @@ a:focus-visible,
 }
 
 .project-card {
-  background-color: var(--bg-white);
+  background-color: var(--bg-main);
   border: 1px solid var(--border-light);
   border-radius: 8px;
   overflow: hidden;
@@ -477,15 +506,15 @@ a:focus-visible,
 
 .project-card:hover {
   transform: translateY(-8px);
-  border-color: #cbd5e1;
-  box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.12),
-              0 10px 15px -5px rgba(15, 23, 42, 0.06);
+  border-color: var(--neon-rose);
+  box-shadow: 0 20px 40px -10px rgba(255, 45, 149, 0.28),
+              0 10px 20px -5px rgba(0, 123, 167, 0.25);
 }
 
 .project-img-wrapper {
   width: 100%;
   height: 200px;
-  background-color: #e2e8f0;
+  background-color: #000000;
   overflow: hidden;
   position: relative;
   border-bottom: 1px solid var(--border-light);
@@ -498,9 +527,8 @@ a:focus-visible,
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Video / dark-dashboard variant */
 .project-img-wrapper--video {
-  background: #0f172a;
+  background: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -526,12 +554,13 @@ a:focus-visible,
 .project-card-body h3 {
   font-size: 1.25rem;
   margin-bottom: 8px;
+  color: var(--text-dark);
 }
 
 .project-tools {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--primary-blue);
+  color: var(--cerulean);
   margin-bottom: 12px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -552,7 +581,7 @@ a:focus-visible,
 .project-link {
   display: inline-flex;
   align-items: center;
-  color: var(--primary-blue);
+  color: var(--neon-rose);
   font-weight: 700;
   margin-top: auto;
   gap: 4px;
@@ -560,7 +589,7 @@ a:focus-visible,
 }
 
 .project-link--secondary {
-  opacity: 0.85;
+  color: var(--cerulean);
 }
 
 .project-link:hover {
@@ -591,21 +620,21 @@ a:focus-visible,
 }
 
 .edu-card {
-  background-color: #ffffff;
-  border: 1px solid #cbd5e1;
+  background-color: var(--bg-white);
+  border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 24px 28px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .edu-card:hover {
   transform: translateY(-2px);
-  border-color: #2563eb;
-  box-shadow: 0 8px 16px rgba(15, 23, 42, 0.08);
+  border-color: var(--cerulean);
+  box-shadow: 0 8px 24px rgba(0, 123, 167, 0.22);
 }
 
 .edu-header {
@@ -618,15 +647,15 @@ a:focus-visible,
 .edu-title {
   font-size: 1.2rem;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text-dark);
   margin: 0;
 }
 
 .edu-year {
   font-size: 0.9rem;
   font-weight: 600;
-  color: #475569;
-  background-color: #f1f5f9;
+  color: var(--neon-rose);
+  background-color: var(--rose-soft);
   padding: 4px 10px;
   border-radius: 4px;
   white-space: nowrap;
@@ -635,14 +664,14 @@ a:focus-visible,
 .edu-institution {
   font-size: 0.98rem;
   font-weight: 600;
-  color: #1e293b;
+  color: var(--text-dark);
   margin: 0;
 }
 
 .edu-desc {
   font-size: 0.92rem;
   line-height: 1.6;
-  color: #475569;
+  color: var(--text-muted);
   margin: 4px 0 0 0;
 }
 
@@ -670,11 +699,12 @@ a:focus-visible,
 }
 
 .social-links a {
-  color: var(--primary-blue);
+  color: var(--cerulean);
   font-weight: 600;
 }
 
 .social-links a:hover {
+  color: var(--neon-rose);
   text-decoration: underline;
 }
 
@@ -682,8 +712,13 @@ a:focus-visible,
   text-align: center;
   padding: 32px 0;
   border-top: 1px solid var(--border-light);
-  background-color: var(--bg-white);
+  background-color: var(--jet-black);
   color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.footer p {
+  margin-bottom: 0;
   font-size: 0.9rem;
 }
 
@@ -738,7 +773,6 @@ a:focus-visible,
     margin-bottom: 28px;
   }
 
-  /* Navbar: logo on top, links swipe horizontally underneath */
   .navbar {
     padding: 0.5rem 0;
   }
@@ -781,7 +815,6 @@ a:focus-visible,
     font-size: 0.88rem;
   }
 
-  /* Hero */
   .hero {
     padding-top: 130px;
     padding-bottom: 60px;
@@ -800,7 +833,6 @@ a:focus-visible,
     font-size: 1.05rem;
   }
 
-  /* Disable hover lift on touch-sized screens */
   .project-card:hover {
     transform: none;
   }
@@ -856,7 +888,6 @@ a:focus-visible,
   }
 }
 
-/* Respect users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
