@@ -46,4 +46,188 @@
   }
   </script>
 
-  <!-- Custom "S + data bars" Favicon in Ice Silver (#DDE3E8), Deep Aubergine (#3A0F34) & Marigold
+  <!-- Custom "S + data bars" Favicon in Ice Silver (#DDE3E8), Deep Aubergine (#3A0F34) & Marigold (#EAAA00) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23DDE3E8'/%3E%3Cg transform='translate(-5,-1)'%3E%3Cpath d='M43 21C40 17.5 36 16 32 16C26 16 22 19 22 23.5C22 28 26 29.5 32 31C38 32.5 42 34 42 39.5C42 45 38 48 32 48C27.5 48 23.5 46.5 21 43' fill='none' stroke='%233A0F34' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Crect x='42' y='43' width='4.5' height='9' rx='1.5' fill='%23EAAA00'/%3E%3Crect x='48' y='36' width='4.5' height='16' rx='1.5' fill='%23EAAA00'/%3E%3Crect x='54' y='29' width='4.5' height='23' rx='1.5' fill='%23EAAA00'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=7.0" />
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- Scroll progress bar -->
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <!-- Side dot navigation -->
+  <nav class="side-dots" aria-label="Section navigation">
+    <ul>
+      <li><a href="#hero" data-target="hero" aria-label="Hello"><span class="dot-label">Hello</span><span class="dot"></span></a></li>
+      <li><a href="#about" data-target="about" aria-label="About"><span class="dot-label">About</span><span class="dot"></span></a></li>
+      <li><a href="#skills" data-target="skills" aria-label="Skills"><span class="dot-label">Skills</span><span class="dot"></span></a></li>
+      <li><a href="#experience" data-target="experience" aria-label="Experience"><span class="dot-label">Experience</span><span class="dot"></span></a></li>
+      <li><a href="#projects" data-target="projects" aria-label="Projects"><span class="dot-label">Projects</span><span class="dot"></span></a></li>
+      <li><a href="#education" data-target="education" aria-label="Education"><span class="dot-label">Education</span><span class="dot"></span></a></li>
+      <li><a href="#contact" data-target="contact" aria-label="Contact"><span class="dot-label">Contact</span><span class="dot"></span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="brand-logo" aria-label="Srinu Home">
+        <span class="logo-emblem" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="64" height="64" rx="14" fill="#DDE3E8" />
+            <g transform="translate(-5,-1)"><path d="M43 21C40 17.5 36 16 32 16C26 16 22 19 22 23.5C22 28 26 29.5 32 31C38 32.5 42 34 42 39.5C42 45 38 48 32 48C27.5 48 23.5 46.5 21 43" stroke="#3A0F34" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" /></g>
+            <rect x="42" y="43" width="4.5" height="9" rx="1.5" fill="#EAAA00" />
+            <rect x="48" y="36" width="4.5" height="16" rx="1.5" fill="#EAAA00" />
+            <rect x="54" y="29" width="4.5" height="23" rx="1.5" fill="#EAAA00" />
+          </svg>
+        </span>
+        <span class="brand-text">Srinu<span class="brand-dot">.</span></span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#education">Education</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="mailto:srinivaspoojary188@gmail.com" class="nav-hide">Email</a>
+        <a href="https://github.com/SrinivasPoojary" target="_blank" rel="noopener" class="nav-hide">GitHub</a>
+        <a href="https://www.linkedin.com/in/srinivaspoojary/" target="_blank" rel="noopener" class="nav-hide">LinkedIn</a>
+        <a href="Resume.pdf" target="_blank" rel="noopener" class="nav-resume-btn js-resume-link">Resume</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <h1 class="reveal-on-scroll">Hi, I'm <span class="name">Srinivas Poojary</span></h1>
+          <p class="hero-role reveal-on-scroll">
+            I am a <strong>24 year young data analyst</strong> at Responsive Industries Ltd.<br />
+            I turn data into <span class="typed" id="typed">dashboards</span>
+          </p>
+          <div class="pill reveal-on-scroll">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Mumbai, India</span>
+          </div>
+          <div class="hero-actions reveal-on-scroll">
+            <a href="#projects" class="btn-primary">Explore Projects</a>
+            <a href="Resume.pdf" target="_blank" rel="noopener" class="btn-outline js-resume-link">Resume</a>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-hint" aria-label="Scroll to About"><span></span></a>
+    </section>
+
+    <!-- About: overview bento -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head reveal-on-scroll">
+          <span class="eyebrow">01 · Overview</span>
+          <h2 class="section-title">About Me</h2>
+        </div>
+
+        <p class="lead reveal-on-scroll">
+          I am a Data Analyst based in Mumbai with a strong foundation in commerce, financial auditing, and business intelligence. Currently at <strong>Responsive Industries Ltd.</strong>, I analyze sales, export, and operational workflows to deliver reliable reporting for leadership, from 11-table star schemas and custom DAX measures in Power BI to MySQL queries and predictive pipelines in Python.
+        </p>
+
+        <div class="bento">
+          <article class="card reveal-on-scroll">
+            <div class="card-label">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              Now
+            </div>
+            <span class="badge">Since Apr 2025</span>
+            <h3>Data Analyst (MIS Analyst)</h3>
+            <p>Responsive Industries Ltd. · Mumbai</p>
+          </article>
+          <!-- Additional Bento Cards omitted for brevity, ensure you keep all your cards here as they were -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills, Experience, Projects, Education omitted for brevity, keep your previous code exactly as it was -->
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head reveal-on-scroll">
+          <span class="eyebrow">06 · Contact</span>
+          <h2 class="section-title">Let's Connect</h2>
+        </div>
+        <p class="lead reveal-on-scroll">Open to Data Analyst, Business Analyst, BI Analyst, and MIS Analyst opportunities in Mumbai.</p>
+
+        <div class="contact-grid">
+          <form class="contact-form card reveal-on-scroll" id="contactForm">
+            <div>
+              <label for="cf-name">Your name</label>
+              <input id="cf-name" name="name" type="text" placeholder="What's your good name?" required />
+            </div>
+            <div>
+              <label for="cf-email">Your email</label>
+              <input id="cf-email" name="email" type="email" placeholder="What's your email address?" required />
+            </div>
+            <div>
+              <label for="cf-message">Your message</label>
+              <textarea id="cf-message" name="message" placeholder="What do you want to say?" required></textarea>
+            </div>
+            <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" />
+            <button type="submit" class="btn-primary">Send message</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+            <p class="form-note">Your message goes straight to my inbox.</p>
+          </form>
+
+          <!-- Integrated Right Column: Node Network + Social Links -->
+          <div class="contact-right-col">
+            <div id="particles-js" class="network-wrapper reveal-on-scroll"></div>
+
+            <aside class="card reveal-on-scroll">
+              <div class="card-label">
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Find me here
+              </div>
+              <ul class="contact-list">
+                <li><a href="mailto:srinivaspoojary188@gmail.com"><span><small>Email</small>srinivaspoojary188@gmail.com</span><span aria-hidden="true">&#8599;</span></a></li>
+                <li><a href="https://wa.me/919372607886" target="_blank" rel="noopener"><span><small>WhatsApp</small>+91 9372607886</span><span aria-hidden="true">&#8599;</span></a></li>
+                <li><a href="https://www.linkedin.com/in/srinivaspoojary/" target="_blank" rel="noopener"><span><small>LinkedIn</small>srinivaspoojary</span><span aria-hidden="true">&#8599;</span></a></li>
+                <li><a href="https://github.com/SrinivasPoojary" target="_blank" rel="noopener"><span><small>GitHub</small>SrinivasPoojary</span><span aria-hidden="true">&#8599;</span></a></li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Srinivas Poojary (Srinu). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Back to top -->
+  <button class="to-top" id="toTop" aria-label="Back to top" type="button">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- External Libraries -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  
+  <!-- Your Custom Scripts -->
+  <script src="script.js"></script>
+
+</body>
+</html>
