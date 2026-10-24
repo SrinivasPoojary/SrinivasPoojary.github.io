@@ -223,14 +223,32 @@ video {
   display: none;
 }
 
+/* Editorial Underline Animation */
 .nav-links a {
+  position: relative;
   font-size: 1rem;
   font-weight: 500;
   color: var(--muted);
+  text-decoration: none;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
   color: var(--accent);
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-actions {
@@ -255,6 +273,7 @@ video {
   padding: 0.5rem 1.15rem;
   border-radius: 8px;
   font-weight: 700;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .nav-actions .nav-resume-btn:hover {
@@ -346,9 +365,7 @@ video {
 }
 
 @keyframes blink {
-  50% {
-    opacity: 0;
-  }
+  50% { opacity: 0; }
 }
 
 .pill {
@@ -398,17 +415,9 @@ video {
 }
 
 @keyframes scrollDot {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  70% {
-    transform: translateY(18px);
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-  }
+  0% { transform: translateY(0); opacity: 1; }
+  70% { transform: translateY(18px); opacity: 0; }
+  100% { opacity: 0; }
 }
 
 /* ==========================================================================
@@ -426,6 +435,7 @@ video {
   padding: 0.8rem 1.6rem;
   border-radius: 10px;
   cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-primary {
@@ -530,16 +540,11 @@ video {
   border-color: var(--line-accent);
   background: var(--card-hover);
   transform: translateY(-3px);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
 }
 
-.span-2 {
-  grid-column: span 2;
-}
-
-.span-3 {
-  grid-column: span 3;
-}
+.span-2 { grid-column: span 2; }
+.span-3 { grid-column: span 3; }
 
 .card-label {
   display: flex;
@@ -551,9 +556,7 @@ video {
   margin-bottom: 1.1rem;
 }
 
-.card-label .ico {
-  color: var(--accent);
-}
+.card-label .ico { color: var(--accent); }
 
 .big {
   font-family: var(--font-head);
@@ -577,9 +580,7 @@ video {
   font-size: 0.97rem;
 }
 
-.card-spacer {
-  height: 1.2rem;
-}
+.card-spacer { height: 1.2rem; }
 
 .badge {
   display: inline-block;
@@ -673,9 +674,7 @@ video {
   gap: 1.4rem;
 }
 
-.timeline-item {
-  position: relative;
-}
+.timeline-item { position: relative; }
 
 .timeline-marker {
   position: absolute;
@@ -718,13 +717,8 @@ video {
   font-size: 0.97rem;
 }
 
-.timeline-list li {
-  margin-bottom: 0.35rem;
-}
-
-.timeline-list li::marker {
-  color: var(--accent);
-}
+.timeline-list li { margin-bottom: 0.35rem; }
+.timeline-list li::marker { color: var(--accent); }
 
 /* ==========================================================================
    Projects
@@ -740,6 +734,16 @@ video {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.4);
+  border-color: var(--line-accent);
 }
 
 .project-img-wrapper {
@@ -974,15 +978,16 @@ video {
 }
 
 /* ==========================================================================
-   Scroll reveal (only active when JS is running)
+   Scroll reveal (Linked directly to your JS observer)
    ========================================================================== */
-.js .reveal {
+.reveal-on-scroll {
   opacity: 0;
   transform: translateY(28px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.js .reveal.in {
+.reveal-on-scroll.is-revealed {
   opacity: 1;
   transform: none;
 }
@@ -991,30 +996,17 @@ video {
    Responsive
    ========================================================================== */
 @media (max-width: 1180px) {
-  .side-dots {
-    display: none;
-  }
+  .side-dots { display: none; }
 }
 
 @media (max-width: 1050px) {
-  .nav-actions .nav-hide {
-    display: none;
-  }
+  .nav-actions .nav-hide { display: none; }
 }
 
 @media (max-width: 980px) {
-  .bento {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .span-2,
-  .span-3 {
-    grid-column: span 2;
-  }
-
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
+  .bento { grid-template-columns: 1fr 1fr; }
+  .span-2, .span-3 { grid-column: span 2; }
+  .contact-grid { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 760px) {
@@ -1025,72 +1017,32 @@ video {
     min-height: 0;
     gap: 0.4rem 1rem;
   }
-
   .nav-links {
     order: 3;
     width: 100%;
     gap: 1.3rem;
     padding: 0.35rem 0 0.5rem;
   }
-
-  .nav-links a {
-    font-size: 0.92rem;
-  }
-
-  .hero {
-    min-height: 0;
-    padding: 3.5rem 0 6rem;
-  }
-
-  .hero-inner {
-    padding-left: 1.6rem;
-  }
-
-  .section {
-    padding: 4rem 0;
-    scroll-margin-top: 110px;
-  }
+  .nav-links a { font-size: 0.92rem; }
+  .hero { min-height: 0; padding: 3.5rem 0 6rem; }
+  .hero-inner { padding-left: 1.6rem; }
+  .section { padding: 4rem 0; scroll-margin-top: 110px; }
 }
 
 @media (max-width: 620px) {
-  .bento {
-    grid-template-columns: 1fr;
-  }
-
-  .span-2,
-  .span-3 {
-    grid-column: span 1;
-  }
-
-  .timeline {
-    padding-left: 1.4rem;
-  }
-
-  .timeline-marker {
-    left: -2rem;
-  }
-
-  .hero-actions .btn-primary,
-  .hero-actions .btn-outline {
-    width: 100%;
-  }
+  .bento { grid-template-columns: 1fr; }
+  .span-2, .span-3 { grid-column: span 1; }
+  .timeline { padding-left: 1.4rem; }
+  .timeline-marker { left: -2rem; }
+  .hero-actions .btn-primary, .hero-actions .btn-outline { width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-
-  .js .reveal {
-    opacity: 1;
-    transform: none;
-  }
+  .reveal-on-scroll { opacity: 1; transform: none; }
 }
