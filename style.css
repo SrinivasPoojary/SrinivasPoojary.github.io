@@ -840,7 +840,7 @@ video {
 }
 
 /* ==========================================================================
-   Contact Area Layout
+   Contact
    ========================================================================== */
 .contact-grid {
   display: grid;
@@ -931,36 +931,6 @@ video {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--muted);
-}
-
-/* ==========================================================================
-   Node Network & Contact Right Column Layout
-   ========================================================================== */
-.contact-right-col {
-  display: grid;
-  gap: 1.4rem;
-}
-
-.network-wrapper {
-  width: 100%;
-  min-height: 240px;
-  background-color: var(--card);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  overflow: hidden;
-  position: relative;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.network-wrapper:hover {
-  border-color: var(--line-accent);
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
-}
-
-.network-wrapper canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
 }
 
 /* ==========================================================================
