@@ -1028,7 +1028,7 @@ video {
   .hero-inner { padding-left: 1.6rem; }
   .section { padding: 4rem 0; scroll-margin-top: 110px; }
 }
-
+ 
 @media (max-width: 620px) {
   .bento { grid-template-columns: 1fr; }
   .span-2, .span-3 { grid-column: span 1; }
