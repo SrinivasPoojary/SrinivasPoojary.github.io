@@ -290,6 +290,24 @@ video {
   display: flex;
   align-items: center;
   padding: 4rem 0 6rem;
+  overflow: hidden;
+}
+
+/* Particles Background Canvas */
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+/* Keeps all text, links, and buttons above the particle canvas */
+.hero .container {
+  position: relative;
+  z-index: 2;
 }
 
 .hero-inner {
@@ -404,6 +422,7 @@ video {
   justify-content: center;
   padding-top: 9px;
   opacity: 0.8;
+  z-index: 2;
 }
 
 .scroll-hint span {
@@ -1028,7 +1047,7 @@ video {
   .hero-inner { padding-left: 1.6rem; }
   .section { padding: 4rem 0; scroll-margin-top: 110px; }
 }
- 
+
 @media (max-width: 620px) {
   .bento { grid-template-columns: 1fr; }
   .span-2, .span-3 { grid-column: span 1; }
