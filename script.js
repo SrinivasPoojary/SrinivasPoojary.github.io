@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const targets = document.querySelectorAll(
     '.section-title, .about-content, .skills-grid, .timeline-item, .project-card, .education-item, .contact-desc, .contact-links'
   );
-
+ 
   // Set up the IntersectionObserver
   const observer = new IntersectionObserver(
     (entries, obs) => {
