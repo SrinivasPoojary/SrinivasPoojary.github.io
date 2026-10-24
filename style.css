@@ -16,7 +16,7 @@
   --bg-elevated: rgba(58, 15, 52, 0.04);
   --text-dark: #3A0F34;
   --text-muted: rgba(58, 15, 52, 0.75);
-  --border-light: rgba(58, 15, 52, 0.18);
+  --border-light: rgba(58, 15, 52, 0.15);
   --primary-blue: #EAAA00;
   --primary-hover: #3A0F34;
   --accent-soft: rgba(234, 170, 0, 0.18);
@@ -36,12 +36,48 @@ html {
   scroll-behavior: smooth;
 }
 
+/* ADVANCED BACKROUND PATTERN: Tech dots, faint grids, and gradient blobs */
 body {
   font-family: var(--font-base);
   background-color: var(--ice-silver);
+  /* Elegant grid dot background styling */
+  background-image: 
+    radial-gradient(rgba(58, 15, 52, 0.04) 1.5px, transparent 1.5px),
+    linear-gradient(rgba(58, 15, 52, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 15, 52, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px, 120px 120px, 120px 120px;
+  background-position: 0 0, 0 0, 0 0;
   color: var(--deep-aubergine);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background "Blur Blobs" (Deep Aubergine & Marigold soft glow spheres) */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -2;
+  filter: blur(120px);
+  opacity: 0.18;
+}
+
+body::before {
+  top: 15%;
+  right: -10%;
+  background: var(--deep-aubergine);
+}
+
+body::after {
+  top: 60%;
+  left: -10%;
+  background: var(--marigold);
 }
 
 a {
@@ -66,10 +102,13 @@ video {
 .section {
   padding: 4.5rem 0;
   border-bottom: 1px solid var(--border-light);
+  position: relative;
 }
 
+/* Additional Blur blob for Alternate sections */
 .section-alt {
-  background-color: var(--bg-elevated);
+  background-color: rgba(58, 15, 52, 0.02);
+  backdrop-filter: blur(2px);
 }
 
 .section-title {
@@ -94,15 +133,28 @@ video {
   border-radius: 2px;
 }
 
+/* Decorative Technical Border Corners */
+.section::before {
+  content: "┌                 ┐";
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: rgba(58, 15, 52, 0.15);
+  pointer-events: none;
+}
+
 /* ==========================================================================
-   Navigation Bar
+   Navigation Bar (Modified for glassmorphism overlay)
    ========================================================================== */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(221, 227, 232, 0.94);
-  backdrop-filter: blur(8px);
+  background-color: rgba(221, 227, 232, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -157,25 +209,42 @@ video {
   padding: 0.45rem 0.95rem;
   border-radius: 6px;
   font-weight: 600;
-  border: 1px solid var(--deep-aubergine);
+  border: 1.5px solid var(--deep-aubergine);
 }
 
 .nav-links .nav-resume-btn:hover {
   background-color: var(--marigold);
   color: var(--deep-aubergine);
-  border-color: var(--deep-aubergine);
+  border-color: var(--marigold);
 }
 
 /* ==========================================================================
-   Hero Section
+   Hero Section with Orbit/Wave Graphic Details
    ========================================================================== */
 .hero {
-  padding: 5.5rem 0 4.5rem;
+  padding: 6.5rem 0 5rem;
   border-bottom: 1px solid var(--border-light);
+  position: relative;
+}
+
+/* Tech mesh visual in hero bg */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 5%;
+  width: 40%;
+  height: 100%;
+  background: radial-gradient(circle at right, rgba(234, 170, 0, 0.03) 0%, transparent 70%),
+              repeating-linear-gradient(45deg, rgba(58, 15, 52, 0.01) 0px, rgba(58, 15, 52, 0.01) 1px, transparent 1px, transparent 20px);
+  mask-image: linear-gradient(to left, black, transparent);
+  pointer-events: none;
 }
 
 .hero-content {
   max-width: 780px;
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow-badge {
@@ -190,10 +259,11 @@ video {
   padding: 0.35rem 0.8rem;
   border-radius: 4px;
   margin-bottom: 1.25rem;
+  backdrop-filter: blur(4px);
 }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 4.5vw, 3.35rem);
+  font-size: clamp(2.3rem, 5vw, 3.5rem);
   font-weight: 700;
   color: var(--deep-aubergine);
   line-height: 1.15;
@@ -202,11 +272,13 @@ video {
 }
 
 .highlight-text {
-  border-bottom: 4px solid var(--marigold);
+  border-bottom: 5px solid var(--marigold);
+  display: inline-block;
+  line-height: 0.95;
 }
 
 .hero-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.12rem;
   color: var(--text-muted);
   margin-bottom: 2rem;
   max-width: 680px;
@@ -219,7 +291,7 @@ video {
 }
 
 /* ==========================================================================
-   Buttons (Strictly #DDE3E8, #3A0F34, #EAAA00)
+   Buttons
    ========================================================================== */
 .btn-primary {
   display: inline-flex;
@@ -229,16 +301,17 @@ video {
   color: var(--deep-aubergine);
   font-weight: 600;
   font-size: 0.95rem;
-  padding: 0.72rem 1.4rem;
+  padding: 0.72rem 1.40rem;
   border-radius: 6px;
   border: 1.5px solid var(--deep-aubergine);
+  box-shadow: 2px 2px 0px var(--deep-aubergine);
 }
 
 .btn-primary:hover {
   background-color: var(--deep-aubergine);
   color: var(--marigold);
-  border-color: var(--deep-aubergine);
-  transform: translateY(-1px);
+  box-shadow: 0px 0px 0px var(--deep-aubergine);
+  transform: translate(2px, 2px);
 }
 
 .btn-secondary {
@@ -249,15 +322,17 @@ video {
   color: var(--ice-silver);
   font-weight: 600;
   font-size: 0.95rem;
-  padding: 0.72rem 1.4rem;
+  padding: 0.72rem 1.40rem;
   border-radius: 6px;
   border: 1.5px solid var(--deep-aubergine);
+  box-shadow: 2px 2px 0px var(--marigold);
 }
 
 .btn-secondary:hover {
   background-color: var(--marigold);
   color: var(--deep-aubergine);
-  transform: translateY(-1px);
+  box-shadow: 0px 0px 0px var(--marigold);
+  transform: translate(2px, 2px);
 }
 
 .btn-outline {
@@ -268,7 +343,7 @@ video {
   color: var(--deep-aubergine);
   font-weight: 600;
   font-size: 0.95rem;
-  padding: 0.72rem 1.4rem;
+  padding: 0.72rem 1.40rem;
   border-radius: 6px;
   border: 1.5px solid var(--deep-aubergine);
 }
@@ -286,7 +361,7 @@ video {
   color: var(--ice-silver);
   font-weight: 600;
   font-size: 0.95rem;
-  padding: 0.72rem 1.4rem;
+  padding: 0.72rem 1.40rem;
   border-radius: 6px;
   border: 1.5px solid var(--marigold);
 }
@@ -302,7 +377,7 @@ video {
 }
 
 /* ==========================================================================
-   About & Info Cards
+   About & Modern Info Glass Cards
    ========================================================================== */
 .about-layout {
   display: grid;
@@ -328,18 +403,41 @@ video {
 }
 
 .info-card {
-  background-color: var(--ice-silver);
+  background-color: rgba(221, 227, 232, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid var(--border-light);
   border-left: 4px solid var(--marigold);
   padding: 1.15rem 1.25rem;
-  border-radius: 6px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  border-radius: 8px;
+  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover tech lighting */
+.info-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(234, 170, 0, 0.05), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.info-card:hover::after {
+  transform: translateX(100%);
 }
 
 .info-card:hover {
   border-color: var(--deep-aubergine);
   border-left-color: var(--marigold);
-  transform: translateY(-2px);
+  background-color: rgba(221, 227, 232, 0.8);
+  transform: translateY(-2px) scale(1.01);
+  box-shadow: 0 4px 12px rgba(58, 15, 52, 0.05);
 }
 
 .info-label {
@@ -359,7 +457,7 @@ video {
 }
 
 /* ==========================================================================
-   Skills Section
+   Skills Section with Accent Grid Style
    ========================================================================== */
 .skills-grid {
   display: grid;
@@ -368,16 +466,19 @@ video {
 }
 
 .skill-card {
-  background-color: var(--ice-silver);
+  background-color: rgba(221, 227, 232, 0.45);
+  backdrop-filter: blur(4px);
   border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 1.4rem;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .skill-card:hover {
   border-color: var(--deep-aubergine);
+  background-color: rgba(221, 227, 232, 0.8);
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(58, 15, 52, 0.05);
 }
 
 .skill-card h3 {
@@ -386,6 +487,7 @@ video {
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--marigold);
+  position: relative;
 }
 
 .tag-list {
@@ -402,6 +504,12 @@ video {
   border: 1px solid var(--marigold);
   padding: 0.28rem 0.65rem;
   border-radius: 4px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.tag:hover {
+  background-color: var(--marigold);
+  color: var(--deep-aubergine);
 }
 
 /* ==========================================================================
@@ -409,7 +517,7 @@ video {
    ========================================================================== */
 .timeline {
   position: relative;
-  border-left: 2px solid var(--deep-aubergine);
+  border-left: 2px dashed rgba(58, 15, 52, 0.5);
   margin-left: 0.75rem;
   padding-left: 1.75rem;
   display: flex;
@@ -430,18 +538,22 @@ video {
   border-radius: 50%;
   background-color: var(--marigold);
   border: 2.5px solid var(--deep-aubergine);
+  box-shadow: 0 0 0 4px rgba(234, 170, 0, 0.2);
 }
 
 .timeline-content {
-  background-color: var(--ice-silver);
+  background-color: rgba(221, 227, 232, 0.45);
+  backdrop-filter: blur(4px);
   border: 1px solid var(--border-light);
   border-radius: 8px;
   padding: 1.4rem;
-  transition: border-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .timeline-content:hover {
   border-color: var(--marigold);
+  background-color: rgba(221, 227, 232, 0.8);
+  box-shadow: 0 4px 15px rgba(58, 15, 52, 0.05);
 }
 
 .timeline-header {
@@ -495,18 +607,39 @@ video {
 }
 
 .project-card {
-  background-color: var(--ice-silver);
+  background-color: rgba(221, 227, 232, 0.55);
+  backdrop-filter: blur(4px);
   border: 1px solid var(--border-light);
   border-radius: 8px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s ease, border-color 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+}
+
+/* Top accent pattern on card hover */
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: var(--marigold);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  z-index: 10;
+}
+
+.project-card:hover::before {
+  transform: scaleX(1);
 }
 
 .project-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
   border-color: var(--deep-aubergine);
+  box-shadow: 0 10px 25px rgba(58, 15, 52, 0.08);
 }
 
 .project-img-wrapper {
@@ -515,6 +648,19 @@ video {
   overflow: hidden;
   background-color: var(--deep-aubergine);
   border-bottom: 2px solid var(--marigold);
+  position: relative;
+}
+
+/* Technical lens-mesh pattern over thumbnails */
+.project-img-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, transparent 40%, rgba(58, 15, 52, 0.25) 100%);
+  pointer-events: none;
 }
 
 .project-img-wrapper img,
@@ -522,6 +668,12 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-img-wrapper img,
+.project-card:hover .project-img-wrapper video {
+  transform: scale(1.03);
 }
 
 .project-card-body {
@@ -572,12 +724,25 @@ video {
 }
 
 /* ==========================================================================
-   Contact & Footer (Deep Aubergine High-Contrast Block)
+   Contact & Footer (Highly-designed Deep Aubergine Dark Block)
    ========================================================================== */
 .contact-section {
   background-color: var(--deep-aubergine);
+  background-image: 
+    radial-gradient(rgba(234, 170, 0, 0.08) 1.5px, transparent 1.5px),
+    linear-gradient(rgba(221, 227, 232, 0.02) 1px, transparent 1px);
+  background-size: 28px 28px, 112px 112px;
   color: var(--ice-silver);
   border-bottom: 1px solid rgba(221, 227, 232, 0.15);
+  position: relative;
+}
+
+/* Technical Corner brackets in contact section */
+.contact-section::before {
+  content: "┌ ─ ─ ─ ┐";
+  color: rgba(234, 170, 0, 0.2);
+  top: 2rem;
+  left: 2rem;
 }
 
 .contact-title {
@@ -596,6 +761,8 @@ video {
   display: flex;
   flex-wrap: wrap;
   gap: 0.9rem;
+  z-index: 5;
+  position: relative;
 }
 
 .footer {
@@ -604,6 +771,8 @@ video {
   padding: 1.75rem 0;
   text-align: center;
   font-size: 0.88rem;
+  border-top: 1px solid rgba(221, 227, 232, 0.1);
+  position: relative;
 }
 
 /* ==========================================================================
