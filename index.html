@@ -5,17 +5,34 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Srinu | Srinivas Poojary — Data Analyst Portfolio</title>
   <meta name="description" content="Portfolio of Srinivas Poojary (Srinu), Data Analyst based in Mumbai specializing in SQL, Power BI, Python, and MIS Reporting." />
+
+  <!-- Custom Designed "S" Favicon in Deep Aubergine (#3A0F34), Marigold (#EAAA00) & Ice Silver (#DDE3E8) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233A0F34'/%3E%3Crect x='4' y='4' width='56' height='56' rx='11' fill='none' stroke='%23EAAA00' stroke-width='2.5'/%3E%3Cpath d='M42 18H26c-3.3 0-6 2.7-6 6v2c0 3.3 2.7 6 6 6h12c3.3 0 6 2.7 6 6v2c0 3.3-2.7 6-6 6H20' fill='none' stroke='%23EAAA00' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='46' cy='18' r='3.5' fill='%23DDE3E8'/%3E%3Ccircle cx='18' cy='46' r='3.5' fill='%23DDE3E8'/%3E%3C/svg%3E" />
+  <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233A0F34'/%3E%3Crect x='4' y='4' width='56' height='56' rx='11' fill='none' stroke='%23EAAA00' stroke-width='2.5'/%3E%3Cpath d='M42 18H26c-3.3 0-6 2.7-6 6v2c0 3.3 2.7 6 6 6h12c3.3 0 6 2.7 6 6v2c0 3.3-2.7 6-6 6H20' fill='none' stroke='%23EAAA00' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='46' cy='18' r='3.5' fill='%23DDE3E8'/%3E%3Ccircle cx='18' cy='46' r='3.5' fill='%23DDE3E8'/%3E%3C/svg%3E" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=5.0" />
+  <link rel="stylesheet" href="style.css?v=6.0" />
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation with Custom Designed "S" Logo Emblem -->
   <header class="navbar">
     <div class="container nav-container">
-      <a href="#hero" class="brand-logo">Srinu<span class="brand-dot">.</span></a>
+      <a href="#hero" class="brand-logo" aria-label="Srinu Home">
+        <span class="logo-emblem" aria-hidden="true">
+          <svg viewBox="0 0 64 64" width="36" height="36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="64" height="64" rx="14" fill="#3A0F34" />
+            <rect x="4.5" y="4.5" width="55" height="55" rx="10.5" stroke="#EAAA00" stroke-width="2.5" />
+            <path d="M42 18H26C22.7 18 20 20.7 20 24V26C20 29.3 22.7 32 26 32H38C41.3 32 44 34.7 44 38V40C44 43.3 41.3 46 38 46H20" stroke="#EAAA00" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="46" cy="18" r="3.5" fill="#DDE3E8" />
+            <circle cx="18" cy="46" r="3.5" fill="#DDE3E8" />
+          </svg>
+        </span>
+        <span class="brand-text">Srinu<span class="brand-dot">.</span></span>
+      </a>
+
       <nav class="nav-links" aria-label="Main Navigation">
         <a href="#about">About</a>
         <a href="#skills">Skills</a>
@@ -23,7 +40,7 @@
         <a href="#projects">Projects</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <a href="Resume.pdf.pdf" target="_blank" rel="noopener" class="nav-resume-btn">Resume</a>
+        <a href="Resume.pdf" target="_blank" rel="noopener" class="nav-resume-btn js-resume-link">Resume</a>
       </nav>
     </div>
   </header>
@@ -53,7 +70,7 @@
 
         <div class="hero-actions">
           <a href="#projects" class="btn-primary">Explore Projects</a>
-          <a href="Resume.pdf.pdf" target="_blank" rel="noopener" class="btn-outline">Download Resume</a>
+          <a href="Resume.pdf" target="_blank" rel="noopener" class="btn-outline js-resume-link">Download Resume</a>
         </div>
 
         <div class="hero-quick-links">
@@ -374,7 +391,7 @@
     </div>
   </section>
 
-  <!-- Contact Section (Unified Button Colors for Email & WhatsApp) -->
+  <!-- Contact Section -->
   <section id="contact" class="section contact-section">
     <div class="container contact-container">
       <h2 class="section-title contact-title">Let's Connect</h2>
@@ -396,6 +413,31 @@
       <p>&copy; 2026 Srinivas Poojary (Srinu). All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Smart Resume Link Resolver (Prevents 404 Errors Automatically) -->
+  <script>
+    (async function resolveResumeFile() {
+      const candidateFiles = [
+        'Resume.pdf',
+        'Resume.pdf.pdf',
+        'resume.pdf',
+        'Srinivas_Poojary_Resume.pdf',
+        'Srinivas_Resume.pdf'
+      ];
+      const resumeLinks = document.querySelectorAll('.js-resume-link');
+      for (const file of candidateFiles) {
+        try {
+          const response = await fetch(file, { method: 'HEAD', cache: 'no-store' });
+          if (response.ok) {
+            resumeLinks.forEach(link => link.setAttribute('href', file));
+            break;
+          }
+        } catch (err) {
+          // Continue checking next filename candidate
+        }
+      }
+    })();
+  </script>
 
 </body>
 </html>
