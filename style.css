@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Strict 3-Color Clean Theme (No Dots, No L-Corners, No Side Blur Circles)
+   Strict 3-Color Clean Theme
    1. Ice Silver:     #DDE3E8
    2. Deep Aubergine: #3A0F34
    3. Marigold:       #EAAA00
@@ -60,7 +60,7 @@ video {
 }
 
 /* ==========================================================================
-   Section Layout (Clean — No L-Brackets, No Dots)
+   Section Layout
    ========================================================================== */
 .section {
   padding: 5rem 0;
@@ -94,7 +94,7 @@ video {
 }
 
 /* ==========================================================================
-   Navigation Bar
+   Navigation Bar & Custom "S" Emblem Logo
    ========================================================================== */
 .navbar {
   position: sticky;
@@ -109,16 +109,38 @@ video {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 70px;
+  height: 72px;
   gap: 1rem;
 }
 
 .brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
   font-size: 1.45rem;
   font-weight: 800;
   color: var(--deep-aubergine);
   letter-spacing: -0.03em;
   flex-shrink: 0;
+}
+
+.logo-emblem {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  box-shadow: 2px 2px 0px var(--marigold);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.brand-logo:hover .logo-emblem {
+  transform: translateY(-1px) rotate(-3deg);
+  box-shadow: 3px 3px 0px var(--deep-aubergine);
+}
+
+.brand-text {
+  display: inline-flex;
+  align-items: baseline;
 }
 
 .brand-dot {
@@ -422,7 +444,7 @@ video {
 }
 
 /* ==========================================================================
-   About Section (Clean Cards — No Blurred Circles)
+   About Section
    ========================================================================== */
 .about-layout {
   display: grid;
@@ -479,7 +501,7 @@ video {
 }
 
 /* ==========================================================================
-   Skills Section (Single Unified Color for All Tags & Cards)
+   Skills Section (Single Unified Color for All Tags)
    ========================================================================== */
 .skills-grid {
   display: grid;
@@ -515,7 +537,6 @@ video {
   gap: 0.5rem;
 }
 
-/* ONE Unified Color for All Tags Inside Skill & Project Boxes */
 .tag {
   font-size: 0.8rem;
   font-weight: 700;
@@ -610,7 +631,7 @@ video {
 }
 
 /* ==========================================================================
-   Projects Grid (Clean Borders — No Side Blur Orb)
+   Projects Grid
    ========================================================================== */
 .project-grid {
   display: grid;
@@ -703,7 +724,7 @@ video {
 }
 
 /* ==========================================================================
-   Contact & Footer (Single Unified Button Color for Email & WhatsApp)
+   Contact & Footer
    ========================================================================== */
 .contact-section {
   background-color: var(--deep-aubergine);
@@ -729,7 +750,6 @@ video {
   gap: 0.95rem;
 }
 
-/* Both Email & WhatsApp share this exact Marigold button style */
 .btn-contact {
   display: inline-flex;
   align-items: center;
