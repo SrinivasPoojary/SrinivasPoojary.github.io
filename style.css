@@ -1,8 +1,8 @@
 /* ==========================================================================
-   Strict 3-Color Theme:
-   1. Ice Silver:     #DDE3E8
-   2. Deep Aubergine: #3A0F34
-   3. Marigold:       #EAAA00
+   Strict 3-Color High-Detail Theme:
+   1. Ice Silver:     #DDE3E8  | rgb(221, 227, 232)
+   2. Deep Aubergine: #3A0F34  | rgb(58, 15, 52)
+   3. Marigold:       #EAAA00  | rgb(234, 170, 0)
    ========================================================================== */
 
 :root {
@@ -10,15 +10,10 @@
   --deep-aubergine: #3A0F34;
   --marigold: #EAAA00;
 
-  /* Mapped Theme Variables (100% derived from the 3 colors above) */
   --bg-main: #DDE3E8;
-  --bg-white: rgba(221, 227, 232, 0.7);
-  --bg-elevated: rgba(58, 15, 52, 0.04);
   --text-dark: #3A0F34;
-  --text-muted: rgba(58, 15, 52, 0.75);
-  --border-light: rgba(58, 15, 52, 0.15);
-  --primary-blue: #EAAA00;
-  --primary-hover: #3A0F34;
+  --text-muted: rgba(58, 15, 52, 0.78);
+  --border-light: rgba(58, 15, 52, 0.22);
   --accent-soft: rgba(234, 170, 0, 0.18);
   --font-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -36,17 +31,15 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ADVANCED BACKROUND PATTERN: Tech dots, faint grids, and gradient blobs */
+/* Crisp Technical Dot Matrix + Blueprint Grid Background */
 body {
   font-family: var(--font-base);
   background-color: var(--ice-silver);
-  /* Elegant grid dot background styling */
-  background-image: 
-    radial-gradient(rgba(58, 15, 52, 0.04) 1.5px, transparent 1.5px),
-    linear-gradient(rgba(58, 15, 52, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(58, 15, 52, 0.02) 1px, transparent 1px);
-  background-size: 24px 24px, 120px 120px, 120px 120px;
-  background-position: 0 0, 0 0, 0 0;
+  background-image:
+    radial-gradient(rgba(58, 15, 52, 0.18) 1.25px, transparent 1.25px),
+    linear-gradient(rgba(58, 15, 52, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 15, 52, 0.05) 1px, transparent 1px);
+  background-size: 22px 22px, 110px 110px, 110px 110px;
   color: var(--deep-aubergine);
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
@@ -54,30 +47,32 @@ body {
   overflow-x: hidden;
 }
 
-/* Background "Blur Blobs" (Deep Aubergine & Marigold soft glow spheres) */
+/* Ambient Page-Edge Orbs (Visible Above Body Background) */
 body::before,
 body::after {
   content: "";
-  position: absolute;
-  width: 450px;
-  height: 450px;
+  position: fixed;
   border-radius: 50%;
   pointer-events: none;
-  z-index: -2;
-  filter: blur(120px);
-  opacity: 0.18;
+  z-index: 0;
 }
 
 body::before {
-  top: 15%;
-  right: -10%;
-  background: var(--deep-aubergine);
+  width: 220px;
+  height: 220px;
+  top: 18%;
+  left: -70px;
+  background: radial-gradient(circle, rgba(58, 15, 52, 0.75) 0%, rgba(58, 15, 52, 0) 70%);
+  filter: blur(18px);
 }
 
 body::after {
-  top: 60%;
-  left: -10%;
-  background: var(--marigold);
+  width: 260px;
+  height: 260px;
+  bottom: 12%;
+  right: -60px;
+  background: radial-gradient(circle, rgba(234, 170, 0, 0.75) 0%, rgba(234, 170, 0, 0) 70%);
+  filter: blur(20px);
 }
 
 a {
@@ -97,29 +92,57 @@ video {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  position: relative;
+  z-index: 2;
 }
 
+/* ==========================================================================
+   Sections with 4-Corner Technical Blueprint Brackets
+   ========================================================================== */
 .section {
-  padding: 4.5rem 0;
+  padding: 5rem 0;
   border-bottom: 1px solid var(--border-light);
   position: relative;
+  overflow: hidden;
 }
 
-/* Additional Blur blob for Alternate sections */
+/* 4-Corner Blueprint L-Brackets inside every section */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    /* Top-Left */
+    linear-gradient(to right, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 0 0,
+    /* Top-Right */
+    linear-gradient(to left, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 100% 0,
+    linear-gradient(to bottom, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 100% 0,
+    /* Bottom-Left */
+    linear-gradient(to right, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 0 100%,
+    linear-gradient(to top, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 0 100%,
+    /* Bottom-Right */
+    linear-gradient(to left, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 100% 100%,
+    linear-gradient(to top, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
+}
+
 .section-alt {
-  background-color: rgba(58, 15, 52, 0.02);
-  backdrop-filter: blur(2px);
+  background-color: rgba(58, 15, 52, 0.03);
 }
 
 .section-title {
-  font-size: 1.75rem;
+  font-size: 1.9rem;
   font-weight: 700;
   color: var(--deep-aubergine);
   margin-bottom: 2.25rem;
   letter-spacing: -0.02em;
   display: inline-block;
   position: relative;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.55rem;
 }
 
 .section-title::after {
@@ -127,34 +150,22 @@ video {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 48px;
-  height: 4px;
+  width: 64px;
+  height: 5px;
   background-color: var(--marigold);
-  border-radius: 2px;
-}
-
-/* Decorative Technical Border Corners */
-.section::before {
-  content: "┌                 ┐";
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  font-family: monospace;
-  font-size: 0.8rem;
-  color: rgba(58, 15, 52, 0.15);
-  pointer-events: none;
+  border-radius: 3px;
 }
 
 /* ==========================================================================
-   Navigation Bar (Modified for glassmorphism overlay)
+   Navigation Bar
    ========================================================================== */
 .navbar {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: rgba(221, 227, 232, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background-color: rgba(221, 227, 232, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid var(--border-light);
 }
 
@@ -167,7 +178,7 @@ video {
 }
 
 .brand-logo {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: var(--deep-aubergine);
   letter-spacing: -0.03em;
@@ -205,89 +216,125 @@ video {
 
 .nav-links .nav-resume-btn {
   background-color: var(--deep-aubergine);
-  color: var(--ice-silver);
-  padding: 0.45rem 0.95rem;
+  color: var(--marigold);
+  padding: 0.48rem 1.05rem;
   border-radius: 6px;
   font-weight: 600;
-  border: 1.5px solid var(--deep-aubergine);
+  border: 1.5px solid var(--marigold);
 }
 
 .nav-links .nav-resume-btn:hover {
   background-color: var(--marigold);
   color: var(--deep-aubergine);
-  border-color: var(--marigold);
+  border-color: var(--deep-aubergine);
 }
 
 /* ==========================================================================
-   Hero Section with Orbit/Wave Graphic Details
+   Hero Section with 3D Wireframe Globe & Flowing Data Waves (Inline SVG)
    ========================================================================== */
 .hero {
-  padding: 6.5rem 0 5rem;
+  padding: 6.5rem 0 5.5rem;
   border-bottom: 1px solid var(--border-light);
   position: relative;
+  overflow: hidden;
 }
 
-/* Tech mesh visual in hero bg */
+/* 3D Wireframe Globe + Data Waves on Right Side of Hero */
 .hero::before {
   content: "";
   position: absolute;
-  top: 0;
-  right: 5%;
-  width: 40%;
-  height: 100%;
-  background: radial-gradient(circle at right, rgba(234, 170, 0, 0.03) 0%, transparent 70%),
-              repeating-linear-gradient(45deg, rgba(58, 15, 52, 0.01) 0px, rgba(58, 15, 52, 0.01) 1px, transparent 1px, transparent 20px);
-  mask-image: linear-gradient(to left, black, transparent);
+  top: -10px;
+  right: 2%;
+  width: 560px;
+  height: 520px;
   pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+  background-repeat: no-repeat;
+  background-position: center right;
+  background-size: contain;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 520' fill='none'%3E%3Cg opacity='0.85'%3E%3Ccircle cx='390' cy='240' r='175' stroke='%233A0F34' stroke-width='1.2' stroke-opacity='0.35'/%3E%3Ccircle cx='390' cy='240' r='145' stroke='%23EAAA00' stroke-width='1' stroke-dasharray='4 4' stroke-opacity='0.55'/%3E%3Cellipse cx='390' cy='240' rx='175' ry='65' transform='rotate(-22 390 240)' stroke='%233A0F34' stroke-width='1.1' stroke-opacity='0.35'/%3E%3Cellipse cx='390' cy='240' rx='175' ry='115' transform='rotate(-22 390 240)' stroke='%233A0F34' stroke-width='1' stroke-opacity='0.28'/%3E%3Cellipse cx='390' cy='240' rx='65' ry='175' transform='rotate(-22 390 240)' stroke='%233A0F34' stroke-width='1.1' stroke-opacity='0.35'/%3E%3Cellipse cx='390' cy='240' rx='115' ry='175' transform='rotate(-22 390 240)' stroke='%23EAAA00' stroke-width='1.1' stroke-opacity='0.45'/%3E%3Cpath d='M10 430 C 140 340, 240 470, 370 370 C 460 300, 520 350, 595 290' stroke='%233A0F34' stroke-width='1.5' stroke-opacity='0.35'/%3E%3Cpath d='M10 450 C 150 365, 250 490, 385 385 C 470 315, 530 365, 595 310' stroke='%23EAAA00' stroke-width='1.5' stroke-opacity='0.55'/%3E%3Cpath d='M10 470 C 160 390, 260 505, 400 400 C 480 330, 540 380, 595 330' stroke='%233A0F34' stroke-width='1.1' stroke-opacity='0.25'/%3E%3Ccircle cx='325' cy='180' r='4' fill='%23EAAA00'/%3E%3Ccircle cx='455' cy='215' r='4' fill='%233A0F34'/%3E%3Ccircle cx='370' cy='310' r='4' fill='%23EAAA00'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Blueprint corner frame inside Hero */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 22px;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 0 0,
+    linear-gradient(to left, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 100% 0,
+    linear-gradient(to bottom, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 100% 0,
+    linear-gradient(to right, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 0 100%,
+    linear-gradient(to top, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 0 100%,
+    linear-gradient(to left, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 100% 100%,
+    linear-gradient(to top, rgba(58, 15, 52, 0.45) 2px, transparent 2px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
 }
 
 .hero-content {
-  max-width: 780px;
+  max-width: 760px;
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .eyebrow-badge {
   display: inline-block;
-  background-color: var(--accent-soft);
+  background-color: rgba(221, 227, 232, 0.85);
   color: var(--deep-aubergine);
-  border: 1px solid var(--marigold);
+  border: 1.5px solid var(--marigold);
   font-size: 0.82rem;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  padding: 0.35rem 0.8rem;
-  border-radius: 4px;
-  margin-bottom: 1.25rem;
-  backdrop-filter: blur(4px);
+  letter-spacing: 0.04em;
+  padding: 0.38rem 0.95rem;
+  border-radius: 999px;
+  margin-bottom: 1.35rem;
+  box-shadow: 0 2px 10px rgba(234, 170, 0, 0.18);
 }
 
 .hero h1 {
-  font-size: clamp(2.3rem, 5vw, 3.5rem);
+  font-size: clamp(2.35rem, 5vw, 3.6rem);
   font-weight: 700;
   color: var(--deep-aubergine);
   line-height: 1.15;
   letter-spacing: -0.03em;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.35rem;
 }
 
+/* Bold Marigold Marker Underline under Name */
 .highlight-text {
-  border-bottom: 5px solid var(--marigold);
+  position: relative;
   display: inline-block;
-  line-height: 0.95;
+  z-index: 1;
+}
+
+.highlight-text::after {
+  content: "";
+  position: absolute;
+  left: -4px;
+  right: -4px;
+  bottom: 2px;
+  height: 10px;
+  background-color: var(--marigold);
+  z-index: -1;
+  border-radius: 4px;
+  transform: rotate(-0.6deg);
 }
 
 .hero-subtitle {
   font-size: 1.12rem;
   color: var(--text-muted);
-  margin-bottom: 2rem;
-  max-width: 680px;
+  margin-bottom: 2.1rem;
+  max-width: 650px;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
+  gap: 0.95rem;
 }
 
 /* ==========================================================================
@@ -299,12 +346,12 @@ video {
   justify-content: center;
   background-color: var(--marigold);
   color: var(--deep-aubergine);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
-  padding: 0.72rem 1.40rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 6px;
-  border: 1.5px solid var(--deep-aubergine);
-  box-shadow: 2px 2px 0px var(--deep-aubergine);
+  border: 2px solid var(--deep-aubergine);
+  box-shadow: 3px 3px 0px var(--deep-aubergine);
 }
 
 .btn-primary:hover {
@@ -322,10 +369,10 @@ video {
   color: var(--ice-silver);
   font-weight: 600;
   font-size: 0.95rem;
-  padding: 0.72rem 1.40rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 6px;
-  border: 1.5px solid var(--deep-aubergine);
-  box-shadow: 2px 2px 0px var(--marigold);
+  border: 2px solid var(--deep-aubergine);
+  box-shadow: 3px 3px 0px var(--marigold);
 }
 
 .btn-secondary:hover {
@@ -339,13 +386,13 @@ video {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
+  background-color: rgba(221, 227, 232, 0.75);
   color: var(--deep-aubergine);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.95rem;
-  padding: 0.72rem 1.40rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 6px;
-  border: 1.5px solid var(--deep-aubergine);
+  border: 2px solid var(--deep-aubergine);
 }
 
 .btn-outline:hover {
@@ -361,7 +408,7 @@ video {
   color: var(--ice-silver);
   font-weight: 600;
   font-size: 0.95rem;
-  padding: 0.72rem 1.40rem;
+  padding: 0.75rem 1.5rem;
   border-radius: 6px;
   border: 1.5px solid var(--marigold);
 }
@@ -372,72 +419,94 @@ video {
 }
 
 .btn-sm {
-  padding: 0.5rem 1rem;
-  font-size: 0.86rem;
+  padding: 0.5rem 1.05rem;
+  font-size: 0.85rem;
 }
 
 /* ==========================================================================
-   About & Modern Info Glass Cards
+   About Section + Vivid Deep Aubergine Glowing Spheres Behind Cards
    ========================================================================== */
 .about-layout {
   display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2.75rem;
   align-items: start;
+  position: relative;
 }
 
 .about-text p {
-  margin-bottom: 1.1rem;
+  margin-bottom: 1.15rem;
   color: var(--text-muted);
-  font-size: 1.02rem;
+  font-size: 1.03rem;
 }
 
 .about-text strong {
   color: var(--deep-aubergine);
-  font-weight: 600;
+  font-weight: 700;
 }
 
+/* Container for the 3 Info Cards WITH the Rich Deep Aubergine Blur Spheres */
 .info-grid {
   display: grid;
-  gap: 1rem;
-}
-
-.info-card {
-  background-color: rgba(221, 227, 232, 0.45);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
-  border: 1px solid var(--border-light);
-  border-left: 4px solid var(--marigold);
-  padding: 1.15rem 1.25rem;
-  border-radius: 8px;
-  transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+  gap: 1.25rem;
   position: relative;
-  overflow: hidden;
+  z-index: 1;
 }
 
-/* Hover tech lighting */
-.info-card::after {
+/* Top-Left Deep Aubergine Blur Orb directly behind Location/Languages cards */
+.info-grid::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(120deg, transparent, rgba(234, 170, 0, 0.05), transparent);
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
+  top: -35px;
+  left: -45px;
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(58, 15, 52, 0.85) 0%, rgba(58, 15, 52, 0.35) 50%, rgba(58, 15, 52, 0) 75%);
+  filter: blur(16px);
+  z-index: -1;
+  pointer-events: none;
 }
 
-.info-card:hover::after {
-  transform: translateX(100%);
+/* Bottom-Right Deep Aubergine Blur Orb directly behind Languages/Interests cards */
+.info-grid::after {
+  content: "";
+  position: absolute;
+  bottom: 15px;
+  right: -30px;
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(58, 15, 52, 0.82) 0%, rgba(58, 15, 52, 0.3) 50%, rgba(58, 15, 52, 0) 75%);
+  filter: blur(18px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Frosted Stacked Glass Cards (Matches Mockup) */
+.info-card {
+  background: linear-gradient(135deg, rgba(221, 227, 232, 0.78) 0%, rgba(221, 227, 232, 0.52) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(221, 227, 232, 0.85);
+  border-left: 5px solid var(--marigold);
+  padding: 1.2rem 1.35rem;
+  border-radius: 10px;
+  position: relative;
+  /* Multi-layered stacked card effect + Marigold left glow */
+  box-shadow:
+    -6px 0 18px -4px rgba(234, 170, 0, 0.55),
+    6px 6px 0 -1px rgba(221, 227, 232, 0.45),
+    6px 6px 0 0 rgba(58, 15, 52, 0.18),
+    12px 12px 0 -1px rgba(221, 227, 232, 0.25),
+    12px 12px 0 0 rgba(58, 15, 52, 0.12),
+    0 10px 25px rgba(58, 15, 52, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .info-card:hover {
-  border-color: var(--deep-aubergine);
-  border-left-color: var(--marigold);
-  background-color: rgba(221, 227, 232, 0.8);
-  transform: translateY(-2px) scale(1.01);
-  box-shadow: 0 4px 12px rgba(58, 15, 52, 0.05);
+  transform: translateY(-3px);
+  border-color: var(--marigold);
 }
 
 .info-label {
@@ -445,49 +514,52 @@ video {
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
+  letter-spacing: 0.06em;
+  color: var(--deep-aubergine);
+  opacity: 0.8;
   margin-bottom: 0.25rem;
 }
 
 .info-value {
-  font-size: 0.98rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--deep-aubergine);
 }
 
 /* ==========================================================================
-   Skills Section with Accent Grid Style
+   Skills Section
    ========================================================================== */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1.25rem;
+  gap: 1.35rem;
+  position: relative;
 }
 
 .skill-card {
-  background-color: rgba(221, 227, 232, 0.45);
-  backdrop-filter: blur(4px);
-  border: 1px solid var(--border-light);
+  background: rgba(221, 227, 232, 0.75);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(58, 15, 52, 0.25);
+  border-top: 4px solid var(--deep-aubergine);
   border-radius: 8px;
-  padding: 1.4rem;
+  padding: 1.45rem;
+  box-shadow: 6px 6px 0px rgba(58, 15, 52, 0.08);
   transition: all 0.2s ease;
 }
 
 .skill-card:hover {
   border-color: var(--deep-aubergine);
-  background-color: rgba(221, 227, 232, 0.8);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(58, 15, 52, 0.05);
+  border-top-color: var(--marigold);
+  transform: translateY(-3px);
+  box-shadow: 6px 6px 0px rgba(234, 170, 0, 0.35);
 }
 
 .skill-card h3 {
-  font-size: 1.05rem;
+  font-size: 1.08rem;
   color: var(--deep-aubergine);
   margin-bottom: 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid var(--marigold);
-  position: relative;
 }
 
 .tag-list {
@@ -497,19 +569,18 @@ video {
 }
 
 .tag {
-  font-size: 0.8rem;
-  font-weight: 600;
+  font-size: 0.78rem;
+  font-weight: 700;
   color: var(--deep-aubergine);
-  background-color: var(--accent-soft);
-  border: 1px solid var(--marigold);
-  padding: 0.28rem 0.65rem;
-  border-radius: 4px;
-  transition: background-color 0.2s, color 0.2s;
+  background-color: var(--marigold);
+  border: 1px solid var(--deep-aubergine);
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
 }
 
-.tag:hover {
-  background-color: var(--marigold);
-  color: var(--deep-aubergine);
+.tag:nth-child(even) {
+  background-color: var(--deep-aubergine);
+  color: var(--ice-silver);
 }
 
 /* ==========================================================================
@@ -517,9 +588,9 @@ video {
    ========================================================================== */
 .timeline {
   position: relative;
-  border-left: 2px dashed rgba(58, 15, 52, 0.5);
+  border-left: 2px dashed var(--deep-aubergine);
   margin-left: 0.75rem;
-  padding-left: 1.75rem;
+  padding-left: 1.85rem;
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
@@ -531,29 +602,31 @@ video {
 
 .timeline-marker {
   position: absolute;
-  left: -2.25rem;
+  left: -2.35rem;
   top: 0.35rem;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background-color: var(--marigold);
-  border: 2.5px solid var(--deep-aubergine);
-  box-shadow: 0 0 0 4px rgba(234, 170, 0, 0.2);
+  border: 3px solid var(--deep-aubergine);
+  box-shadow: 0 0 0 5px rgba(234, 170, 0, 0.28);
 }
 
 .timeline-content {
-  background-color: rgba(221, 227, 232, 0.45);
-  backdrop-filter: blur(4px);
-  border: 1px solid var(--border-light);
+  background: rgba(221, 227, 232, 0.78);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(58, 15, 52, 0.24);
+  border-left: 4px solid var(--deep-aubergine);
   border-radius: 8px;
-  padding: 1.4rem;
+  padding: 1.45rem;
+  box-shadow: 6px 6px 0px rgba(58, 15, 52, 0.08);
   transition: all 0.2s ease;
 }
 
 .timeline-content:hover {
-  border-color: var(--marigold);
-  background-color: rgba(221, 227, 232, 0.8);
-  box-shadow: 0 4px 15px rgba(58, 15, 52, 0.05);
+  border-color: var(--deep-aubergine);
+  border-left-color: var(--marigold);
+  transform: translateY(-2px);
 }
 
 .timeline-header {
@@ -566,18 +639,18 @@ video {
 }
 
 .timeline-header h3 {
-  font-size: 1.12rem;
+  font-size: 1.15rem;
   color: var(--deep-aubergine);
 }
 
 .timeline-date {
-  font-size: 0.84rem;
-  font-weight: 600;
+  font-size: 0.82rem;
+  font-weight: 700;
   color: var(--deep-aubergine);
-  background-color: var(--accent-soft);
-  border: 1px solid var(--marigold);
-  padding: 0.15rem 0.55rem;
-  border-radius: 4px;
+  background-color: var(--marigold);
+  border: 1px solid var(--deep-aubergine);
+  padding: 0.18rem 0.65rem;
+  border-radius: 999px;
 }
 
 .timeline-company {
@@ -598,48 +671,56 @@ video {
 }
 
 /* ==========================================================================
-   Projects Grid
+   Projects Grid with Double-Frame Technical Cards & Marigold Glow Orb
    ========================================================================== */
 .project-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 1.65rem;
+  position: relative;
+  z-index: 1;
 }
 
+/* Bright Marigold Blurred Sphere behind the right side of Projects (Matches Mockup) */
+.project-grid::after {
+  content: "";
+  position: absolute;
+  top: -40px;
+  right: -50px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(234, 170, 0, 0.88) 0%, rgba(234, 170, 0, 0.35) 55%, rgba(234, 170, 0, 0) 75%);
+  filter: blur(18px);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Technical Double-Border Frame on Project Cards */
 .project-card {
-  background-color: rgba(221, 227, 232, 0.55);
-  backdrop-filter: blur(4px);
-  border: 1px solid var(--border-light);
-  border-radius: 8px;
+  background-color: rgba(221, 227, 232, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(58, 15, 52, 0.45);
+  border-radius: 10px;
+  padding: 0.65rem;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: relative;
-}
-
-/* Top accent pattern on card hover */
-.project-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 3px;
-  background-color: var(--marigold);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-  z-index: 10;
-}
-
-.project-card:hover::before {
-  transform: scaleX(1);
+  box-shadow:
+    inset 0 0 0 3px var(--ice-silver),
+    inset 0 0 0 4px rgba(58, 15, 52, 0.25),
+    0 10px 24px rgba(58, 15, 52, 0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
   border-color: var(--deep-aubergine);
-  box-shadow: 0 10px 25px rgba(58, 15, 52, 0.08);
+  box-shadow:
+    inset 0 0 0 3px var(--ice-silver),
+    inset 0 0 0 4.5px var(--marigold),
+    0 14px 30px rgba(58, 15, 52, 0.16);
 }
 
 .project-img-wrapper {
@@ -647,20 +728,9 @@ video {
   height: 195px;
   overflow: hidden;
   background-color: var(--deep-aubergine);
-  border-bottom: 2px solid var(--marigold);
+  border-radius: 6px;
+  border: 1.5px solid var(--deep-aubergine);
   position: relative;
-}
-
-/* Technical lens-mesh pattern over thumbnails */
-.project-img-wrapper::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, transparent 40%, rgba(58, 15, 52, 0.25) 100%);
-  pointer-events: none;
 }
 
 .project-img-wrapper img,
@@ -668,16 +738,16 @@ video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
 }
 
 .project-card:hover .project-img-wrapper img,
 .project-card:hover .project-img-wrapper video {
-  transform: scale(1.03);
+  transform: scale(1.04);
 }
 
 .project-card-body {
-  padding: 1.4rem;
+  padding: 1.15rem 0.65rem 0.65rem;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -690,7 +760,7 @@ video {
 }
 
 .project-card-body p {
-  font-size: 0.94rem;
+  font-size: 0.93rem;
   color: var(--text-muted);
   margin-bottom: 1.25rem;
   flex-grow: 1;
@@ -708,41 +778,48 @@ video {
 .education-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.25rem;
+  gap: 1.5rem;
 }
 
 .education-grid h3 {
-  font-size: 1.1rem;
+  font-size: 1.12rem;
   color: var(--deep-aubergine);
   margin: 0.25rem 0 0.35rem;
 }
 
 .edu-meta {
-  font-size: 0.88rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--text-muted);
   margin-top: 0.35rem;
 }
 
 /* ==========================================================================
-   Contact & Footer (Highly-designed Deep Aubergine Dark Block)
+   Contact & Footer (Deep Aubergine High-Contrast Block)
    ========================================================================== */
 .contact-section {
   background-color: var(--deep-aubergine);
-  background-image: 
-    radial-gradient(rgba(234, 170, 0, 0.08) 1.5px, transparent 1.5px),
-    linear-gradient(rgba(221, 227, 232, 0.02) 1px, transparent 1px);
-  background-size: 28px 28px, 112px 112px;
+  background-image:
+    radial-gradient(rgba(234, 170, 0, 0.2) 1.25px, transparent 1.25px),
+    linear-gradient(rgba(221, 227, 232, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(221, 227, 232, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px, 120px 120px, 120px 120px;
   color: var(--ice-silver);
-  border-bottom: 1px solid rgba(221, 227, 232, 0.15);
-  position: relative;
+  border-bottom: 1px solid rgba(221, 227, 232, 0.18);
 }
 
-/* Technical Corner brackets in contact section */
 .contact-section::before {
-  content: "┌ ─ ─ ─ ┐";
-  color: rgba(234, 170, 0, 0.2);
-  top: 2rem;
-  left: 2rem;
+  background:
+    linear-gradient(to right, rgba(234, 170, 0, 0.55) 2px, transparent 2px) 0 0,
+    linear-gradient(to bottom, rgba(234, 170, 0, 0.55) 2px, transparent 2px) 0 0,
+    linear-gradient(to left, rgba(234, 170, 0, 0.55) 2px, transparent 2px) 100% 0,
+    linear-gradient(to bottom, rgba(234, 170, 0, 0.55) 2px, transparent 2px) 100% 0,
+    linear-gradient(to right, rgba(234, 170, 0, 0.55) 2px, transparent 2px) 0 100%,
+    linear-gradient(to top, rgba(234, 170, 0, 0.55) 2px, transparent 2px) 0 100%,
+    linear-gradient(to left, rgba(234, 170, 0, 0.55) 2px, transparent 2px) 100% 100%,
+    linear-gradient(to top, rgba(234, 170, 0, 0.55) 2px, transparent 2px) 100% 100%;
+  background-repeat: no-repeat;
+  background-size: 18px 18px;
 }
 
 .contact-title {
@@ -751,18 +828,16 @@ video {
 
 .contact-subtitle {
   color: var(--ice-silver);
-  opacity: 0.88;
+  opacity: 0.9;
   max-width: 600px;
-  margin-bottom: 1.75rem;
-  font-size: 1.02rem;
+  margin-bottom: 1.85rem;
+  font-size: 1.04rem;
 }
 
 .contact-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.9rem;
-  z-index: 5;
-  position: relative;
+  gap: 0.95rem;
 }
 
 .footer {
@@ -771,8 +846,7 @@ video {
   padding: 1.75rem 0;
   text-align: center;
   font-size: 0.88rem;
-  border-top: 1px solid rgba(221, 227, 232, 0.1);
-  position: relative;
+  border-top: 1px solid rgba(221, 227, 232, 0.12);
 }
 
 /* ==========================================================================
@@ -783,11 +857,17 @@ video {
     grid-template-columns: 1fr;
   }
 
+  .hero::before {
+    width: 340px;
+    height: 340px;
+    opacity: 0.45;
+  }
+
   .section {
-    padding: 3.25rem 0;
+    padding: 3.5rem 0;
   }
 
   .hero {
-    padding: 3.75rem 0 3rem;
+    padding: 4rem 0 3.25rem;
   }
 }
