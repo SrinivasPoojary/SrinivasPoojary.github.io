@@ -3,21 +3,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#3A0F34" />
   <title>Srinu | Srinivas Poojary — Data Analyst Portfolio</title>
   <meta name="description" content="Portfolio of Srinivas Poojary (Srinu), Data Analyst based in Mumbai specializing in SQL, Power BI, Python, and MIS Reporting." />
 
   <!-- Custom Designed "S" Favicon in Deep Aubergine (#3A0F34), Marigold (#EAAA00) & Ice Silver (#DDE3E8) -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233A0F34'/%3E%3Crect x='4' y='4' width='56' height='56' rx='11' fill='none' stroke='%23EAAA00' stroke-width='2.5'/%3E%3Cpath d='M42 18H26c-3.3 0-6 2.7-6 6v2c0 3.3 2.7 6 6 6h12c3.3 0 6 2.7 6 6v2c0 3.3-2.7 6-6 6H20' fill='none' stroke='%23EAAA00' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='46' cy='18' r='3.5' fill='%23DDE3E8'/%3E%3Ccircle cx='18' cy='46' r='3.5' fill='%23DDE3E8'/%3E%3C/svg%3E" />
-  <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%233A0F34'/%3E%3Crect x='4' y='4' width='56' height='56' rx='11' fill='none' stroke='%23EAAA00' stroke-width='2.5'/%3E%3Cpath d='M42 18H26c-3.3 0-6 2.7-6 6v2c0 3.3 2.7 6 6 6h12c3.3 0 6 2.7 6 6v2c0 3.3-2.7 6-6 6H20' fill='none' stroke='%23EAAA00' stroke-width='6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='46' cy='18' r='3.5' fill='%23DDE3E8'/%3E%3Ccircle cx='18' cy='46' r='3.5' fill='%23DDE3E8'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=6.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css?v=7.0" />
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
-  <!-- Navigation with Custom Designed "S" Logo Emblem -->
+  <!-- Scroll progress bar -->
+  <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
+
+  <!-- Side dot navigation -->
+  <nav class="side-dots" aria-label="Section navigation">
+    <ul>
+      <li><a href="#hero" data-target="hero" aria-label="Hello"><span class="dot-label">Hello</span><span class="dot"></span></a></li>
+      <li><a href="#about" data-target="about" aria-label="About"><span class="dot-label">About</span><span class="dot"></span></a></li>
+      <li><a href="#skills" data-target="skills" aria-label="Skills"><span class="dot-label">Skills</span><span class="dot"></span></a></li>
+      <li><a href="#experience" data-target="experience" aria-label="Experience"><span class="dot-label">Experience</span><span class="dot"></span></a></li>
+      <li><a href="#projects" data-target="projects" aria-label="Projects"><span class="dot-label">Projects</span><span class="dot"></span></a></li>
+      <li><a href="#education" data-target="education" aria-label="Education"><span class="dot-label">Education</span><span class="dot"></span></a></li>
+      <li><a href="#contact" data-target="contact" aria-label="Contact"><span class="dot-label">Contact</span><span class="dot"></span></a></li>
+    </ul>
+  </nav>
+
+  <!-- Navigation -->
   <header class="navbar">
     <div class="container nav-container">
       <a href="#hero" class="brand-logo" aria-label="Srinu Home">
@@ -40,379 +57,513 @@
         <a href="#projects">Projects</a>
         <a href="#education">Education</a>
         <a href="#contact">Contact</a>
-        <a href="Resume.pdf" target="_blank" rel="noopener" class="nav-resume-btn js-resume-link">Resume</a>
       </nav>
+
+      <div class="nav-actions">
+        <a href="mailto:srinivaspoojary188@gmail.com" class="nav-hide">Email</a>
+        <a href="https://github.com/SrinivasPoojary" target="_blank" rel="noopener" class="nav-hide">GitHub</a>
+        <a href="https://www.linkedin.com/in/srinivaspoojary/" target="_blank" rel="noopener" class="nav-hide">LinkedIn</a>
+        <a href="Resume.pdf" target="_blank" rel="noopener" class="nav-resume-btn js-resume-link">Resume</a>
+      </div>
     </div>
   </header>
 
-  <!-- Split Hero Section -->
-  <section id="hero" class="hero">
-    <div class="container hero-grid">
+  <main>
 
-      <!-- Left Column: Intro & CTAs -->
-      <div class="hero-content">
-        <div class="status-pill">
-          <span class="status-dot"></span>
-          <span>Data Analyst &bull; BI &amp; MIS Reporting</span>
+    <!-- Hero -->
+    <section id="hero" class="hero">
+      <div class="container">
+        <div class="hero-inner">
+          <h1 class="reveal">Hi, I'm <span class="name">Srinivas Poojary</span></h1>
+          <p class="hero-role reveal">
+            I am a <strong>young data analyst</strong> at Responsive Industries Ltd.<br />
+            I turn data into <span class="typed" id="typed">dashboards</span>
+          </p>
+          <div class="pill reveal">
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Mumbai, India</span>
+          </div>
+          <div class="hero-actions reveal">
+            <a href="#projects" class="btn-primary">Explore Projects</a>
+            <a href="Resume.pdf" target="_blank" rel="noopener" class="btn-outline js-resume-link">Download Resume</a>
+          </div>
+        </div>
+      </div>
+      <a href="#about" class="scroll-hint" aria-label="Scroll to About"><span></span></a>
+    </section>
+
+    <!-- About: overview bento -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">01 · Overview</span>
+          <h2 class="section-title">About Me</h2>
         </div>
 
-        <h1>
-          Hi, I'm <span class="highlight-text">Srinivas Poojary</span>
-        </h1>
-
-        <p class="hero-role">
-          Turning complex business, financial, and operational datasets into clear executive dashboards and actionable insights.
+        <p class="lead reveal">
+          I am a Data Analyst based in Mumbai with a strong foundation in commerce, financial auditing, and business intelligence. Currently at <strong>Responsive Industries Ltd.</strong>, I analyze sales, export, and operational workflows to deliver reliable reporting for leadership, from 11-table star schemas and custom DAX measures in Power BI to MySQL queries and predictive pipelines in Python.
         </p>
 
-        <p class="hero-subtitle">
-          Specialized in <strong>SQL (MySQL)</strong>, <strong>Power BI (DAX &amp; Star Schema)</strong>, <strong>Python</strong>, and <strong>Advanced Excel</strong>—currently driving sales, export, and operational reporting at Responsive Industries Ltd. in Mumbai.
-        </p>
+        <div class="bento">
 
-        <div class="hero-actions">
-          <a href="#projects" class="btn-primary">Explore Projects</a>
-          <a href="Resume.pdf" target="_blank" rel="noopener" class="btn-outline js-resume-link">Download Resume</a>
-        </div>
-
-        <div class="hero-quick-links">
-          <a href="https://github.com/SrinivasPoojary" target="_blank" rel="noopener" class="quick-link">GitHub &#8599;</a>
-          <a href="https://www.linkedin.com/in/srinivaspoojary/" target="_blank" rel="noopener" class="quick-link">LinkedIn &#8599;</a>
-          <a href="mailto:srinivaspoojary188@gmail.com" class="quick-link">Email &#8599;</a>
-          <a href="https://wa.me/919372607886" target="_blank" rel="noopener" class="quick-link">WhatsApp &#8599;</a>
-        </div>
-      </div>
-
-      <!-- Right Column: Structured Profile Showcase Card -->
-      <div class="hero-visual">
-        <div class="profile-showcase-card">
-          <div class="showcase-header">
-            <div class="window-dots">
-              <span></span>
-              <span></span>
-              <span></span>
+          <article class="card reveal">
+            <div class="card-label">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              Now
             </div>
-            <span class="showcase-filename">srinu_analytics.profile</span>
-          </div>
+            <span class="badge">Since Apr 2025</span>
+            <h3>Data Analyst (MIS Analyst)</h3>
+            <p>Responsive Industries Ltd. · Sales and export reporting, Mumbai</p>
+          </article>
 
-          <div class="showcase-body">
-            <div class="showcase-row">
-              <span class="showcase-key">CURRENT ROLE</span>
-              <span class="showcase-val">Data Analyst @ Responsive Industries Ltd.</span>
+          <article class="card reveal">
+            <div class="card-label">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>
+              Experience
             </div>
+            <div class="big">2+</div>
+            <h3>Years in analytics</h3>
+            <p>Across 4 roles and internships</p>
+          </article>
 
-            <div class="showcase-row">
-              <span class="showcase-key">CORE STACK</span>
-              <div class="showcase-pills">
-                <span>SQL</span>
-                <span>Power BI</span>
-                <span>DAX</span>
-                <span>Python</span>
-                <span>Tableau</span>
-                <span>Excel</span>
-              </div>
+          <article class="card reveal">
+            <div class="card-label">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
+              Education
             </div>
+            <div class="big">B.Com</div>
+            <h3>University of Mumbai</h3>
+            <p>Plus Data Analyst training at ExcelR</p>
+          </article>
 
-            <div class="showcase-row">
-              <span class="showcase-key">SPECIALIZATION</span>
-              <span class="showcase-val">Star Schema Modeling, MIS Automation &amp; Predictive Analytics</span>
+          <article class="card reveal">
+            <div class="card-label">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+              How I work
             </div>
-
-            <div class="showcase-stats">
-              <div class="stat-box">
-                <strong>4+</strong>
-                <span>Roles &amp; Internships</span>
-              </div>
-              <div class="stat-box">
-                <strong>3+</strong>
-                <span>End-to-End Projects</span>
-              </div>
-              <div class="stat-box">
-                <strong>Mumbai</strong>
-                <span>Base Location</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="section">
-    <div class="container">
-      <h2 class="section-title">About Me</h2>
-      <div class="about-layout">
-        <div class="about-text">
-          <p>
-            I am a Data Analyst based in Mumbai with a strong foundation in commerce, financial auditing, and business intelligence. Currently at <strong>Responsive Industries Ltd.</strong>, I focus on analyzing sales, export, and operational workflows to deliver reliable reporting for leadership.
-          </p>
-          <p>
-            From designing 11-table star schemas and custom DAX measures in Power BI to querying relational databases in MySQL and building predictive pipelines in Python, I enjoy bridging raw data and practical business strategy.
-          </p>
-        </div>
-
-        <div class="info-grid">
-          <div class="info-card">
-            <span class="info-label">Location</span>
-            <p class="info-value">Mumbai, Maharashtra, India</p>
-          </div>
-          <div class="info-card">
-            <span class="info-label">Languages</span>
-            <p class="info-value">English, Hindi, Marathi, Tulu</p>
-          </div>
-          <div class="info-card">
-            <span class="info-label">Interests</span>
-            <p class="info-value">Gaming, Manga &amp; Manhwa, Football, Boxing</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills Section -->
-  <section id="skills" class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">Technical Skills</h2>
-      <div class="skills-grid">
-        <div class="skill-card">
-          <h3>BI &amp; Visualization</h3>
-          <div class="tag-list">
-            <span class="tag">Power BI</span>
-            <span class="tag">DAX</span>
-            <span class="tag">Star Schema Modeling</span>
-            <span class="tag">Tableau</span>
-            <span class="tag">Executive Dashboards</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h3>Databases &amp; Programming</h3>
-          <div class="tag-list">
-            <span class="tag">SQL (MySQL)</span>
-            <span class="tag">Python</span>
-            <span class="tag">Pandas</span>
-            <span class="tag">Scikit-learn</span>
-            <span class="tag">Streamlit</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h3>Spreadsheets &amp; MIS</h3>
-          <div class="tag-list">
-            <span class="tag">Advanced Excel</span>
-            <span class="tag">Power Query</span>
-            <span class="tag">Pivot Tables</span>
-            <span class="tag">Automated MIS Reporting</span>
-            <span class="tag">Data Validation</span>
-          </div>
-        </div>
-
-        <div class="skill-card">
-          <h3>Domain &amp; Platforms</h3>
-          <div class="tag-list">
-            <span class="tag">Sales &amp; Export Analytics</span>
-            <span class="tag">Financial Risk &amp; Audit</span>
-            <span class="tag">Volza</span>
-            <span class="tag">GitHub</span>
-            <span class="tag">Google Colab</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Experience Section -->
-  <section id="experience" class="section">
-    <div class="container">
-      <h2 class="section-title">Work Experience</h2>
-      <div class="timeline">
-
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Data Analyst (MIS Analyst)</h3>
-              <span class="timeline-date">Apr 2025 &ndash; Present</span>
-            </div>
-            <p class="timeline-company">Responsive Industries Ltd. &bull; Mumbai, India</p>
-            <ul class="timeline-list">
-              <li>Analyze sales, export, and operational datasets to track performance KPIs and regional revenue trends.</li>
-              <li>Build and maintain structured MIS reports and interactive dashboards for management review.</li>
-              <li>Streamline recurring data consolidation workflows using Advanced Excel and SQL.</li>
+            <ul class="checklist">
+              <li><span class="tick"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>Clean and validate data</li>
+              <li><span class="tick"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>Model it as a star schema</li>
+              <li><span class="tick"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>Write DAX measures for KPIs</li>
+              <li><span class="tick"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg></span>Deliver executive dashboards</li>
             </ul>
-          </div>
-        </div>
+            <h3>Data to decisions</h3>
+            <p>Reliable reporting that leadership can act on</p>
+          </article>
 
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Internal Auditor</h3>
-              <span class="timeline-date">Aug 2024 &ndash; Jan 2025</span>
+          <article class="card reveal">
+            <div class="card-label">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>
+              Projects
             </div>
-            <p class="timeline-company">CNK &amp; Associates LLP &bull; Mumbai, India</p>
-            <ul class="timeline-list">
-              <li>Performed financial audits, regulatory compliance checks, and internal control evaluations.</li>
-              <li>Assessed financial risk exposures and reconciled multi-source accounting records for accuracy.</li>
-            </ul>
-          </div>
-        </div>
+            <div class="big">3+</div>
+            <h3>End-to-end projects</h3>
+            <p>Power BI, SQL, Python and Tableau</p>
+          </article>
 
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Data Analyst Intern</h3>
-              <span class="timeline-date">Feb 2024 &ndash; Aug 2024</span>
+          <article class="card reveal">
+            <div class="card-label">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Based in
             </div>
-            <p class="timeline-company">AI Variant</p>
-            <ul class="timeline-list">
-              <li>Cleaned, transformed, and analyzed business datasets using MySQL, Power BI, Tableau, and Advanced Excel.</li>
-              <li>Designed interactive KPI dashboards to communicate revenue, customer, and operational insights.</li>
-            </ul>
-          </div>
-        </div>
+            <div class="big">Mumbai</div>
+            <h3>India</h3>
+            <p>Open to roles in Mumbai. Reach me by email or LinkedIn.</p>
+          </article>
 
-        <div class="timeline-item">
-          <div class="timeline-marker"></div>
-          <div class="timeline-content">
-            <div class="timeline-header">
-              <h3>Trainee</h3>
-              <span class="timeline-date">Dec 2023 &ndash; Feb 2024</span>
+          <article class="card span-2 reveal">
+            <div class="card-label">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              Stack
             </div>
-            <p class="timeline-company">Datamatics Global Services Ltd. &bull; Mumbai, India</p>
-            <ul class="timeline-list">
-              <li>Supported outsourced billing workflows, structured Excel data entry, and quality verification processes.</li>
-            </ul>
-          </div>
-        </div>
+            <div class="tag-list">
+              <span class="tag">SQL (MySQL)</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">DAX</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Advanced Excel</span>
+              <span class="tag">Power Query</span>
+              <span class="tag">MIS Reporting</span>
+            </div>
+          </article>
 
+          <article class="card reveal">
+            <div class="card-label">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+              Beyond work
+            </div>
+            <h3>English, Hindi, Marathi, Tulu</h3>
+            <p>Gaming, manga and manhwa, football, boxing</p>
+          </article>
+
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="section section-alt">
-    <div class="container">
-      <h2 class="section-title">Featured Projects</h2>
-      <div class="project-grid">
-
-        <!-- Project 1 -->
-        <article class="project-card">
-          <div class="project-img-wrapper">
-            <video autoplay loop muted playsinline poster="dashboard_overview.png">
-              <source src="dashboard-animation.mp4" type="video/mp4" />
-              <img src="dashboard_overview.png" alt="AdventureWorks Sales Intelligence Dashboard" />
-            </video>
-          </div>
-          <div class="project-card-body">
+    <!-- Skills -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">02 · Toolkit</span>
+          <h2 class="section-title">Technical Skills</h2>
+        </div>
+        <div class="skills-grid">
+          <article class="card reveal">
+            <h3>BI &amp; Visualization</h3>
             <div class="tag-list">
               <span class="tag">Power BI</span>
               <span class="tag">DAX</span>
-              <span class="tag">Star Schema</span>
+              <span class="tag">Star Schema Modeling</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">Executive Dashboards</span>
             </div>
-            <h3>AdventureWorks Sales Intelligence</h3>
-            <p>
-              Multi-page sales performance dashboard built on an 11-table star schema with custom DAX measures for executive KPIs, product performance, and profit scenario analysis.
-            </p>
-            <div class="project-links">
-              <a href="https://srinivaspoojary.github.io/adventureworks-sales-intelligence/" target="_blank" rel="noopener" class="btn-primary btn-sm">Live Demo</a>
-              <a href="https://github.com/SrinivasPoojary/adventureworks-sales-intelligence" target="_blank" rel="noopener" class="btn-outline btn-sm">GitHub</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card">
-          <div class="project-img-wrapper">
-            <img src="solar-project.png" alt="Solar Power Generation Prediction" loading="lazy" />
-          </div>
-          <div class="project-card-body">
+          </article>
+          <article class="card reveal">
+            <h3>Databases &amp; Programming</h3>
             <div class="tag-list">
+              <span class="tag">SQL (MySQL)</span>
               <span class="tag">Python</span>
+              <span class="tag">Pandas</span>
               <span class="tag">Scikit-learn</span>
               <span class="tag">Streamlit</span>
             </div>
-            <h3>Solar Power Generation Prediction</h3>
-            <p>
-              End-to-end machine learning project using Python, Pandas, and Scikit-learn deployed via Streamlit to predict solar power generation based on weather and environmental parameters.
-            </p>
-            <div class="project-links">
-              <a href="https://github.com/SrinivasPoojary/Solar-Power-Generation" target="_blank" rel="noopener" class="btn-primary btn-sm">View Repository</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card">
-          <div class="project-img-wrapper">
-            <img src="ecommerce-project.png" alt="E-Commerce Analytics Project" loading="lazy" />
-          </div>
-          <div class="project-card-body">
+          </article>
+          <article class="card reveal">
+            <h3>Spreadsheets &amp; MIS</h3>
             <div class="tag-list">
-              <span class="tag">SQL</span>
-              <span class="tag">Power BI</span>
-              <span class="tag">Tableau</span>
-              <span class="tag">Excel</span>
+              <span class="tag">Advanced Excel</span>
+              <span class="tag">Power Query</span>
+              <span class="tag">Pivot Tables</span>
+              <span class="tag">Automated MIS Reporting</span>
+              <span class="tag">Data Validation</span>
             </div>
-            <h3>E-Commerce Analytics (Olist Dataset)</h3>
-            <p>
-              Comprehensive analysis of historical e-commerce orders evaluating sales trends, customer purchasing behavior, delivery timelines, and payment preferences.
-            </p>
-            <div class="project-links">
-              <a href="https://www.linkedin.com/in/srinivaspoojary/details/projects/" target="_blank" rel="noopener" class="btn-primary btn-sm">View Case Study</a>
+          </article>
+          <article class="card reveal">
+            <h3>Domain &amp; Platforms</h3>
+            <div class="tag-list">
+              <span class="tag">Sales &amp; Export Analytics</span>
+              <span class="tag">Financial Risk &amp; Audit</span>
+              <span class="tag">Volza</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">Google Colab</span>
             </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">03 · Career</span>
+          <h2 class="section-title">Work Experience</h2>
+        </div>
+        <div class="timeline">
+
+          <div class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <article class="card">
+              <div class="timeline-header">
+                <h3>Data Analyst (MIS Analyst)</h3>
+                <span class="timeline-date">Apr 2025 &ndash; Present</span>
+              </div>
+              <p class="timeline-company">Responsive Industries Ltd. &bull; Mumbai, India</p>
+              <ul class="timeline-list">
+                <li>Analyze sales, export, and operational datasets to track performance KPIs and regional revenue trends.</li>
+                <li>Build and maintain structured MIS reports and interactive dashboards for management review.</li>
+                <li>Streamline recurring data consolidation workflows using Advanced Excel and SQL.</li>
+              </ul>
+            </article>
           </div>
-        </article>
 
-      </div>
-    </div>
-  </section>
+          <div class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <article class="card">
+              <div class="timeline-header">
+                <h3>Internal Auditor</h3>
+                <span class="timeline-date">Aug 2024 &ndash; Jan 2025</span>
+              </div>
+              <p class="timeline-company">CNK &amp; Associates LLP &bull; Mumbai, India</p>
+              <ul class="timeline-list">
+                <li>Performed financial audits, regulatory compliance checks, and internal control evaluations.</li>
+                <li>Assessed financial risk exposures and reconciled multi-source accounting records for accuracy.</li>
+              </ul>
+            </article>
+          </div>
 
-  <!-- Education Section -->
-  <section id="education" class="section">
-    <div class="container">
-      <h2 class="section-title">Education &amp; Certifications</h2>
-      <div class="education-grid">
-        <div class="info-card">
-          <span class="info-label">2020 &ndash; 2023</span>
-          <h3>Bachelor of Commerce (B.Com)</h3>
-          <p class="info-value">V.K. Krishna Menon College of Arts, Commerce &amp; Science (University of Mumbai)</p>
-          <p class="edu-meta">CGPA: 6.5</p>
+          <div class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <article class="card">
+              <div class="timeline-header">
+                <h3>Data Analyst Intern</h3>
+                <span class="timeline-date">Feb 2024 &ndash; Aug 2024</span>
+              </div>
+              <p class="timeline-company">AI Variant</p>
+              <ul class="timeline-list">
+                <li>Cleaned, transformed, and analyzed business datasets using MySQL, Power BI, Tableau, and Advanced Excel.</li>
+                <li>Designed interactive KPI dashboards to communicate revenue, customer, and operational insights.</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="timeline-item reveal">
+            <div class="timeline-marker"></div>
+            <article class="card">
+              <div class="timeline-header">
+                <h3>Trainee</h3>
+                <span class="timeline-date">Dec 2023 &ndash; Feb 2024</span>
+              </div>
+              <p class="timeline-company">Datamatics Global Services Ltd. &bull; Mumbai, India</p>
+              <ul class="timeline-list">
+                <li>Supported outsourced billing workflows, structured Excel data entry, and quality verification processes.</li>
+              </ul>
+            </article>
+          </div>
+
         </div>
+      </div>
+    </section>
 
-        <div class="info-card">
-          <span class="info-label">2024 &ndash; 2025</span>
-          <h3>Data Analyst &amp; Data Science Training</h3>
-          <p class="info-value">ExcelR</p>
-          <p class="edu-meta">SQL, Power BI, Tableau, Python &amp; Business Analytics</p>
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">04 · Work</span>
+          <h2 class="section-title">Featured Projects</h2>
+        </div>
+        <div class="project-grid">
+
+          <article class="card project-card reveal">
+            <div class="project-img-wrapper">
+              <video autoplay loop muted playsinline poster="dashboard_overview.png">
+                <source src="dashboard-animation.mp4" type="video/mp4" />
+                <img src="dashboard_overview.png" alt="AdventureWorks Sales Intelligence Dashboard" />
+              </video>
+            </div>
+            <div class="project-body">
+              <div class="tag-list">
+                <span class="tag">Power BI</span>
+                <span class="tag">DAX</span>
+                <span class="tag">Star Schema</span>
+              </div>
+              <h3>AdventureWorks Sales Intelligence</h3>
+              <p>Multi-page sales performance dashboard built on an 11-table star schema with custom DAX measures for executive KPIs, product performance, and profit scenario analysis.</p>
+              <div class="proj-stats">
+                <div class="proj-stat"><strong>₹29.36M</strong><span>Revenue analysed</span></div>
+                <div class="proj-stat"><strong>27.66K</strong><span>Orders</span></div>
+              </div>
+              <div class="project-links">
+                <a href="https://srinivaspoojary.github.io/adventureworks-sales-intelligence/" target="_blank" rel="noopener" class="btn-primary btn-sm">Live Demo</a>
+                <a href="https://github.com/SrinivasPoojary/adventureworks-sales-intelligence" target="_blank" rel="noopener" class="btn-outline btn-sm">GitHub</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div class="project-img-wrapper">
+              <img src="solar-project.png" alt="Solar Power Generation Prediction" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <div class="tag-list">
+                <span class="tag">Python</span>
+                <span class="tag">Scikit-learn</span>
+                <span class="tag">Streamlit</span>
+              </div>
+              <h3>Solar Power Generation Prediction</h3>
+              <p>End-to-end machine learning project using Python, Pandas, and Scikit-learn deployed via Streamlit to predict solar power generation based on weather and environmental parameters.</p>
+              <div class="project-links">
+                <a href="https://github.com/SrinivasPoojary/Solar-Power-Generation" target="_blank" rel="noopener" class="btn-primary btn-sm">View Repository</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project-card reveal">
+            <div class="project-img-wrapper">
+              <img src="ecommerce-project.png" alt="E-Commerce Analytics Project" loading="lazy" />
+            </div>
+            <div class="project-body">
+              <div class="tag-list">
+                <span class="tag">SQL</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Tableau</span>
+                <span class="tag">Excel</span>
+              </div>
+              <h3>E-Commerce Analytics (Olist Dataset)</h3>
+              <p>Comprehensive analysis of historical e-commerce orders evaluating sales trends, customer purchasing behavior, delivery timelines, and payment preferences.</p>
+              <div class="project-links">
+                <a href="https://www.linkedin.com/in/srinivaspoojary/details/projects/" target="_blank" rel="noopener" class="btn-primary btn-sm">View Case Study</a>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="section contact-section">
-    <div class="container contact-container">
-      <h2 class="section-title contact-title">Let's Connect</h2>
-      <p class="contact-subtitle">
-        Open to Data Analyst, Business Analyst, BI Analyst, and MIS Analyst opportunities in Mumbai.
-      </p>
-      <div class="contact-actions">
-        <a href="mailto:srinivaspoojary188@gmail.com" class="btn-contact">srinivaspoojary188@gmail.com</a>
-        <a href="https://wa.me/919372607886" target="_blank" rel="noopener" class="btn-contact">WhatsApp: +91 9372607886</a>
-        <a href="https://www.linkedin.com/in/srinivaspoojary/" target="_blank" rel="noopener" class="btn-contact-outline">LinkedIn</a>
-        <a href="https://github.com/SrinivasPoojary" target="_blank" rel="noopener" class="btn-contact-outline">GitHub</a>
+    <!-- Education -->
+    <section id="education" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">05 · Learning</span>
+          <h2 class="section-title">Education &amp; Certifications</h2>
+        </div>
+        <div class="edu-grid">
+          <article class="card reveal">
+            <span class="edu-year">2020 &ndash; 2023</span>
+            <h3>Bachelor of Commerce (B.Com)</h3>
+            <p>V.K. Krishna Menon College of Arts, Commerce &amp; Science (University of Mumbai)</p>
+            <p class="edu-meta">CGPA: 6.5</p>
+          </article>
+          <article class="card reveal">
+            <span class="edu-year">2024 &ndash; 2025</span>
+            <h3>Data Analyst &amp; Data Science Training</h3>
+            <p>ExcelR</p>
+            <p class="edu-meta">SQL, Power BI, Tableau, Python &amp; Business Analytics</p>
+          </article>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Footer -->
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="eyebrow">06 · Contact</span>
+          <h2 class="section-title">Let's Connect</h2>
+        </div>
+        <p class="lead reveal">Open to Data Analyst, Business Analyst, BI Analyst, and MIS Analyst opportunities in Mumbai.</p>
+
+        <div class="contact-grid">
+          <form class="contact-form card reveal" id="contactForm">
+            <div>
+              <label for="cf-name">Your name</label>
+              <input id="cf-name" name="name" type="text" placeholder="What's your good name?" required />
+            </div>
+            <div>
+              <label for="cf-email">Your email</label>
+              <input id="cf-email" name="email" type="email" placeholder="What's your email address?" required />
+            </div>
+            <div>
+              <label for="cf-message">Your message</label>
+              <textarea id="cf-message" name="message" placeholder="What do you want to say?" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary">Send message</button>
+            <p class="form-note">This opens your email app with the message ready to send.</p>
+          </form>
+
+          <aside class="card reveal">
+            <div class="card-label">
+              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Find me here
+            </div>
+            <ul class="contact-list">
+              <li><a href="mailto:srinivaspoojary188@gmail.com"><span><small>Email</small>srinivaspoojary188@gmail.com</span><span aria-hidden="true">&#8599;</span></a></li>
+              <li><a href="https://wa.me/919372607886" target="_blank" rel="noopener"><span><small>WhatsApp</small>+91 9372607886</span><span aria-hidden="true">&#8599;</span></a></li>
+              <li><a href="https://www.linkedin.com/in/srinivaspoojary/" target="_blank" rel="noopener"><span><small>LinkedIn</small>srinivaspoojary</span><span aria-hidden="true">&#8599;</span></a></li>
+              <li><a href="https://github.com/SrinivasPoojary" target="_blank" rel="noopener"><span><small>GitHub</small>SrinivasPoojary</span><span aria-hidden="true">&#8599;</span></a></li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
   <footer class="footer">
-    <div class="container footer-content">
+    <div class="container">
       <p>&copy; 2026 Srinivas Poojary (Srinu). All rights reserved.</p>
     </div>
   </footer>
+
+  <!-- Back to top -->
+  <button class="to-top" id="toTop" aria-label="Back to top" type="button">
+    <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <script>
+    (function () {
+      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      /* Scroll progress bar + back-to-top button */
+      var bar = document.getElementById('progressBar');
+      var toTop = document.getElementById('toTop');
+      function onScroll() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+        bar.style.width = pct + '%';
+        toTop.classList.toggle('show', h.scrollTop > 700);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      toTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+      });
+
+      /* Typed word in the hero */
+      var words = ['dashboards', 'insights', 'MIS reports', 'decisions'];
+      var el = document.getElementById('typed');
+      if (!reduce) {
+        var w = 0, c = 0, del = false;
+        (function tick() {
+          var word = words[w];
+          el.textContent = word.slice(0, c);
+          var delay = del ? 45 : 90;
+          if (!del && c === word.length) { del = true; delay = 1400; }
+          else if (del && c === 0) { del = false; w = (w + 1) % words.length; delay = 350; }
+          else { c += del ? -1 : 1; }
+          setTimeout(tick, delay);
+        })();
+      }
+
+      /* Reveal on scroll */
+      var revealEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !reduce) {
+        var io = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        revealEls.forEach(function (n) { io.observe(n); });
+      } else {
+        revealEls.forEach(function (n) { n.classList.add('in'); });
+      }
+
+      /* Side dot navigation: highlight the section in view */
+      var dotLinks = document.querySelectorAll('.side-dots a');
+      var sections = Array.prototype.map.call(dotLinks, function (a) {
+        return document.getElementById(a.getAttribute('data-target'));
+      });
+      if ('IntersectionObserver' in window) {
+        var so = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) {
+              dotLinks.forEach(function (a) {
+                a.classList.toggle('active', a.getAttribute('data-target') === e.target.id);
+              });
+            }
+          });
+        }, { rootMargin: '-45% 0px -50% 0px' });
+        sections.forEach(function (s) { if (s) so.observe(s); });
+      }
+
+      /* Contact form: opens the visitor's email app with the message filled in */
+      var form = document.getElementById('contactForm');
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        var name = form.elements['name'].value.trim();
+        var email = form.elements['email'].value.trim();
+        var msg = form.elements['message'].value.trim();
+        var subject = 'Portfolio message from ' + name;
+        var body = msg + '\n\n— ' + name + ' (' + email + ')';
+        window.location.href = 'mailto:srinivaspoojary188@gmail.com?subject=' +
+          encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+      });
+    })();
+  </script>
 
   <!-- Smart Resume Link Resolver (Prevents 404 Errors Automatically) -->
   <script>
