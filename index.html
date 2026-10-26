@@ -20,12 +20,6 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Srinivas Poojary Portfolio Preview" />
 
-  <!-- Twitter / X Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Srinivas Poojary | Data Analyst Portfolio" />
-  <meta name="twitter:description" content="Explore my interactive dashboards, star-schema data models, and MIS reporting projects." />
-  <meta name="twitter:image" content="https://srinivaspoojary.github.io/og-banner.png?v=2" />
-
   <!-- Structured data -->
   <script type="application/ld+json">
   {
@@ -46,19 +40,16 @@
   }
   </script>
 
-  <!-- Custom "S + data bars" Favicon in Ice Silver (#DDE3E8), Deep Aubergine (#3A0F34) & Marigold (#EAAA00) -->
+  <!-- Custom Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23DDE3E8'/%3E%3Cg transform='translate(-5,-1)'%3E%3Cpath d='M43 21C40 17.5 36 16 32 16C26 16 22 19 22 23.5C22 28 26 29.5 32 31C38 32.5 42 34 42 39.5C42 45 38 48 32 48C27.5 48 23.5 46.5 21 43' fill='none' stroke='%233A0F34' stroke-width='6.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/g%3E%3Crect x='42' y='43' width='4.5' height='9' rx='1.5' fill='%23EAAA00'/%3E%3Crect x='48' y='36' width='4.5' height='16' rx='1.5' fill='%23EAAA00'/%3E%3Crect x='54' y='29' width='4.5' height='23' rx='1.5' fill='%23EAAA00'/%3E%3C/svg%3E" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=9.0" />
+  <link rel="stylesheet" href="style.css?v=9.1" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
-
-  <!-- Particles.js fixed background layer -->
-  <div id="particles-js" aria-hidden="true"></div>
 
   <!-- Scroll progress bar -->
   <div class="progress-bar" id="progressBar" aria-hidden="true"></div>
@@ -105,16 +96,19 @@
         <a href="mailto:srinivaspoojary188@gmail.com" class="nav-hide">Email</a>
         <a href="https://github.com/SrinivasPoojary" target="_blank" rel="noopener" class="nav-hide">GitHub</a>
         <a href="https://www.linkedin.com/in/srinivaspoojary/" target="_blank" rel="noopener" class="nav-hide">LinkedIn</a>
-        <a href="Resume.pdf" target="_blank" rel="noopener" class="nav-resume-btn js-resume-link">Resume</a>
+        <a href="Resume.pdf.pdf" target="_blank" rel="noopener" class="nav-resume-btn js-resume-link">Resume</a>
       </div>
     </div>
   </header>
 
   <main>
 
-       <!-- Hero -->
+    <!-- Hero -->
     <section id="hero" class="hero">
-      <div class="container">
+      <!-- Particles strictly inside hero section -->
+      <div id="particles-js" aria-hidden="true"></div>
+      
+      <div class="container hero-content-wrapper">
         <div class="hero-grid">
 
           <div class="hero-inner">
@@ -129,13 +123,13 @@
             </div>
             <div class="hero-actions reveal">
               <a href="#projects" class="btn-primary">Explore Projects</a>
-              <a href="Resume.pdf" target="_blank" rel="noopener" class="btn-outline js-resume-link">Resume</a>
+              <a href="Resume.pdf.pdf" target="_blank" rel="noopener" class="btn-outline js-resume-link">Resume</a>
             </div>
           </div>
 
           <div class="hero-photo reveal">
             <div class="photo-frame">
-              <img src="profile.jpg" alt="Portrait of Srinivas Poojary" width="300" height="300" />
+              <img src="profile.jpg" alt="Portrait of Srinivas Poojary" />
             </div>
           </div>
 
@@ -539,10 +533,10 @@
     <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <!-- Particles.js library (must load before script.js) -->
+  <!-- Particles.js library -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-  <!-- All site behaviour lives here -->
+  <!-- Script -->
   <script src="script.js?v=1.0"></script>
 
 </body>
