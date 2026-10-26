@@ -52,7 +52,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=7.0" />
+  <link rel="stylesheet" href="style.css?v=9.0" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -529,142 +529,11 @@
     <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <!-- Particles.js CDN -->
+  <!-- Particles.js library (must load before script.js) -->
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
-  <script>
-    (function () {
-      var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-      /* Scroll progress bar + back-to-top button */
-      var bar = document.getElementById('progressBar');
-      var toTop = document.getElementById('toTop');
-      function onScroll() {
-        var h = document.documentElement;
-        var max = h.scrollHeight - h.clientHeight;
-        var pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
-        bar.style.width = pct + '%';
-        toTop.classList.toggle('show', h.scrollTop > 700);
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-      toTop.addEventListener('click', function () {
-        window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-      });
-
-      /* Typed word in the hero */
-      var words = ['dashboards', 'insights', 'MIS reports', 'decisions'];
-      var el = document.getElementById('typed');
-      if (!reduce) {
-        var w = 0, c = 0, del = false;
-        (function tick() {
-          var word = words[w];
-          el.textContent = word.slice(0, c);
-          var delay = del ? 45 : 90;
-          if (!del && c === word.length) { del = true; delay = 1400; }
-          else if (del && c === 0) { del = false; w = (w + 1) % words.length; delay = 350; }
-          else { c += del ? -1 : 1; }
-          setTimeout(tick, delay);
-        })();
-      }
-
-      /* Reveal on scroll */
-      var revealEls = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window && !reduce) {
-        var io = new IntersectionObserver(function (entries, obs) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        revealEls.forEach(function (n) { io.observe(n); });
-      } else {
-        revealEls.forEach(function (n) { n.classList.add('in'); });
-      }
-
-      /* Side dot navigation: highlight the section in view */
-      var dotLinks = document.querySelectorAll('.side-dots a');
-      var sections = Array.prototype.map.call(dotLinks, function (a) {
-        return document.getElementById(a.getAttribute('data-target'));
-      });
-      if ('IntersectionObserver' in window) {
-        var so = new IntersectionObserver(function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) {
-              dotLinks.forEach(function (a) {
-                a.classList.toggle('active', a.getAttribute('data-target') === e.target.id);
-              });
-            }
-          });
-        }, { rootMargin: '-45% 0px -50% 0px' });
-        sections.forEach(function (s) { if (s) so.observe(s); });
-      }
-
-      /* Contact form: sends the message to my inbox (FormSubmit), falls back to the email app */
-      var form = document.getElementById('contactForm');
-      var statusEl = document.getElementById('formStatus');
-      var sendBtn = form.querySelector('button[type="submit"]');
-      var TO = 'srinivaspoojary188@gmail.com';
-      form.addEventListener('submit', function (ev) {
-        ev.preventDefault();
-        if (form.elements['_honey'].value) { return; }
-        var name = form.elements['name'].value.trim();
-        var email = form.elements['email'].value.trim();
-        var msg = form.elements['message'].value.trim();
-        sendBtn.disabled = true;
-        statusEl.className = 'form-status';
-        statusEl.textContent = 'Sending…';
-        fetch('https://formsubmit.co/ajax/' + TO, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({
-            name: name, email: email, message: msg,
-            _subject: 'Portfolio message from ' + name, _template: 'table'
-          })
-        })
-          .then(function (r) { return r.json(); })
-          .then(function (j) {
-            if (j.success === 'true' || j.success === true) {
-              statusEl.className = 'form-status ok';
-              statusEl.textContent = 'Message sent. Thank you, I will reply soon.';
-              form.reset();
-            } else { throw new Error('send failed'); }
-          })
-          .catch(function () {
-            statusEl.className = 'form-status err';
-            statusEl.textContent = 'Could not send it here, opening your email app instead.';
-            window.location.href = 'mailto:' + TO + '?subject=' +
-              encodeURIComponent('Portfolio message from ' + name) +
-              '&body=' + encodeURIComponent(msg + '\n\n— ' + name + ' (' + email + ')');
-          })
-          .then(function () { sendBtn.disabled = false; });
-      });
-    })();
-  </script>
-
-  <!-- Smart Resume Link Resolver (Prevents 404 Errors Automatically) -->
-  <script>
-    (async function resolveResumeFile() {
-      const candidateFiles = [
-        'Resume.pdf',
-        'Resume.pdf.pdf',
-        'resume.pdf',
-        'Srinivas_Poojary_Resume.pdf',
-        'Srinivas_Resume.pdf'
-      ];
-      const resumeLinks = document.querySelectorAll('.js-resume-link');
-      for (const file of candidateFiles) {
-        try {
-          const response = await fetch(file, { method: 'HEAD', cache: 'no-store' });
-          if (response.ok) {
-            resumeLinks.forEach(link => link.setAttribute('href', file));
-            break;
-          }
-        } catch (err) {
-          // Continue checking next filename candidate
-        }
-      }
-    })();
-  </script>
+  <!-- All site behaviour lives here -->
+  <script src="script.js?v=1.0"></script>
 
 </body>
 </html>
