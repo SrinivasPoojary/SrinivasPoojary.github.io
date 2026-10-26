@@ -304,10 +304,23 @@ video {
   pointer-events: auto;
 }
 
-/* Keeps all text, links, and buttons above the particle canvas */
+#particles-js canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Text layer sits above the canvas but lets mouse events fall through to it,
+   so the particle hover effect works. Links and buttons stay clickable. */
 .hero .container {
   position: relative;
   z-index: 2;
+  pointer-events: none;
+}
+
+.hero .container a,
+.hero .container button {
+  pointer-events: auto;
 }
 
 .hero-inner {
@@ -858,6 +871,10 @@ video {
   font-weight: 600;
 }
 
+.cert-link {
+  margin-top: 1rem;
+}
+
 /* ==========================================================================
    Contact
    ========================================================================== */
@@ -912,6 +929,26 @@ video {
 .contact-form .btn-primary {
   justify-self: start;
 }
+
+/* Hidden spam-trap field */
+.contact-form .hp {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.form-status {
+  min-height: 1.4em;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.form-status.ok  { color: var(--accent); }
+.form-status.err { color: var(--text); }
 
 .form-note {
   font-size: 0.85rem;
@@ -997,18 +1034,23 @@ video {
 }
 
 /* ==========================================================================
-   Scroll reveal (Linked directly to your JS observer)
+   Scroll reveal
+   script.js adds ".in" to each ".reveal" element when it scrolls into view.
+   Uses an animation (not a transition) so card hover effects stay snappy.
+   Content is only hidden when JS is running (<html> has the "js" class).
    ========================================================================== */
-.reveal-on-scroll {
+.js .reveal {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
 }
 
-.reveal-on-scroll.is-revealed {
+.js .reveal.in {
   opacity: 1;
-  transform: none;
+  animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+}
+
+@keyframes revealUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: none; }
 }
 
 /* ==========================================================================
@@ -1063,5 +1105,5 @@ video {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .reveal-on-scroll { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; }
 }
