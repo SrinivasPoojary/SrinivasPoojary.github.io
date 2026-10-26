@@ -342,7 +342,8 @@ video {
 /* Restoring the smaller text styling */
 .hero h1 {
   font-family: var(--font-head);
-  font-size: clamp(2rem, 4vw, 3.4rem); /* Smaller font sizes */
+  /* Slightly reduced the maximum size from 3.4rem to 3.1rem so it fits on one line */
+  font-size: clamp(1.8rem, 3.8vw, 3.1rem); 
   font-weight: 800;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -351,6 +352,8 @@ video {
 
 .hero h1 .name {
   color: var(--accent);
+  /* This prevents the name from splitting in half. If it must wrap, the whole name drops down together cleanly. */
+  display: inline-block; 
 }
 
 .hero-role {
