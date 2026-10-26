@@ -310,8 +310,8 @@ video {
   height: 100%;
 }
 
-/* CHANGED: the text layer lets mouse events fall through to the particle canvas,
-   while links and buttons stay clickable. */
+/* Text layer sits above the canvas but lets mouse events fall through to it,
+   so the particle hover effect works. Links and buttons stay clickable. */
 .hero .container {
   position: relative;
   z-index: 2;
@@ -871,7 +871,6 @@ video {
   font-weight: 600;
 }
 
-/* NEW: spacing for the certificate button */
 .cert-link {
   margin-top: 1rem;
 }
@@ -931,7 +930,7 @@ video {
   justify-self: start;
 }
 
-/* NEW: hide the spam-trap field (it was visible before) */
+/* Hidden spam-trap field */
 .contact-form .hp {
   position: absolute;
   left: -9999px;
@@ -941,7 +940,6 @@ video {
   pointer-events: none;
 }
 
-/* NEW: form status message */
 .form-status {
   min-height: 1.4em;
   font-size: 0.92rem;
@@ -1036,10 +1034,10 @@ video {
 }
 
 /* ==========================================================================
-   Scroll reveal  (CHANGED: now matches the class names the JS actually uses)
-   JS adds ".in" to every ".reveal" element when it scrolls into view.
+   Scroll reveal
+   script.js adds ".in" to each ".reveal" element when it scrolls into view.
    Uses an animation (not a transition) so card hover effects stay snappy.
-   Only hides content when JS is running (the <html> gets the "js" class).
+   Content is only hidden when JS is running (<html> has the "js" class).
    ========================================================================== */
 .js .reveal {
   opacity: 0;
