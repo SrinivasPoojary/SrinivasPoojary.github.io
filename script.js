@@ -9,8 +9,10 @@
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ------------------------------------------------------------------
-     1. Interactive node-network background (Particles.js)
+     1. Full-page node-network background (Particles.js)
         Marigold dots, thin connecting lines, lines grab to the cursor.
+        The canvas is fixed behind the page, so the mouse is tracked on
+        the window instead of the canvas.
      ------------------------------------------------------------------ */
   function initParticles() {
     var holder = document.getElementById('particles-js');
@@ -21,7 +23,7 @@
     window.particlesJS('particles-js', {
       particles: {
         number: {
-          value: isMobile ? 36 : 65,
+          value: isMobile ? 30 : 65,
           density: { enable: true, value_area: 850 }
         },
         color: { value: '#EAAA00' },
@@ -40,7 +42,7 @@
           enable: true,
           distance: 130,
           color: '#EAAA00',
-          opacity: 0.22,
+          opacity: 0.16,
           width: 1
         },
         move: {
@@ -54,18 +56,17 @@
         }
       },
       interactivity: {
-        detect_on: 'canvas',
+        detect_on: 'window',
         events: {
           onhover: { enable: !reduce, mode: 'grab' },
-          onclick: { enable: !reduce, mode: 'push' },
+          onclick: { enable: false },
           resize: true
         },
         modes: {
           grab: {
             distance: 140,
             line_linked: { opacity: 0.5 }
-          },
-          push: { particles_nb: 3 }
+          }
         }
       },
       retina_detect: true
