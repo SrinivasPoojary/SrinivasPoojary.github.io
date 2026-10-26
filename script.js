@@ -54,7 +54,7 @@
         }
       },
       interactivity: {
-        detect_on: 'window', // Changed from 'canvas' to 'window' to fix mouse hover interaction behind content
+        detect_on: 'window',
         events: {
           onhover: { enable: !reduce, mode: 'grab' },
           onclick: { enable: !reduce, mode: 'push' },
@@ -234,8 +234,8 @@
      ------------------------------------------------------------------ */
   async function resolveResumeFile() {
     var candidateFiles = [
-      'Resume.pdf',
       'Resume.pdf.pdf',
+      'Resume.pdf',
       'resume.pdf',
       'Srinivas_Poojary_Resume.pdf',
       'Srinivas_Resume.pdf'
