@@ -4,7 +4,7 @@
    2. Ice Silver:     #DDE3E8  -> text, borders (as transparencies)
    3. Marigold:       #EAAA00  -> accent
    ========================================================================== */
- 
+
 :root {
   --aubergine: #3A0F34;
   --silver: #DDE3E8;
@@ -45,6 +45,21 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Particles Background Fix
+   ========================================================================== */
+#particles-js {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+#particles-js canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 /* Soft topographic contour lines behind the whole page */
@@ -286,29 +301,15 @@ video {
    ========================================================================== */
 .hero {
   position: relative;
-  min-height: calc(85vh - 76px);
+  min-height: calc(100vh - 76px);
   display: flex;
   align-items: center;
-  padding: 2.5rem 0 4.5rem;
-  overflow: hidden;
-}
-
-.hero .container {
-  position: relative;
-  z-index: 2;
-}
-
-/* Two columns: text on the left, photo on the right */
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
-  gap: 2.5rem 3.5rem;
+  padding: 4rem 0 6rem;
 }
 
 .hero-inner {
   position: relative;
-  padding-left: 2.2rem;
+  padding-left: 3rem;
 }
 
 .hero-inner::before {
@@ -336,11 +337,11 @@ video {
 
 .hero h1 {
   font-family: var(--font-head);
-  font-size: clamp(2rem, 4.6vw, 3.4rem);
+  font-size: clamp(2.5rem, 6.4vw, 4.6rem);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.03em;
-  margin-bottom: 1rem;
+  margin-bottom: 1.4rem;
 }
 
 .hero h1 .name {
@@ -349,12 +350,12 @@ video {
 
 .hero-role {
   font-family: var(--font-head);
-  font-size: clamp(1rem, 2vw, 1.4rem);
+  font-size: clamp(1.15rem, 2.6vw, 1.85rem);
   font-weight: 500;
   line-height: 1.5;
   color: var(--muted);
-  max-width: 720px;
-  margin-bottom: 1.1rem;
+  max-width: 880px;
+  margin-bottom: 1.4rem;
 }
 
 .hero-role strong {
@@ -385,14 +386,14 @@ video {
 .pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.4rem 0.95rem;
+  gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--card);
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--muted);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
 .pill .ico {
@@ -402,79 +403,22 @@ video {
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-.hero-actions .btn-primary,
-.hero-actions .btn-outline {
-  padding: 0.65rem 1.35rem;
-  font-size: 0.9rem;
-}
-
-/* Profile photo with a gentle, continuous bounce.
-   The bounce runs on .photo-frame so it never clashes with the
-   scroll-reveal animation that runs on .hero-photo. */
-.hero-photo {
-  display: flex;
-  justify-content: center;
-}
-
-.photo-frame {
-  width: clamp(180px, 22vw, 270px);
-  aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid var(--accent);
-  background: rgba(221, 227, 232, 0.08);
-  box-shadow: 0 0 0 8px rgba(234, 170, 0, 0.14), 0 18px 40px rgba(0, 0, 0, 0.4);
-  animation: photoBounce 3.6s ease-in-out infinite;
-  will-change: transform;
-}
-
-.photo-frame img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-}
-
-@keyframes photoBounce {
-  0%, 100% { transform: translateY(0); }
-  50%      { transform: translateY(-14px); }
-}
-
-@media (max-width: 860px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    justify-items: start;
-  }
-  .hero-photo {
-    order: -1;
-    justify-self: center;
-  }
-  .photo-frame {
-    width: clamp(150px, 42vw, 200px);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .photo-frame { animation: none; }
+  gap: 0.9rem;
 }
 
 .scroll-hint {
   position: absolute;
   left: 50%;
-  bottom: 1.2rem;
+  bottom: 1.6rem;
   transform: translateX(-50%);
-  width: 28px;
-  height: 46px;
+  width: 30px;
+  height: 52px;
   border: 3px solid var(--silver);
   border-radius: 20px;
   display: flex;
   justify-content: center;
-  padding-top: 8px;
+  padding-top: 9px;
   opacity: 0.8;
-  z-index: 2;
 }
 
 .scroll-hint span {
@@ -487,7 +431,7 @@ video {
 
 @keyframes scrollDot {
   0% { transform: translateY(0); opacity: 1; }
-  70% { transform: translateY(16px); opacity: 0; }
+  70% { transform: translateY(18px); opacity: 0; }
   100% { opacity: 0; }
 }
 
@@ -910,10 +854,6 @@ video {
   font-weight: 600;
 }
 
-.cert-link {
-  margin-top: 1rem;
-}
-
 /* ==========================================================================
    Contact
    ========================================================================== */
@@ -968,26 +908,6 @@ video {
 .contact-form .btn-primary {
   justify-self: start;
 }
-
-/* Hidden spam-trap field */
-.contact-form .hp {
-  position: absolute;
-  left: -9999px;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  pointer-events: none;
-}
-
-.form-status {
-  min-height: 1.4em;
-  font-size: 0.92rem;
-  font-weight: 600;
-  color: var(--muted);
-}
-
-.form-status.ok  { color: var(--accent); }
-.form-status.err { color: var(--text); }
 
 .form-note {
   font-size: 0.85rem;
@@ -1073,23 +993,18 @@ video {
 }
 
 /* ==========================================================================
-   Scroll reveal
-   script.js adds ".in" to each ".reveal" element when it scrolls into view.
-   Uses an animation (not a transition) so card hover effects stay snappy.
-   Content is only hidden when JS is running (<html> has the "js" class).
+   Scroll reveal (Linked directly to your JS observer)
    ========================================================================== */
-.js .reveal {
+.reveal-on-scroll {
   opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
 }
 
-.js .reveal.in {
+.reveal-on-scroll.is-revealed {
   opacity: 1;
-  animation: revealUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) backwards;
-}
-
-@keyframes revealUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: none; }
+  transform: none;
 }
 
 /* ==========================================================================
@@ -1124,7 +1039,7 @@ video {
     padding: 0.35rem 0 0.5rem;
   }
   .nav-links a { font-size: 0.92rem; }
-  .hero { min-height: 0; padding: 2rem 0 4.5rem; }
+  .hero { min-height: 0; padding: 3.5rem 0 6rem; }
   .hero-inner { padding-left: 1.6rem; }
   .section { padding: 4rem 0; scroll-margin-top: 110px; }
 }
@@ -1144,5 +1059,5 @@ video {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  .js .reveal { opacity: 1; }
+  .reveal-on-scroll { opacity: 1; transform: none; }
 }
