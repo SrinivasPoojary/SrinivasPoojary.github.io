@@ -98,24 +98,6 @@ video {
 }
 
 /* ==========================================================================
-   Full-page particle network
-   Fixed to the viewport and placed behind all content, so it stays visible
-   while scrolling. script.js listens for the mouse on the window.
-   ========================================================================== */
-#particles-js {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-}
-
-#particles-js canvas {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-/* ==========================================================================
    Scroll progress bar + side dot navigation
    ========================================================================== */
 .progress-bar {
@@ -311,9 +293,34 @@ video {
   overflow: hidden;
 }
 
+/* Particles Background Canvas */
+#particles-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: auto;
+}
+
+#particles-js canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* CHANGED: the text layer lets mouse events fall through to the particle canvas,
+   while links and buttons stay clickable. */
 .hero .container {
   position: relative;
   z-index: 2;
+  pointer-events: none;
+}
+
+.hero .container a,
+.hero .container button {
+  pointer-events: auto;
 }
 
 .hero-inner {
@@ -864,6 +871,7 @@ video {
   font-weight: 600;
 }
 
+/* NEW: spacing for the certificate button */
 .cert-link {
   margin-top: 1rem;
 }
@@ -923,7 +931,7 @@ video {
   justify-self: start;
 }
 
-/* Hidden spam-trap field */
+/* NEW: hide the spam-trap field (it was visible before) */
 .contact-form .hp {
   position: absolute;
   left: -9999px;
@@ -933,6 +941,7 @@ video {
   pointer-events: none;
 }
 
+/* NEW: form status message */
 .form-status {
   min-height: 1.4em;
   font-size: 0.92rem;
@@ -1027,10 +1036,10 @@ video {
 }
 
 /* ==========================================================================
-   Scroll reveal
-   script.js adds ".in" to each ".reveal" element when it scrolls into view.
+   Scroll reveal  (CHANGED: now matches the class names the JS actually uses)
+   JS adds ".in" to every ".reveal" element when it scrolls into view.
    Uses an animation (not a transition) so card hover effects stay snappy.
-   Content is only hidden when JS is running (<html> has the "js" class).
+   Only hides content when JS is running (the <html> gets the "js" class).
    ========================================================================== */
 .js .reveal {
   opacity: 0;
