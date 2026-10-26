@@ -54,7 +54,7 @@
         }
       },
       interactivity: {
-        detect_on: 'canvas',
+        detect_on: 'window', // Changed from 'canvas' to 'window' to fix mouse hover interaction behind content
         events: {
           onhover: { enable: !reduce, mode: 'grab' },
           onclick: { enable: !reduce, mode: 'push' },
