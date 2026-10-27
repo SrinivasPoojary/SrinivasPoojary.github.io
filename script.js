@@ -54,7 +54,7 @@
         }
       },
       interactivity: {
-        detect_on: 'window',
+        detect_on: 'canvas',
         events: {
           onhover: { enable: !reduce, mode: 'grab' },
           onclick: { enable: !reduce, mode: 'push' },
@@ -69,6 +69,50 @@
         }
       },
       retina_detect: true
+    });
+
+    /* Hero text and photo sit above the canvas, so the library never sees
+       the true cursor position over them (dots drift below the pointer).
+       Re-map the cursor to the canvas ourselves, from the whole hero. */
+    var hero = document.getElementById('hero');
+    if (!hero || reduce) return;
+
+    function getPJS() {
+      return window.pJSDom && window.pJSDom[0] && window.pJSDom[0].pJS;
+    }
+
+    function canvasPos(pJS, e) {
+      var r = pJS.canvas.el.getBoundingClientRect();
+      return {
+        x: (e.clientX - r.left) * pJS.canvas.pxratio,
+        y: (e.clientY - r.top) * pJS.canvas.pxratio
+      };
+    }
+
+    hero.addEventListener('mousemove', function (e) {
+      var pJS = getPJS();
+      if (!pJS) return;
+      var p = canvasPos(pJS, e);
+      pJS.interactivity.mouse.pos_x = p.x;
+      pJS.interactivity.mouse.pos_y = p.y;
+      pJS.interactivity.status = 'mousemove';
+    });
+
+    hero.addEventListener('mouseleave', function () {
+      var pJS = getPJS();
+      if (!pJS) return;
+      pJS.interactivity.mouse.pos_x = null;
+      pJS.interactivity.mouse.pos_y = null;
+      pJS.interactivity.status = 'mouseleave';
+    });
+
+    /* Click on empty hero area (not links/buttons) adds dots, same as the canvas */
+    hero.addEventListener('click', function (e) {
+      var pJS = getPJS();
+      if (!pJS || e.target === pJS.canvas.el) return; /* canvas already handled it */
+      if (e.target.closest('a, button, input, textarea')) return;
+      var p = canvasPos(pJS, e);
+      pJS.fn.modes.pushParticles(pJS.interactivity.modes.push.particles_nb, { pos_x: p.x, pos_y: p.y });
     });
   }
 
