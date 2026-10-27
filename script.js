@@ -278,9 +278,9 @@
      ------------------------------------------------------------------ */
   async function resolveResumeFile() {
     var candidateFiles = [
-      'Resume.pdf.pdf',
-      'Resume.pdf',
       'resume.pdf',
+      'Resume.pdf',
+      'Resume.pdf.pdf',
       'Srinivas_Poojary_Resume.pdf',
       'Srinivas_Resume.pdf'
     ];
