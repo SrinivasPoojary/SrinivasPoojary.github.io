@@ -478,25 +478,6 @@
         <p class="lead reveal">Open to Data Analyst, Business Analyst, BI Analyst, and MIS Analyst opportunities in Mumbai.</p>
 
         <div class="contact-grid">
-          <form class="contact-form card reveal" id="contactForm">
-            <div>
-              <label for="cf-name">Your name</label>
-              <input id="cf-name" name="name" type="text" placeholder="What's your good name?" required />
-            </div>
-            <div>
-              <label for="cf-email">Your email</label>
-              <input id="cf-email" name="email" type="email" placeholder="What's your email address?" required />
-            </div>
-            <div>
-              <label for="cf-message">Your message</label>
-              <textarea id="cf-message" name="message" placeholder="What do you want to say?" required></textarea>
-            </div>
-            <input type="text" name="_honey" style="display: none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
-            <button type="submit" class="btn-primary">Send message</button>
-            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-            <p class="form-note">Your message goes straight to my inbox.</p>
-          </form>
-
           <aside class="card reveal">
             <div class="card-label">
               <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -509,6 +490,11 @@
               <li><a href="https://github.com/SrinivasPoojary" target="_blank" rel="noopener"><span><small>GitHub</small>SrinivasPoojary</span><span aria-hidden="true">&#8599;</span></a></li>
             </ul>
           </aside>
+
+          <div class="globe-card card reveal">
+            <canvas id="globeCanvas" aria-label="Rotating globe made of dots. Drag to spin it." role="img"></canvas>
+            <p class="globe-hint">Drag to spin</p>
+          </div>
         </div>
       </div>
     </section>
