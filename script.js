@@ -218,59 +218,132 @@
   }
 
   /* ------------------------------------------------------------------
-     6. Contact form: sends to inbox via FormSubmit,
-        falls back to the visitor's email app if that fails
+     6. Dotted globe: Fibonacci-lattice points, noise land mask,
+        Canvas 2D, spun by dragging
      ------------------------------------------------------------------ */
-  function initContactForm() {
-    var form = document.getElementById('contactForm');
-    var statusEl = document.getElementById('formStatus');
-    if (!form || !statusEl) return;
+  function initGlobe() {
+    var canvas = document.getElementById('globeCanvas');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
 
-    var sendBtn = form.querySelector('button[type="submit"]');
-    var TO = 'srinivaspoojary188@gmail.com';
+    var IDLE = 0.0035;
+    var TILT = -0.32;
+    var TARGET = 1400;
+    var reduceMotion = window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    form.addEventListener('submit', function (ev) {
-      ev.preventDefault();
-      if (form.elements['_honey'].value) { return; }
+    /* Build the land points once */
+    var pts = [];
+    var n = TARGET * 3;
+    for (var i = 0; i < n && pts.length < TARGET; i++) {
+      var y = 1 - (i / n) * 2;
+      var r = Math.sqrt(1 - y * y);
+      var theta = i * 2.399963;
+      var x = Math.cos(theta) * r;
+      var z = Math.sin(theta) * r;
+      var lat = Math.asin(y);
+      var lon = Math.atan2(x, z);
+      var s = Math.sin(lat * 3.1) * Math.cos(lon * 2.2) +
+              Math.sin(lon * 1.3 + 1.1) * Math.cos(lat * 1.7) +
+              0.6 * Math.sin((lat + lon) * 4.3);
+      if (s > 0.25) pts.push([x, y, z]);
+    }
 
-      var name = form.elements['name'].value.trim();
-      var email = form.elements['email'].value.trim();
-      var msg = form.elements['message'].value.trim();
+    var accent = (getComputedStyle(document.documentElement)
+      .getPropertyValue('--marigold') || '#EAAA00').trim() || '#EAAA00';
+    var accentRGB = hexToRgb(accent) || [234, 170, 0];
 
-      sendBtn.disabled = true;
-      statusEl.className = 'form-status';
-      statusEl.textContent = 'Sending…';
+    function hexToRgb(hex) {
+      var m = /^#?([0-9a-f]{2})([0-9a-f]{2})([0-9a-f]{2})$/i.exec(hex);
+      return m ? [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)] : null;
+    }
 
-      fetch('https://formsubmit.co/ajax/' + TO, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          message: msg,
-          _subject: 'Portfolio message from ' + name,
-          _template: 'table'
-        })
-      })
-        .then(function (r) { return r.json(); })
-        .then(function (j) {
-          if (j.success === 'true' || j.success === true) {
-            statusEl.className = 'form-status ok';
-            statusEl.textContent = 'Message sent. Thank you, I will reply soon.';
-            form.reset();
-          } else {
-            throw new Error('send failed');
-          }
-        })
-        .catch(function () {
-          statusEl.className = 'form-status err';
-          statusEl.textContent = 'Could not send it here, opening your email app instead.';
-          window.location.href = 'mailto:' + TO +
-            '?subject=' + encodeURIComponent('Portfolio message from ' + name) +
-            '&body=' + encodeURIComponent(msg + '\n\n— ' + name + ' (' + email + ')');
-        })
-        .then(function () { sendBtn.disabled = false; });
+    var W = 0, H = 0, dpr = 1;
+    function resize() {
+      var rect = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = rect.width; H = rect.height;
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    var rot = 0;
+    var vel = reduceMotion ? 0 : IDLE;
+    var idle = reduceMotion ? 0 : IDLE;
+    var dragging = false;
+    var lastX = 0;
+    var visible = true;
+
+    canvas.addEventListener('pointerdown', function (e) {
+      dragging = true;
+      lastX = e.clientX;
+      vel = 0;
+      canvas.setPointerCapture(e.pointerId);
     });
+    canvas.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - lastX;
+      lastX = e.clientX;
+      rot += dx * 0.006;
+      vel = dx * 0.006;
+    });
+    function release() { dragging = false; }
+    canvas.addEventListener('pointerup', release);
+    canvas.addEventListener('pointercancel', release);
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        visible = entries[0].isIntersecting;
+      }).observe(canvas);
+    }
+
+    var cosT = Math.cos(TILT), sinT = Math.sin(TILT);
+    var R, cx, cy;
+
+    function frame() {
+      requestAnimationFrame(frame);
+      if (!visible || !W) return;
+
+      if (!dragging) {
+        rot += vel;
+        vel += (idle - vel) * 0.02;
+      }
+
+      ctx.clearRect(0, 0, W, H);
+      cx = W / 2; cy = H / 2;
+      R = Math.min(W, H) * 0.42;
+
+      var cosR = Math.cos(rot), sinR = Math.sin(rot);
+      for (var i = 0; i < pts.length; i++) {
+        var p = pts[i];
+        /* spin around Y */
+        var x1 = p[0] * cosR + p[2] * sinR;
+        var z1 = -p[0] * sinR + p[2] * cosR;
+        /* tilt around X */
+        var y2 = p[1] * cosT - z1 * sinT;
+        var z2 = p[1] * sinT + z1 * cosT;
+
+        var depth = (z2 + 1) / 2;
+        var persp = 0.86 + depth * 0.28;
+        var sx = cx + x1 * R * persp;
+        var sy = cy - y2 * R * persp;
+        var rad = (0.45 + depth * 0.85) * 1.5;
+
+        if (z2 > 0) {
+          ctx.fillStyle = 'rgba(' + accentRGB[0] + ',' + accentRGB[1] + ',' + accentRGB[2] + ',' +
+            (0.18 + depth * 0.72).toFixed(3) + ')';
+        } else {
+          ctx.fillStyle = 'rgba(221,227,232,' + (0.06 + depth * 0.30).toFixed(3) + ')';
+        }
+        ctx.beginPath();
+        ctx.arc(sx, sy, rad, 0, 6.2832);
+        ctx.fill();
+      }
+    }
+    frame();
   }
 
   /* ------------------------------------------------------------------
@@ -309,6 +382,6 @@
   initTyped();
   initReveal();
   initSideDots();
-  initContactForm();
+  initGlobe();
   resolveResumeFile();
 })();
