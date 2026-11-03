@@ -898,59 +898,41 @@ video {
    ========================================================================== */
 .contact-grid {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 0.9fr 1.1fr;
   gap: 1.4rem;
   align-items: start;
 }
 
-.contact-form {
+.globe-card {
+  position: relative;
   display: grid;
-  gap: 1.1rem;
+  place-items: center;
+  padding: 1rem;
+  min-height: 420px;
+  overflow: hidden;
 }
 
-.contact-form label {
-  display: block;
-  font-weight: 600;
-  margin-bottom: 0.45rem;
-}
-
-.contact-form input,
-.contact-form textarea {
+.globe-card canvas {
   width: 100%;
-  font-family: var(--font-base);
-  font-size: 1rem;
-  color: var(--text);
-  background: rgba(221, 227, 232, 0.07);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 0.9rem 1.1rem;
-  transition: border-color 0.2s ease, background-color 0.2s ease;
+  aspect-ratio: 1 / 1;
+  max-height: 460px;
+  cursor: grab;
+  touch-action: pan-y;
 }
 
-.contact-form textarea {
-  min-height: 160px;
-  resize: vertical;
-}
+.globe-card canvas:active { cursor: grabbing; }
 
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: rgba(221, 227, 232, 0.55);
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  background: rgba(221, 227, 232, 0.1);
-}
-
-.contact-form .btn-primary {
-  justify-self: start;
-}
-
-.form-note {
-  font-size: 0.85rem;
+.globe-hint {
+  position: absolute;
+  bottom: 0.9rem;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--muted);
+  pointer-events: none;
 }
 
 .contact-list {
