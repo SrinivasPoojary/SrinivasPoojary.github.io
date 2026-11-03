@@ -2,7 +2,7 @@
    Portfolio script
    Loaded after the particles.js library (see the end of index.html).
    ========================================================================== */
-
+ 
 (function () {
   'use strict';
 
