@@ -53,7 +53,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=11.0" />
+  <link rel="stylesheet" href="style.css?v=12.0" />
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -258,15 +258,17 @@
     </section>
 
     <!-- Tools & Tech -->
-    <section id="tools" class="section">
+    <section id="tools" class="section section-band">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">02 · Toolkit</span>
           <h2 class="section-title">Tools &amp; Tech</h2>
         </div>
+      </div>
 
-        <div class="tools" id="toolsCarousel">
-          <div class="tools-track at-start" id="toolsTrack" role="region" aria-label="Tools and technologies, scroll sideways" tabindex="0">
+      <div class="marquee-bleed">
+        <div class="marquee" id="toolsMarquee" role="region" aria-label="Tools and technologies">
+          <div class="marquee-track" id="toolsTrack">
           <article class="card tool-card">
             <span class="tool-icon"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></span>
             <h3>SQL</h3>
@@ -312,16 +314,6 @@
             <h3>GitHub &amp; Colab</h3>
             <p>Version Control, Notebooks, Project Hosting</p>
           </article>
-          </div>
-
-          <div class="tools-nav">
-            <button class="tools-arrow" id="toolsPrev" type="button" aria-label="Previous tool">
-              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <div class="tools-dots" id="toolsDots" aria-label="Choose a tool"></div>
-            <button class="tools-arrow" id="toolsNext" type="button" aria-label="Next tool">
-              <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
           </div>
         </div>
       </div>
@@ -393,15 +385,11 @@
           <span class="eyebrow">04 · Work</span>
           <h2 class="section-title">Featured Projects</h2>
         </div>
-        <div class="project-grid">
 
-          <article class="card project-card reveal">
-            <div class="project-img-wrapper">
-                <video autoplay loop muted playsinline>
-                <source src="adventureworks-animation.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="project-body">
+        <div class="project-list">
+
+          <article class="project-row reveal">
+            <div class="project-text">
               <div class="tag-list">
                 <span class="tag">Power BI</span>
                 <span class="tag">DAX</span>
@@ -414,19 +402,19 @@
                 <div class="proj-stat"><strong>27.66K</strong><span>Orders</span></div>
               </div>
               <div class="project-links">
-                <a href="https://srinivaspoojary.github.io/adventureworks-sales-intelligence/" target="_blank" rel="noopener" class="btn-primary btn-sm">Live Demo</a>
-                <a href="https://github.com/SrinivasPoojary/adventureworks-sales-intelligence" target="_blank" rel="noopener" class="btn-outline btn-sm">GitHub</a>
+                <a href="https://srinivaspoojary.github.io/adventureworks-sales-intelligence/" target="_blank" rel="noopener" class="link-live">See Live</a>
+                <a href="https://github.com/SrinivasPoojary/adventureworks-sales-intelligence" target="_blank" rel="noopener" class="link-code">Source Code</a>
               </div>
+            </div>
+            <div class="project-media">
+              <video autoplay loop muted playsinline>
+                <source src="adventureworks-animation.mp4" type="video/mp4" />
+              </video>
             </div>
           </article>
 
-          <article class="card project-card reveal">
-            <div class="project-img-wrapper">
-                <video autoplay loop muted playsinline>
-                <source src="solar-animation.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="project-body">
+          <article class="project-row reverse reveal">
+            <div class="project-text">
               <div class="tag-list">
                 <span class="tag">Python</span>
                 <span class="tag">Scikit-learn</span>
@@ -435,17 +423,19 @@
               <h3>Solar Power Generation Prediction</h3>
               <p>End-to-end machine learning project using Python, Pandas, and Scikit-learn deployed via Streamlit to predict solar power generation based on weather and environmental parameters.</p>
               <div class="project-links">
-              <a href="https://solar-power-forecastingg.streamlit.app/" target="_blank" rel="noopener" class="btn-primary btn-sm">Live Demo</a>
-              <a href="https://github.com/SrinivasPoojary/Solar-Power-Generation" target="_blank" rel="noopener" class="btn-outline btn-sm">GitHub</a>
+                <a href="https://solar-power-forecastingg.streamlit.app/" target="_blank" rel="noopener" class="link-live">See Live</a>
+                <a href="https://github.com/SrinivasPoojary/Solar-Power-Generation" target="_blank" rel="noopener" class="link-code">Source Code</a>
               </div>
+            </div>
+            <div class="project-media">
+              <video autoplay loop muted playsinline>
+                <source src="solar-animation.mp4" type="video/mp4" />
+              </video>
             </div>
           </article>
 
-          <article class="card project-card reveal">
-            <div class="project-img-wrapper">
-              <img src="ecommerce-project.png" alt="E-Commerce Analytics Project" loading="lazy" />
-            </div>
-            <div class="project-body">
+          <article class="project-row reveal">
+            <div class="project-text">
               <div class="tag-list">
                 <span class="tag">SQL</span>
                 <span class="tag">Power BI</span>
@@ -455,8 +445,11 @@
               <h3>E-Commerce Analytics (Olist Dataset)</h3>
               <p>Comprehensive analysis of historical e-commerce orders evaluating sales trends, customer purchasing behavior, delivery timelines, and payment preferences.</p>
               <div class="project-links">
-                <a href="https://www.linkedin.com/in/srinivaspoojary/details/projects/" target="_blank" rel="noopener" class="btn-primary btn-sm">View Case Study</a>
+                <a href="https://www.linkedin.com/in/srinivaspoojary/details/projects/" target="_blank" rel="noopener" class="link-live">View Case Study</a>
               </div>
+            </div>
+            <div class="project-media">
+              <img src="ecommerce-project.png" alt="E-Commerce Analytics Project" loading="lazy" />
             </div>
           </article>
 
@@ -489,7 +482,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="section">
+    <section id="contact" class="section section-band">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">06 · Contact</span>
@@ -535,7 +528,7 @@
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
   <!-- Script -->
-  <script src="script.js?v=3.0"></script>
+  <script src="script.js?v=4.0"></script>
 
 </body>
 </html>

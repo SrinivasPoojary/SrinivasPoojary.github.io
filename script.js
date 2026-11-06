@@ -375,116 +375,37 @@
   }
 
   /* ------------------------------------------------------------------
-     8. Tools & Tech carousel: side scroll, arrows, dots, gentle autoplay
-        Set AUTOPLAY to false below to turn the automatic sliding off.
+     8. Tools & Tech: continuous moving strip (pauses on hover)
+        Change SPEED to make it faster or slower (pixels per second).
      ------------------------------------------------------------------ */
-  function initToolsCarousel() {
-    var AUTOPLAY = true;
-    var AUTOPLAY_MS = 3500;
+  function initToolsMarquee() {
+    var SPEED = 55;
 
+    var box = document.getElementById('toolsMarquee');
     var track = document.getElementById('toolsTrack');
-    var dotsWrap = document.getElementById('toolsDots');
-    var prev = document.getElementById('toolsPrev');
-    var next = document.getElementById('toolsNext');
-    if (!track || !dotsWrap) return;
+    if (!box || !track) return;
 
-    var cards = Array.prototype.slice.call(track.children);
-    if (!cards.length) return;
+    /* Reduced-motion visitors get a normal sideways scroll instead */
+    if (reduce) {
+      box.classList.add('is-manual');
+      return;
+    }
 
-    var dots = cards.map(function (card, i) {
-      var b = document.createElement('button');
-      b.type = 'button';
-      b.setAttribute('aria-label', 'Go to ' + (card.querySelector('h3') ? card.querySelector('h3').textContent : 'tool ' + (i + 1)));
-      b.addEventListener('click', function () { stopAuto(); goTo(i); });
-      dotsWrap.appendChild(b);
-      return b;
+    /* Copy every card once, so the loop has no gap */
+    Array.prototype.slice.call(track.children).forEach(function (card) {
+      var copy = card.cloneNode(true);
+      copy.setAttribute('aria-hidden', 'true');
+      track.appendChild(copy);
     });
 
-    var active = 0;
-    var timer = null;
-    var stopped = false;
-    var pageVisible = true;
-
-    function padLeft() {
-      return parseFloat(getComputedStyle(track).paddingLeft) || 0;
+    function setSpeed() {
+      var oneSet = track.scrollWidth / 2;
+      box.style.setProperty('--marquee-duration', (oneSet / SPEED).toFixed(1) + 's');
     }
 
-    function goTo(i) {
-      i = Math.max(0, Math.min(cards.length - 1, i));
-      track.scrollTo({ left: cards[i].offsetLeft - padLeft(), behavior: reduce ? 'auto' : 'smooth' });
-    }
-
-    function update() {
-      var max = track.scrollWidth - track.clientWidth;
-      var atStart = track.scrollLeft <= 2;
-      var atEnd = track.scrollLeft >= max - 2;
-
-      var best = 0, bestDist = Infinity;
-      cards.forEach(function (card, i) {
-        var d = Math.abs(card.offsetLeft - padLeft() - track.scrollLeft);
-        if (d < bestDist) { bestDist = d; best = i; }
-      });
-      if (atEnd) best = cards.length - 1;
-      if (atStart) best = 0;
-      active = best;
-
-      dots.forEach(function (d, i) { d.classList.toggle('active', i === active); });
-      track.classList.toggle('at-start', atStart);
-      track.classList.toggle('at-end', atEnd);
-      if (prev) prev.disabled = atStart;
-      if (next) next.disabled = atEnd;
-    }
-
-    var ticking = false;
-    track.addEventListener('scroll', function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () { ticking = false; update(); });
-    }, { passive: true });
-    window.addEventListener('resize', update);
-
-    if (prev) prev.addEventListener('click', function () { stopAuto(); goTo(active - 1); });
-    if (next) next.addEventListener('click', function () { stopAuto(); goTo(active + 1); });
-
-    track.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { e.preventDefault(); stopAuto(); goTo(active + 1); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); stopAuto(); goTo(active - 1); }
-    });
-
-    /* Any touch, wheel or drag by the visitor ends autoplay for good */
-    ['pointerdown', 'wheel', 'touchstart'].forEach(function (ev) {
-      track.addEventListener(ev, stopAuto, { passive: true });
-    });
-
-    function tick() {
-      if (stopped || !pageVisible || document.hidden) return;
-      goTo(active >= cards.length - 1 ? 0 : active + 1);
-    }
-
-    function startAuto() {
-      if (!AUTOPLAY || reduce || stopped || timer) return;
-      timer = setInterval(tick, AUTOPLAY_MS);
-    }
-
-    function stopAuto() {
-      stopped = true;
-      if (timer) { clearInterval(timer); timer = null; }
-    }
-
-    /* Pause while the mouse is over the carousel; only slide while it is on screen */
-    var box = document.getElementById('toolsCarousel');
-    if (box) {
-      box.addEventListener('mouseenter', function () { if (timer) { clearInterval(timer); timer = null; } });
-      box.addEventListener('mouseleave', startAuto);
-    }
-    if ('IntersectionObserver' in window && box) {
-      new IntersectionObserver(function (entries) {
-        pageVisible = entries[0].isIntersecting;
-      }, { threshold: 0.35 }).observe(box);
-    }
-
-    update();
-    startAuto();
+    setSpeed();
+    window.addEventListener('resize', setSpeed);
+    box.classList.add('is-running');
   }
 
   /* ------------------------------------------------------------------
@@ -496,6 +417,6 @@
   initReveal();
   initSideDots();
   initGlobe();
-  initToolsCarousel();
+  initToolsMarquee();
   resolveResumeFile();
 })();
